@@ -1,0 +1,482 @@
+[
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "南美兩國 異域風情",
+    "destination": "阿根廷(世界最南端的城市、 壯麗冰川) 、智利 (百內公園、阿塔卡馬觀星、復活節島)",
+    "region": "南美",
+    "days": 20,
+    "price_range": "HKD 162,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2024/09 - 2025/04",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/QSB"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/QSB/iStock-1225346915.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "澳洲塔斯曼尼亞、墨爾本",
+    "destination": "親親大自然、舌尖上饗宴純淨新體驗",
+    "region": "澳洲/紐西蘭",
+    "days": 10,
+    "price_range": "HKD 40,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2025/08 - 2026/09",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/ATHM"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/ATHM/GettyImages-540209924-CradleMountain.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "杜拜、阿布扎比",
+    "destination": "棕櫚島亞特蘭蒂斯皇家度假酒店、太陽之門沙漠度假酒店",
+    "region": "中東",
+    "days": 7,
+    "price_range": "HKD 28,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2025/10 - 2026/06",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/KDR"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/KDR/Atlantis_The_Royal_Dubai_Hotel.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "新西蘭南北島",
+    "destination": "螢火蟲、觀星、冰川湖",
+    "region": "澳洲/紐西蘭",
+    "days": 10,
+    "price_range": "HKD 42,498 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2025/10 - 2026/04",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/ANAC"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/ANAB/Luping_Flower.webp"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "阿聯酋 (沙迦‧杜拜‧阿布扎比)",
+    "destination": "探索新興旅遊國度、體會中東魅力之都",
+    "region": "中東",
+    "days": 6,
+    "price_range": "HKD 14,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2025/11 - 2026/06",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/KDS"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/KDS/UAE%20-%20sharjah%20house%20of%20wisdom%203.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "阿聯酋(杜拜 ‧ 阿布扎比)",
+    "destination": "中東旅遊新體驗．新玩法",
+    "region": "中東",
+    "days": 6,
+    "price_range": "HKD 21,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/01 - 2026/06",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/KDI"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/KDI/Ferrari%20World.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "土耳其、番紅花城",
+    "destination": "漫遊伊斯坦堡、體驗自然奇景",
+    "region": "中東",
+    "days": 11,
+    "price_range": "HKD 26,498 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/03 - 2026/09",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/KTA"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/KTA/Day10_emirgan_park_tuip_festival.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "南法巡禮．普羅旺斯薰衣草",
+    "destination": "山居小鎮—馥郁酒鄉波爾多",
+    "region": "—",
+    "days": 10,
+    "price_range": "HKD 43,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/03 - 2026/03",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/EFS"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/ECPA/day4_valensole.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "埃及",
+    "destination": "探索法老迷城．尼羅河兩岸文明",
+    "region": "中東",
+    "days": 9,
+    "price_range": "HKD 31,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/03 - 2026/10",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/KEA"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/KED/GizaPyramid.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "江南春日·洲際臻選",
+    "destination": "邂逅太湖櫻海・穿梭花海梯田・品鑑松葉蟹宴",
+    "region": "—",
+    "days": 6,
+    "price_range": "HKD 2,798 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/03 - 2026/06",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/TSSKQ"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/TSSKQ/Yuantouzhu%20in%20Taihu%20Lake15.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "葡萄牙暢玩深度遊",
+    "destination": "穿越古樸小鎮．一嚐美食巡禮",
+    "region": "歐洲",
+    "days": 10,
+    "price_range": "HKD 34,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/03 - 2026/10",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/EPA"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/BSMN/Portugal.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "江南春日",
+    "destination": "Park Hyatt三泊奢享",
+    "region": "—",
+    "days": 6,
+    "price_range": "HKD 3,498 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/03 - 2026/06",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/TSNGQ"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/TSNGQ/Yuantouzhu%20in%20Taihu%20Lake14.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "三峽揚帆 x 渝鄂雙城",
+    "destination": "「長江探索號」遊輪假期",
+    "region": "—",
+    "days": 8,
+    "price_range": "HKD 23,498 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/03 - 2026/05",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/TCED"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/TCED/Yangzi%20Explorer%20cover.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "西班牙．葡萄牙 (高鐵系列)",
+    "destination": "奢華瑰麗文化．細味匠心料理",
+    "region": "歐洲",
+    "days": 11,
+    "price_range": "HKD 34,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/03 - 2026/10",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/ESPB"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/ESPB/Lisbon.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "捷克、奧地利",
+    "destination": "群山擁抱湖光、小鎮流淌色彩",
+    "region": "歐洲",
+    "days": 11,
+    "price_range": "HKD 39,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/03 - 2026/09",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/ECAB"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/ECAB/schafberg_bahn.png"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "北意大利 ‧ 白雲石山脈",
+    "destination": "山水如詩、小鎮傳情",
+    "region": "歐洲",
+    "days": 10,
+    "price_range": "HKD 51,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/04 - 2026/10",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/EIME"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/EIME/DOLOMITES.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "經典九寨",
+    "destination": "峨眉樂山大佛",
+    "region": "亞洲",
+    "days": 8,
+    "price_range": "HKD 22,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/04 - 2026/06",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/TCCA"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/TCCA/Jiuzhaigou12.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "南意大利 ‧ 蔚藍阿瑪菲海岸",
+    "destination": "魅力山城小鎮、感受白色浪漫",
+    "region": "歐洲",
+    "days": 11,
+    "price_range": "HKD 51,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/04 - 2026/10",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/EINC"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/EINC/trulli_1.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "摩洛哥",
+    "destination": "撒哈拉沙漠帳篷酒店、藍色山城(舍夫沙萬)",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HKD 27,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/04 - 2026/10",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/KMM"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/KMM/City%20Walking%20Tour.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "純美‧冰島天空之鏡",
+    "destination": "索馬希黑冰川健行．環島之旅",
+    "region": "歐洲",
+    "days": 10,
+    "price_range": "HKD 53,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/04 - 2026/09",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/ENIA"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/BICJ/boat_tour_jokulsarlon_glacier1.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "雲南‧女兒國瀘沽湖",
+    "destination": "麗世奢華住宿",
+    "region": "亞洲",
+    "days": 10,
+    "price_range": "HKD 21,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/04 - 2026/06",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/TCKB"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/TCKA/Lugu_Lake3.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "西藏．訪聖域",
+    "destination": "松贊巴松措林卡酒店",
+    "region": "亞洲",
+    "days": 10,
+    "price_range": "HKD 23,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/04 - 2026/06",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/TCTA"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/TCTA/Potala_Palace.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "貴州",
+    "destination": "春日賞花限定",
+    "region": "—",
+    "days": 8,
+    "price_range": "HKD 12,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/04 - 2026/04",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/TRGB"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/TRGB/Baili%20Dujuan%20Scenic%20Area-%20a.jpg"
+  },
+  {
+    "agency": "Jetour 捷旅",
+    "type": "longhaul",
+    "title": "絲路春訪",
+    "destination": "梨杏雙花與千年敦煌",
+    "region": "—",
+    "days": 8,
+    "price_range": "HKD 17,998 +起",
+    "departure_date_statuses": [
+      {
+        "date": "2026/04 - 2026/04",
+        "status": "未成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "jetour": "https://www.jetour.com.hk/tour/TCLL"
+    },
+    "image_url": "https://www.jetour.com.hk/storage/app/media/TCLL/Shichuan%20Ancient%20Pear%20Orchard5.jpg"
+  }
+]

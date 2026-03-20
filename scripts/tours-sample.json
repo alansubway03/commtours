@@ -1,0 +1,27 @@
+[
+  {
+    "agency": "永安旅遊",
+    "type": "longhaul",
+    "title": "歐洲五國十天純玩團",
+    "destination": "法國、瑞士、意大利、德國、奧地利",
+    "region": "歐洲",
+    "days": 10,
+    "price_range": "$28,000 - $35,000",
+    "departure_dates": ["2025-04-15", "2025-05-20"],
+    "features": ["純玩", "無購物", "包小費"],
+    "affiliate_links": { "wingon": "https://example.com/tour/123" },
+    "image_url": "https://example.com/img/tour1.jpg"
+  },
+  {
+    "agency": "東瀛遊",
+    "type": "cruise",
+    "title": "沖繩郵輪四天",
+    "destination": "沖繩",
+    "region": "亞洲",
+    "days": 4,
+    "price_range": "$5,800 起",
+    "departure_dates": ["2025-06-01", "2025-06-15"],
+    "features": ["郵輪"],
+    "image_url": ""
+  }
+]

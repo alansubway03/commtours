@@ -1,0 +1,5202 @@
+[
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【國泰航空】瑞士、列支敦士登10天深度之旅",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 10,
+    "price_range": "HK$45,999起",
+    "departure_date_statuses": [
+      {
+        "date": "20/04",
+        "status": "成團"
+      },
+      {
+        "date": "11/05",
+        "status": "成團"
+      },
+      {
+        "date": "08/06",
+        "status": "成團"
+      },
+      {
+        "date": "13/07",
+        "status": "成團"
+      },
+      {
+        "date": "20/08",
+        "status": "成團"
+      },
+      {
+        "date": "28/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/10",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWCS10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWCS10/843.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "意大利『細賞名城、尋覓真味』11天體驗之旅",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 11,
+    "price_range": "HK$35,999起",
+    "departure_date_statuses": [
+      {
+        "date": "08/04",
+        "status": "成團"
+      },
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "22/04",
+        "status": "成團"
+      },
+      {
+        "date": "08/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/05",
+        "status": "成團"
+      },
+      {
+        "date": "20/05",
+        "status": "成團"
+      },
+      {
+        "date": "27/05",
+        "status": "成團"
+      },
+      {
+        "date": "03/06",
+        "status": "成團"
+      },
+      {
+        "date": "12/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/06",
+        "status": "成團"
+      },
+      {
+        "date": "26/06",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWAL11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWAL11/201.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【國泰航空 ‧ 荷蘭花展】\r\n歐洲10天季節限定之旅「稅項全包」",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 10,
+    "price_range": "HK$29,999起",
+    "departure_date_statuses": [
+      {
+        "date": "04/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/04",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWCF10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWCF10/172.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【國泰航空】歐洲10天美景之旅「稅項全包」",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 10,
+    "price_range": "HK$30,999起",
+    "departure_date_statuses": [
+      {
+        "date": "04/05",
+        "status": "成團"
+      },
+      {
+        "date": "18/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/06",
+        "status": "成團"
+      },
+      {
+        "date": "15/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/07",
+        "status": "成團"
+      },
+      {
+        "date": "03/08",
+        "status": "成團"
+      },
+      {
+        "date": "11/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/08",
+        "status": "成團"
+      },
+      {
+        "date": "14/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/10",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWCX10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWCX10/827.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【國泰皇牌推介】歐洲13天廣博心度之旅",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 13,
+    "price_range": "HK$46,999起",
+    "departure_date_statuses": [
+      {
+        "date": "16/04",
+        "status": "成團"
+      },
+      {
+        "date": "27/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "11/05",
+        "status": "成團"
+      },
+      {
+        "date": "13/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/05",
+        "status": "成團"
+      },
+      {
+        "date": "27/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/06",
+        "status": "成團"
+      },
+      {
+        "date": "11/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/07",
+        "status": "成團"
+      },
+      {
+        "date": "23/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/08",
+        "status": "成團"
+      },
+      {
+        "date": "10/09",
+        "status": "成團"
+      },
+      {
+        "date": "17/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/10",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWCX13"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWCX13/998.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【季節限定-荷蘭花展】\r\n阿聯酋航空 歐洲9天抵玩之旅「稅項全包」",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 9,
+    "price_range": "HK$25,999起",
+    "departure_date_statuses": [
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "22/04",
+        "status": "成團"
+      },
+      {
+        "date": "29/04",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWEF09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWEF09/282.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "歐洲14天多國精選之旅",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 14,
+    "price_range": "HK$39,999起",
+    "departure_date_statuses": [
+      {
+        "date": "13/04",
+        "status": "成團"
+      },
+      {
+        "date": "22/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/04",
+        "status": "成團"
+      },
+      {
+        "date": "04/05",
+        "status": "成團"
+      },
+      {
+        "date": "07/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "11/05",
+        "status": "成團"
+      },
+      {
+        "date": "18/05",
+        "status": "成團"
+      },
+      {
+        "date": "20/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/05",
+        "status": "成團"
+      },
+      {
+        "date": "03/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/06",
+        "status": "成團"
+      },
+      {
+        "date": "15/06",
+        "status": "成團"
+      },
+      {
+        "date": "17/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWEG14"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWEG14/225.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "德國、奧地利12天 美景深度體驗",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 12,
+    "price_range": "HK$32,599起",
+    "departure_date_statuses": [
+      {
+        "date": "08/04",
+        "status": "成團"
+      },
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/05",
+        "status": "成團"
+      },
+      {
+        "date": "15/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/05",
+        "status": "成團"
+      },
+      {
+        "date": "27/05",
+        "status": "成團"
+      },
+      {
+        "date": "03/06",
+        "status": "成團"
+      },
+      {
+        "date": "12/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/06",
+        "status": "成團"
+      },
+      {
+        "date": "24/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWGA12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWGA12/608.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "德國、瑞士11天 深度美景體驗",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 11,
+    "price_range": "HK$36,999起",
+    "departure_date_statuses": [
+      {
+        "date": "08/04",
+        "status": "成團"
+      },
+      {
+        "date": "13/04",
+        "status": "成團"
+      },
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "20/04",
+        "status": "成團"
+      },
+      {
+        "date": "22/04",
+        "status": "成團"
+      },
+      {
+        "date": "27/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "04/05",
+        "status": "成團"
+      },
+      {
+        "date": "06/05",
+        "status": "成團"
+      },
+      {
+        "date": "11/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/05",
+        "status": "成團"
+      },
+      {
+        "date": "18/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/05",
+        "status": "成團"
+      },
+      {
+        "date": "25/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/05",
+        "status": "成團"
+      },
+      {
+        "date": "01/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "03/06",
+        "status": "成團"
+      },
+      {
+        "date": "08/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/06",
+        "status": "成團"
+      },
+      {
+        "date": "15/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/06",
+        "status": "成團"
+      },
+      {
+        "date": "22/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/06",
+        "status": "成團"
+      },
+      {
+        "date": "29/06",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWGS11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWGS11/168.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【阿聯酋航空皇牌推介】歐洲12天美景之旅",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 12,
+    "price_range": "HK$37,999起",
+    "departure_date_statuses": [
+      {
+        "date": "08/04",
+        "status": "成團"
+      },
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "24/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/04",
+        "status": "成團"
+      },
+      {
+        "date": "06/05",
+        "status": "成團"
+      },
+      {
+        "date": "15/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/05",
+        "status": "成團"
+      },
+      {
+        "date": "27/05",
+        "status": "成團"
+      },
+      {
+        "date": "03/06",
+        "status": "成團"
+      },
+      {
+        "date": "11/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/06",
+        "status": "成團"
+      },
+      {
+        "date": "24/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWRA12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWRA12/656.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "瑞士航空精選 - 瑞士(4大觀光鐵道、3大著名雪山、浩翰冰川)11天深度之旅",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 11,
+    "price_range": "HK$51,999起",
+    "departure_date_statuses": [
+      {
+        "date": "14/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/06",
+        "status": "成團"
+      },
+      {
+        "date": "28/06",
+        "status": "成團"
+      },
+      {
+        "date": "05/07",
+        "status": "成團"
+      },
+      {
+        "date": "12/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/07",
+        "status": "成團"
+      },
+      {
+        "date": "26/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/08",
+        "status": "成團"
+      },
+      {
+        "date": "23/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/08",
+        "status": "成團"
+      },
+      {
+        "date": "06/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/09",
+        "status": "成團"
+      },
+      {
+        "date": "20/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWSL11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWSL11/192.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "國泰航空精選 - 瑞士(4大觀光鐵道、3大著名雪山、浩翰冰川)10天深度之旅",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 10,
+    "price_range": "HK$50,999起",
+    "departure_date_statuses": [
+      {
+        "date": "18/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/06",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEWSX10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EWSX10/472.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "悉尼動感6天【Vivid Sydney】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 6,
+    "price_range": "HK$14,999起",
+    "departure_date_statuses": [
+      {
+        "date": "21/05",
+        "status": "成團"
+      },
+      {
+        "date": "24/05",
+        "status": "成團"
+      },
+      {
+        "date": "26/05",
+        "status": "成團"
+      },
+      {
+        "date": "31/05",
+        "status": "成團"
+      },
+      {
+        "date": "02/06",
+        "status": "成團"
+      },
+      {
+        "date": "07/06",
+        "status": "成團"
+      },
+      {
+        "date": "09/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTASSV06"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ASSV06/384.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "塔斯曼尼亞8天【塵世美瀛遊】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 8,
+    "price_range": "HK$27,699起",
+    "departure_date_statuses": [
+      {
+        "date": "12/04",
+        "status": "成團"
+      },
+      {
+        "date": "26/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/05",
+        "status": "成團"
+      },
+      {
+        "date": "17/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/08",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTAHLH08"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/AHLH08/543.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "墨爾本+塔斯曼尼亞8天【美景美食之旅】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 8,
+    "price_range": "HK$25,399起",
+    "departure_date_statuses": [
+      {
+        "date": "12/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "03/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/05",
+        "status": "成團"
+      },
+      {
+        "date": "24/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/06",
+        "status": "成團"
+      },
+      {
+        "date": "28/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "05/07",
+        "status": "成團"
+      },
+      {
+        "date": "12/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/08",
+        "status": "成團"
+      },
+      {
+        "date": "23/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTAHLM08"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/AHLM08/331.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "西澳珀斯9天【國泰精選】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 9,
+    "price_range": "HK$28,999起",
+    "departure_date_statuses": [
+      {
+        "date": "11/04",
+        "status": "成團"
+      },
+      {
+        "date": "18/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/05",
+        "status": "成團"
+      },
+      {
+        "date": "16/05",
+        "status": "成團"
+      },
+      {
+        "date": "23/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/05",
+        "status": "成團"
+      },
+      {
+        "date": "06/06",
+        "status": "成團"
+      },
+      {
+        "date": "13/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/06",
+        "status": "成團"
+      },
+      {
+        "date": "27/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/07",
+        "status": "成團"
+      },
+      {
+        "date": "26/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "05/09",
+        "status": "成團"
+      },
+      {
+        "date": "12/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "03/10",
+        "status": "成團"
+      },
+      {
+        "date": "10/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "31/10",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTAPCB09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/APCB09/394.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "西澳珀斯9天【國泰精選】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 9,
+    "price_range": "HK$30,999起",
+    "departure_date_statuses": [
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/05",
+        "status": "成團"
+      },
+      {
+        "date": "30/05",
+        "status": "成團"
+      },
+      {
+        "date": "06/06",
+        "status": "成團"
+      },
+      {
+        "date": "13/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/06",
+        "status": "成團"
+      },
+      {
+        "date": "27/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/07",
+        "status": "成團"
+      },
+      {
+        "date": "26/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "31/10",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTAPCC09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/APCC09/548.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "悉尼+黃金海岸8天【瀛遊推介】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 8,
+    "price_range": "HK$21,999起",
+    "departure_date_statuses": [
+      {
+        "date": "11/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "成團"
+      },
+      {
+        "date": "09/05",
+        "status": "成團"
+      },
+      {
+        "date": "23/05",
+        "status": "成團"
+      },
+      {
+        "date": "06/06",
+        "status": "成團"
+      },
+      {
+        "date": "20/06",
+        "status": "成團"
+      },
+      {
+        "date": "11/07",
+        "status": "成團"
+      },
+      {
+        "date": "18/07",
+        "status": "成團"
+      },
+      {
+        "date": "25/07",
+        "status": "成團"
+      },
+      {
+        "date": "01/08",
+        "status": "成團"
+      },
+      {
+        "date": "08/08",
+        "status": "成團"
+      },
+      {
+        "date": "15/08",
+        "status": "成團"
+      },
+      {
+        "date": "22/08",
+        "status": "成團"
+      },
+      {
+        "date": "29/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTASBS08"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ASBS08/763.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "澳洲8/10天【東海岸巡禮】ASCB08/10",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 8,
+    "price_range": "HK$24,999起",
+    "departure_date_statuses": [
+      {
+        "date": "09/04",
+        "status": "成團"
+      },
+      {
+        "date": "16/04",
+        "status": "成團"
+      },
+      {
+        "date": "08/05",
+        "status": "成團"
+      },
+      {
+        "date": "15/05",
+        "status": "成團"
+      },
+      {
+        "date": "29/05",
+        "status": "成團"
+      },
+      {
+        "date": "05/06",
+        "status": "成團"
+      },
+      {
+        "date": "19/06",
+        "status": "成團"
+      },
+      {
+        "date": "10/07",
+        "status": "成團"
+      },
+      {
+        "date": "23/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/08",
+        "status": "成團"
+      },
+      {
+        "date": "20/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTASCB08"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ASCB08/358.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "澳洲8/10天【東海岸巡禮】ASCB08/10",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 10,
+    "price_range": "HK$29,399起",
+    "departure_date_statuses": [
+      {
+        "date": "09/04",
+        "status": "成團"
+      },
+      {
+        "date": "16/04",
+        "status": "成團"
+      },
+      {
+        "date": "23/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/05",
+        "status": "成團"
+      },
+      {
+        "date": "15/05",
+        "status": "成團"
+      },
+      {
+        "date": "22/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/05",
+        "status": "成團"
+      },
+      {
+        "date": "05/06",
+        "status": "成團"
+      },
+      {
+        "date": "12/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/06",
+        "status": "成團"
+      },
+      {
+        "date": "26/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/07",
+        "status": "成團"
+      },
+      {
+        "date": "23/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/08",
+        "status": "成團"
+      },
+      {
+        "date": "13/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTASCB10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ASCB10/407.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "澳洲9天【東海岸瀛遊】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 9,
+    "price_range": "HK$26,399起",
+    "departure_date_statuses": [
+      {
+        "date": "11/04",
+        "status": "成團"
+      },
+      {
+        "date": "18/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "成團"
+      },
+      {
+        "date": "02/05",
+        "status": "成團"
+      },
+      {
+        "date": "16/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/06",
+        "status": "成團"
+      },
+      {
+        "date": "19/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/06",
+        "status": "成團"
+      },
+      {
+        "date": "03/07",
+        "status": "成團"
+      },
+      {
+        "date": "10/07",
+        "status": "成團"
+      },
+      {
+        "date": "17/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "31/07",
+        "status": "成團"
+      },
+      {
+        "date": "07/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/08",
+        "status": "成團"
+      },
+      {
+        "date": "22/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTASCE09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ASCE09/363.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "悉尼+墨爾本7天【雙城瀛遊推介】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 7,
+    "price_range": "HK$17,999起",
+    "departure_date_statuses": [
+      {
+        "date": "10/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/05",
+        "status": "成團"
+      },
+      {
+        "date": "24/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "31/05",
+        "status": "成團"
+      },
+      {
+        "date": "14/06",
+        "status": "成團"
+      },
+      {
+        "date": "28/06",
+        "status": "成團"
+      },
+      {
+        "date": "12/07",
+        "status": "成團"
+      },
+      {
+        "date": "26/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/08",
+        "status": "成團"
+      },
+      {
+        "date": "30/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTASMS07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ASMS07/963.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "悉尼+墨爾本8天【雙城瀛遊推介】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 8,
+    "price_range": "HK$20,999起",
+    "departure_date_statuses": [
+      {
+        "date": "16/04",
+        "status": "成團"
+      },
+      {
+        "date": "24/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/05",
+        "status": "成團"
+      },
+      {
+        "date": "23/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/05",
+        "status": "成團"
+      },
+      {
+        "date": "06/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/06",
+        "status": "成團"
+      },
+      {
+        "date": "20/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/06",
+        "status": "成團"
+      },
+      {
+        "date": "01/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/07",
+        "status": "成團"
+      },
+      {
+        "date": "24/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/07",
+        "status": "成團"
+      },
+      {
+        "date": "29/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/08",
+        "status": "成團"
+      },
+      {
+        "date": "09/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/08",
+        "status": "成團"
+      },
+      {
+        "date": "15/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/08",
+        "status": "成團"
+      },
+      {
+        "date": "22/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTASMS08"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ASMS08/312.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "澳洲黃金海岸+摩頓島7天【一家人瀛遊】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 7,
+    "price_range": "HK$19,699起",
+    "departure_date_statuses": [
+      {
+        "date": "19/07",
+        "status": "成團"
+      },
+      {
+        "date": "21/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/08",
+        "status": "成團"
+      },
+      {
+        "date": "10/08",
+        "status": "成團"
+      },
+      {
+        "date": "13/08",
+        "status": "成團"
+      },
+      {
+        "date": "17/08",
+        "status": "成團"
+      },
+      {
+        "date": "19/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/08",
+        "status": "成團"
+      },
+      {
+        "date": "25/08",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTABQA07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ABQA07/261.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "澳洲布里斯本+黃金海岸7天【一家人瀛遊】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 7,
+    "price_range": "HK$18,699起",
+    "departure_date_statuses": [
+      {
+        "date": "19/07",
+        "status": "成團"
+      },
+      {
+        "date": "21/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/08",
+        "status": "成團"
+      },
+      {
+        "date": "10/08",
+        "status": "成團"
+      },
+      {
+        "date": "13/08",
+        "status": "成團"
+      },
+      {
+        "date": "17/08",
+        "status": "成團"
+      },
+      {
+        "date": "19/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/08",
+        "status": "成團"
+      },
+      {
+        "date": "25/08",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTABQB07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ABQB07/277.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "澳洲布里斯本+黃金海岸7天【暑假親子遊．一家人瀛遊】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 7,
+    "price_range": "HK$18,999起",
+    "departure_date_statuses": [
+      {
+        "date": "06/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "31/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "04/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "18/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/08",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTABQQ07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ABQQ07/505.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "澳洲黃金海岸+摩頓島7天【暑假親子遊．一家人瀛遊】",
+    "destination": "澳洲",
+    "region": "澳洲",
+    "days": 7,
+    "price_range": "HK$19,999起",
+    "departure_date_statuses": [
+      {
+        "date": "06/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/07",
+        "status": "成團"
+      },
+      {
+        "date": "12/07",
+        "status": "成團"
+      },
+      {
+        "date": "17/07",
+        "status": "成團"
+      },
+      {
+        "date": "24/07",
+        "status": "成團"
+      },
+      {
+        "date": "26/07",
+        "status": "成團"
+      },
+      {
+        "date": "27/07",
+        "status": "成團"
+      },
+      {
+        "date": "31/07",
+        "status": "成團"
+      },
+      {
+        "date": "02/08",
+        "status": "成團"
+      },
+      {
+        "date": "04/08",
+        "status": "成團"
+      },
+      {
+        "date": "07/08",
+        "status": "成團"
+      },
+      {
+        "date": "09/08",
+        "status": "成團"
+      },
+      {
+        "date": "12/08",
+        "status": "成團"
+      },
+      {
+        "date": "15/08",
+        "status": "成團"
+      },
+      {
+        "date": "18/08",
+        "status": "成團"
+      },
+      {
+        "date": "20/08",
+        "status": "成團"
+      },
+      {
+        "date": "23/08",
+        "status": "成團"
+      },
+      {
+        "date": "24/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTABQT07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ABQT07/672.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "冰島、芬蘭 10天【純美國度、探索自然秘境之旅】",
+    "destination": "北歐",
+    "region": "北歐",
+    "days": 10,
+    "price_range": "HK$53,999起",
+    "departure_date_statuses": [
+      {
+        "date": "20/05",
+        "status": "成團"
+      },
+      {
+        "date": "16/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/06",
+        "status": "成團"
+      },
+      {
+        "date": "16/07",
+        "status": "成團"
+      },
+      {
+        "date": "28/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/08",
+        "status": "成團"
+      },
+      {
+        "date": "08/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/09",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTENIF10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ENIF10/700.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【峽灣之國】挪威 9天美景美食生態之旅",
+    "destination": "北歐",
+    "region": "北歐",
+    "days": 9,
+    "price_range": "HK$52,999起",
+    "departure_date_statuses": [
+      {
+        "date": "21/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/04",
+        "status": "成團"
+      },
+      {
+        "date": "07/05",
+        "status": "成團"
+      },
+      {
+        "date": "16/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/05",
+        "status": "成團"
+      },
+      {
+        "date": "04/06",
+        "status": "成團"
+      },
+      {
+        "date": "12/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTENNS09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ENNS09/354.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "波羅的海、北歐 12天【美景探索之旅】",
+    "destination": "北歐",
+    "region": "北歐",
+    "days": 12,
+    "price_range": "HK$37,999起",
+    "departure_date_statuses": [
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "24/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/05",
+        "status": "成團"
+      },
+      {
+        "date": "20/05",
+        "status": "成團"
+      },
+      {
+        "date": "25/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/06",
+        "status": "成團"
+      },
+      {
+        "date": "09/06",
+        "status": "成團"
+      },
+      {
+        "date": "16/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/06",
+        "status": "成團"
+      },
+      {
+        "date": "30/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTENBN12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ENBN12/755.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "埃及10天【雙程內陸機+國際5星酒店+雙博物館】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HK$24,999起",
+    "departure_date_statuses": [
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "22/04",
+        "status": "成團"
+      },
+      {
+        "date": "13/05",
+        "status": "成團"
+      },
+      {
+        "date": "20/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/06",
+        "status": "成團"
+      },
+      {
+        "date": "08/07",
+        "status": "成團"
+      },
+      {
+        "date": "22/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "05/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/08",
+        "status": "成團"
+      },
+      {
+        "date": "02/09",
+        "status": "成團"
+      },
+      {
+        "date": "23/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTREED10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/REED10/645.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "埃及 亞歷山大港 10天【雙程內陸機+國際5星酒店】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HK$24,999起",
+    "departure_date_statuses": [
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "29/04",
+        "status": "成團"
+      },
+      {
+        "date": "06/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/06",
+        "status": "成團"
+      },
+      {
+        "date": "24/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/07",
+        "status": "成團"
+      },
+      {
+        "date": "05/08",
+        "status": "成團"
+      },
+      {
+        "date": "19/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/09",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTREEK10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/REEK10/352.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "埃及10天【單程內陸機+超值抵玩5星之選】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HK$15,999起",
+    "departure_date_statuses": [
+      {
+        "date": "22/04",
+        "status": "成團"
+      },
+      {
+        "date": "06/05",
+        "status": "成團"
+      },
+      {
+        "date": "20/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/06",
+        "status": "成團"
+      },
+      {
+        "date": "15/07",
+        "status": "成團"
+      },
+      {
+        "date": "22/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "05/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/08",
+        "status": "成團"
+      },
+      {
+        "date": "26/08",
+        "status": "成團"
+      },
+      {
+        "date": "09/09",
+        "status": "成團"
+      },
+      {
+        "date": "23/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTREEZ10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/REEZ10/825.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "埃及皇牌13天【4程內陸機+3晚沙姆沙伊赫+2間博物館】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 13,
+    "price_range": "HK$43,999起",
+    "departure_date_statuses": [
+      {
+        "date": "19/04",
+        "status": "成團"
+      },
+      {
+        "date": "28/04",
+        "status": "成團"
+      },
+      {
+        "date": "10/05",
+        "status": "成團"
+      },
+      {
+        "date": "26/05",
+        "status": "成團"
+      },
+      {
+        "date": "02/06",
+        "status": "成團"
+      },
+      {
+        "date": "21/06",
+        "status": "成團"
+      },
+      {
+        "date": "12/07",
+        "status": "成團"
+      },
+      {
+        "date": "28/07",
+        "status": "成團"
+      },
+      {
+        "date": "11/08",
+        "status": "成團"
+      },
+      {
+        "date": "01/09",
+        "status": "成團"
+      },
+      {
+        "date": "13/09",
+        "status": "成團"
+      },
+      {
+        "date": "06/10",
+        "status": "成團"
+      },
+      {
+        "date": "25/10",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRESD13"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RESD13/313.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "埃及10天【單程內陸機+國際5星酒店+雙博物館】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HK$23,499起",
+    "departure_date_statuses": [
+      {
+        "date": "01/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "04/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/05",
+        "status": "成團"
+      },
+      {
+        "date": "18/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/07",
+        "status": "成團"
+      },
+      {
+        "date": "22/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "05/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/08",
+        "status": "成團"
+      },
+      {
+        "date": "02/09",
+        "status": "成團"
+      },
+      {
+        "date": "23/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRETE10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RETE10/895.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【領先市場！前往＊五大＊野生動物保護區】東非9天 ‧ 動物大遷徙之旅",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 9,
+    "price_range": "HK$49,999起",
+    "departure_date_statuses": [
+      {
+        "date": "27/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "11/07",
+        "status": "成團"
+      },
+      {
+        "date": "13/07",
+        "status": "成團"
+      },
+      {
+        "date": "25/07",
+        "status": "成團"
+      },
+      {
+        "date": "27/07",
+        "status": "成團"
+      },
+      {
+        "date": "08/08",
+        "status": "成團"
+      },
+      {
+        "date": "11/08",
+        "status": "成團"
+      },
+      {
+        "date": "22/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/08",
+        "status": "成團"
+      },
+      {
+        "date": "29/08",
+        "status": "成團"
+      },
+      {
+        "date": "05/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRKEK09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RKEK09/162.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【領先市場！前往＊五大＊野生動物保護區】東非10天 ‧ 動物大遷徙之旅",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HK$52,999起",
+    "departure_date_statuses": [
+      {
+        "date": "27/06",
+        "status": "成團"
+      },
+      {
+        "date": "04/07",
+        "status": "成團"
+      },
+      {
+        "date": "11/07",
+        "status": "成團"
+      },
+      {
+        "date": "21/07",
+        "status": "成團"
+      },
+      {
+        "date": "28/07",
+        "status": "成團"
+      },
+      {
+        "date": "08/08",
+        "status": "成團"
+      },
+      {
+        "date": "11/08",
+        "status": "成團"
+      },
+      {
+        "date": "22/08",
+        "status": "成團"
+      },
+      {
+        "date": "25/08",
+        "status": "成團"
+      },
+      {
+        "date": "05/09",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRKEY10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RKEY10/947.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "摩洛哥11天奇幻之旅【沙漠風情、色彩皇城、國際5星級酒店】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 11,
+    "price_range": "HK$29,999起",
+    "departure_date_statuses": [
+      {
+        "date": "10/04",
+        "status": "成團"
+      },
+      {
+        "date": "17/04",
+        "status": "成團"
+      },
+      {
+        "date": "23/04",
+        "status": "成團"
+      },
+      {
+        "date": "28/04",
+        "status": "成團"
+      },
+      {
+        "date": "05/05",
+        "status": "成團"
+      },
+      {
+        "date": "19/05",
+        "status": "成團"
+      },
+      {
+        "date": "09/06",
+        "status": "成團"
+      },
+      {
+        "date": "23/06",
+        "status": "成團"
+      },
+      {
+        "date": "14/07",
+        "status": "成團"
+      },
+      {
+        "date": "28/07",
+        "status": "成團"
+      },
+      {
+        "date": "04/08",
+        "status": "成團"
+      },
+      {
+        "date": "18/08",
+        "status": "成團"
+      },
+      {
+        "date": "08/09",
+        "status": "成團"
+      },
+      {
+        "date": "22/09",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRMDX11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RMDX11/334.jpeg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "摩洛哥10天【撒哈拉沙漠歷奇】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HK$23,999起",
+    "departure_date_statuses": [
+      {
+        "date": "25/04",
+        "status": "成團"
+      },
+      {
+        "date": "16/05",
+        "status": "成團"
+      },
+      {
+        "date": "23/05",
+        "status": "成團"
+      },
+      {
+        "date": "13/06",
+        "status": "成團"
+      },
+      {
+        "date": "25/07",
+        "status": "成團"
+      },
+      {
+        "date": "15/08",
+        "status": "成團"
+      },
+      {
+        "date": "29/08",
+        "status": "成團"
+      },
+      {
+        "date": "17/09",
+        "status": "成團"
+      },
+      {
+        "date": "30/09",
+        "status": "成團"
+      },
+      {
+        "date": "10/10",
+        "status": "成團"
+      },
+      {
+        "date": "17/10",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRMME10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RMME10/930.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "摩洛哥10天【撒哈拉沙漠歷奇】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HK$20,999起",
+    "departure_date_statuses": [
+      {
+        "date": "17/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/05",
+        "status": "成團"
+      },
+      {
+        "date": "22/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/05",
+        "status": "成團"
+      },
+      {
+        "date": "05/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/06",
+        "status": "成團"
+      },
+      {
+        "date": "17/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "31/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/08",
+        "status": "成團"
+      },
+      {
+        "date": "14/08",
+        "status": "成團"
+      },
+      {
+        "date": "21/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "04/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "11/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "18/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/10",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/10",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRMMX10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RMMX10/570.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "摩洛哥11天【撒哈拉沙漠歷奇】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 11,
+    "price_range": "HK$21,999起",
+    "departure_date_statuses": [
+      {
+        "date": "16/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/04",
+        "status": "成團"
+      },
+      {
+        "date": "07/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/05",
+        "status": "成團"
+      },
+      {
+        "date": "21/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/05",
+        "status": "成團"
+      },
+      {
+        "date": "03/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "11/06",
+        "status": "成團"
+      },
+      {
+        "date": "18/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/06",
+        "status": "成團"
+      },
+      {
+        "date": "16/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "03/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/09",
+        "status": "成團"
+      },
+      {
+        "date": "21/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRMMX11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RMMX11/744.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "阿聯酋航空 北非 突尼西亞9天【稅項全包】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 9,
+    "price_range": "HK$15,499起",
+    "departure_date_statuses": [
+      {
+        "date": "11/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/05",
+        "status": "成團"
+      },
+      {
+        "date": "23/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRTEK09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RTEK09/324.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "北非 突尼西亞 【金裝沙漠歷奇之旅】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HK$29,999起",
+    "departure_date_statuses": [
+      {
+        "date": "10/04",
+        "status": "成團"
+      },
+      {
+        "date": "24/04",
+        "status": "成團"
+      },
+      {
+        "date": "08/05",
+        "status": "成團"
+      },
+      {
+        "date": "22/05",
+        "status": "成團"
+      },
+      {
+        "date": "05/06",
+        "status": "成團"
+      },
+      {
+        "date": "26/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRTTD10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RTTD10/644.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "北非 突尼西亞8天【稅項全包】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 8,
+    "price_range": "HK$16,999起",
+    "departure_date_statuses": [
+      {
+        "date": "12/04",
+        "status": "成團"
+      },
+      {
+        "date": "26/04",
+        "status": "成團"
+      },
+      {
+        "date": "10/05",
+        "status": "成團"
+      },
+      {
+        "date": "24/05",
+        "status": "成團"
+      },
+      {
+        "date": "12/06",
+        "status": "成團"
+      },
+      {
+        "date": "26/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRTTK08"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RTTK08/967.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "北非 突尼西亞10天【稅項全包】",
+    "destination": "非洲",
+    "region": "非洲",
+    "days": 10,
+    "price_range": "HK$19,999起",
+    "departure_date_statuses": [
+      {
+        "date": "10/04",
+        "status": "成團"
+      },
+      {
+        "date": "24/04",
+        "status": "成團"
+      },
+      {
+        "date": "08/05",
+        "status": "成團"
+      },
+      {
+        "date": "22/05",
+        "status": "成團"
+      },
+      {
+        "date": "05/06",
+        "status": "成團"
+      },
+      {
+        "date": "26/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTRTTK10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/RTTK10/606.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "新西蘭南北島海峽遊蹤11天【空中遨遊+冰川著陸+美福峽灣】",
+    "destination": "新西蘭",
+    "region": "新西蘭",
+    "days": 11,
+    "price_range": "HK$40,999起",
+    "departure_date_statuses": [
+      {
+        "date": "22/04",
+        "status": "成團"
+      },
+      {
+        "date": "14/05",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTNZCA11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/NZCA11/361.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "新西蘭南北島、鐵道遊蹤11天【直升機著陸冰川遊+美福峽灣+鐵道遊】",
+    "destination": "新西蘭",
+    "region": "新西蘭",
+    "days": 11,
+    "price_range": "HK$38,999起",
+    "departure_date_statuses": [
+      {
+        "date": "11/07",
+        "status": "成團"
+      },
+      {
+        "date": "21/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/08",
+        "status": "成團"
+      },
+      {
+        "date": "19/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTNZCC11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/NZCC11/462.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "新西蘭南北島海峽、鐵道遊蹤11天【直升機著陸冰川遊+美福峽灣+鐵道遊】",
+    "destination": "新西蘭",
+    "region": "新西蘭",
+    "days": 11,
+    "price_range": "HK$43,999起",
+    "departure_date_statuses": [
+      {
+        "date": "14/04",
+        "status": "成團"
+      },
+      {
+        "date": "23/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/05",
+        "status": "成團"
+      },
+      {
+        "date": "18/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTNZCF11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/NZCF11/462.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "新西蘭南北島10天【包美福峽灣一天遊】",
+    "destination": "新西蘭",
+    "region": "新西蘭",
+    "days": 10,
+    "price_range": "HK$34,999起",
+    "departure_date_statuses": [
+      {
+        "date": "17/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/05",
+        "status": "成團"
+      },
+      {
+        "date": "21/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "04/06",
+        "status": "成團"
+      },
+      {
+        "date": "11/06",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTNZCT10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/NZCT10/299.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "新西蘭南北島10天【包美福峽灣一天遊】",
+    "destination": "新西蘭",
+    "region": "新西蘭",
+    "days": 10,
+    "price_range": "HK$33,999起",
+    "departure_date_statuses": [
+      {
+        "date": "21/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "03/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTNZCW10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/NZCW10/881.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "新西蘭南北島10天【空中遨遊+冰川著陸+美福峽灣】",
+    "destination": "新西蘭",
+    "region": "新西蘭",
+    "days": 10,
+    "price_range": "HK$36,999起",
+    "departure_date_statuses": [
+      {
+        "date": "21/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/07",
+        "status": "成團"
+      },
+      {
+        "date": "30/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "03/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTNZCY10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/NZCY10/218.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "希臘10天【愛琴海雙島+天空之城】",
+    "destination": "地中海",
+    "region": "地中海",
+    "days": 10,
+    "price_range": "HK$32,999起",
+    "departure_date_statuses": [
+      {
+        "date": "26/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "11/05",
+        "status": "成團"
+      },
+      {
+        "date": "18/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/05",
+        "status": "成團"
+      },
+      {
+        "date": "05/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/06",
+        "status": "成團"
+      },
+      {
+        "date": "21/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/07",
+        "status": "成團"
+      },
+      {
+        "date": "02/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/08",
+        "status": "成團"
+      },
+      {
+        "date": "23/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/09",
+        "status": "成團"
+      },
+      {
+        "date": "20/09",
+        "status": "成團"
+      },
+      {
+        "date": "04/10",
+        "status": "成團"
+      },
+      {
+        "date": "18/10",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTMDGA10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/MDGA10/132.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "希臘10天【愛琴海雙島+天空之城】",
+    "destination": "地中海",
+    "region": "地中海",
+    "days": 10,
+    "price_range": "HK$32,999起",
+    "departure_date_statuses": [
+      {
+        "date": "11/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/05",
+        "status": "成團"
+      },
+      {
+        "date": "23/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/05",
+        "status": "成團"
+      },
+      {
+        "date": "13/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/06",
+        "status": "成團"
+      },
+      {
+        "date": "27/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "04/07",
+        "status": "成團"
+      },
+      {
+        "date": "18/07",
+        "status": "成團"
+      },
+      {
+        "date": "25/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/08",
+        "status": "成團"
+      },
+      {
+        "date": "08/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/08",
+        "status": "成團"
+      },
+      {
+        "date": "22/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/08",
+        "status": "成團"
+      },
+      {
+        "date": "05/09",
+        "status": "成團"
+      },
+      {
+        "date": "12/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "19/09",
+        "status": "成團"
+      },
+      {
+        "date": "24/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/09",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTMDGG10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/MDGG10/336.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "希臘12天【愛琴海3島+天空之城】",
+    "destination": "地中海",
+    "region": "地中海",
+    "days": 12,
+    "price_range": "HK$39,999起",
+    "departure_date_statuses": [
+      {
+        "date": "11/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "成團"
+      },
+      {
+        "date": "09/05",
+        "status": "成團"
+      },
+      {
+        "date": "16/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/05",
+        "status": "成團"
+      },
+      {
+        "date": "30/05",
+        "status": "成團"
+      },
+      {
+        "date": "13/06",
+        "status": "成團"
+      },
+      {
+        "date": "20/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/06",
+        "status": "成團"
+      },
+      {
+        "date": "04/07",
+        "status": "成團"
+      },
+      {
+        "date": "18/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/07",
+        "status": "成團"
+      },
+      {
+        "date": "01/08",
+        "status": "成團"
+      },
+      {
+        "date": "08/08",
+        "status": "成團"
+      },
+      {
+        "date": "15/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/08",
+        "status": "成團"
+      },
+      {
+        "date": "29/08",
+        "status": "成團"
+      },
+      {
+        "date": "05/09",
+        "status": "成團"
+      },
+      {
+        "date": "12/09",
+        "status": "成團"
+      },
+      {
+        "date": "19/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/09",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTMDGG12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/MDGG12/525.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "土耳其10天【歐亞精選】",
+    "destination": "地中海",
+    "region": "地中海",
+    "days": 10,
+    "price_range": "HK$19,399起",
+    "departure_date_statuses": [
+      {
+        "date": "04/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/04",
+        "status": "成團"
+      },
+      {
+        "date": "16/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/04",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTMDUB10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/MDUB10/964.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "土耳其10天【季節花田約定】",
+    "destination": "地中海",
+    "region": "地中海",
+    "days": 10,
+    "price_range": "HK$17,399起",
+    "departure_date_statuses": [
+      {
+        "date": "07/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/05",
+        "status": "成團"
+      },
+      {
+        "date": "16/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/05",
+        "status": "成團"
+      },
+      {
+        "date": "30/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "11/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/06",
+        "status": "成團"
+      },
+      {
+        "date": "19/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/06",
+        "status": "成團"
+      },
+      {
+        "date": "27/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "04/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "11/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/08",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTMDUF10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/MDUF10/598.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "土耳其 + 希臘、愛琴海遊輪12天【地中海遊情】",
+    "destination": "地中海",
+    "region": "地中海",
+    "days": 12,
+    "price_range": "HK$31,999起",
+    "departure_date_statuses": [
+      {
+        "date": "28/04",
+        "status": "成團"
+      },
+      {
+        "date": "19/05",
+        "status": "成團"
+      },
+      {
+        "date": "16/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/06",
+        "status": "成團"
+      },
+      {
+        "date": "21/07",
+        "status": "成團"
+      },
+      {
+        "date": "11/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/08",
+        "status": "成團"
+      },
+      {
+        "date": "22/09",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTMDUG12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/MDUG12/496.JPG"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "杜拜+土耳其12天【瀛遊雙國‧全程5星酒店】",
+    "destination": "地中海",
+    "region": "地中海",
+    "days": 12,
+    "price_range": "HK$15,999起",
+    "departure_date_statuses": [
+      {
+        "date": "22/04",
+        "status": "成團"
+      },
+      {
+        "date": "24/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "03/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/07",
+        "status": "成團"
+      },
+      {
+        "date": "29/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "05/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/08",
+        "status": "成團"
+      },
+      {
+        "date": "19/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/08",
+        "status": "成團"
+      },
+      {
+        "date": "05/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/09",
+        "status": "成團"
+      },
+      {
+        "date": "23/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTMDUK12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/MDUK12/817.JPG"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "土耳其8天【歐亞瀛遊‧全程5星酒店】",
+    "destination": "地中海",
+    "region": "地中海",
+    "days": 8,
+    "price_range": "HK$8,399起",
+    "departure_date_statuses": [
+      {
+        "date": "05/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/04",
+        "status": "成團"
+      },
+      {
+        "date": "10/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/05",
+        "status": "成團"
+      },
+      {
+        "date": "24/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "31/05",
+        "status": "成團"
+      },
+      {
+        "date": "03/06",
+        "status": "成團"
+      },
+      {
+        "date": "10/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/06",
+        "status": "成團"
+      },
+      {
+        "date": "24/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "03/07",
+        "status": "成團"
+      },
+      {
+        "date": "10/07",
+        "status": "成團"
+      },
+      {
+        "date": "17/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/07",
+        "status": "成團"
+      },
+      {
+        "date": "31/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/08",
+        "status": "成團"
+      },
+      {
+        "date": "21/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTMDUS08"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/MDUS08/425.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "巴爾幹半島四國10天",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 10,
+    "price_range": "HK$27,999起",
+    "departure_date_statuses": [
+      {
+        "date": "11/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/05",
+        "status": "成團"
+      },
+      {
+        "date": "30/05",
+        "status": "成團"
+      },
+      {
+        "date": "20/06",
+        "status": "成團"
+      },
+      {
+        "date": "05/07",
+        "status": "成團"
+      },
+      {
+        "date": "19/07",
+        "status": "成團"
+      },
+      {
+        "date": "09/08",
+        "status": "成團"
+      },
+      {
+        "date": "23/08",
+        "status": "成團"
+      },
+      {
+        "date": "04/09",
+        "status": "成團"
+      },
+      {
+        "date": "11/09",
+        "status": "成團"
+      },
+      {
+        "date": "18/09",
+        "status": "成團"
+      },
+      {
+        "date": "25/09",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEBBL10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EBBL10/163.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "巴爾幹半島四國10天",
+    "destination": "巴爾幹半島",
+    "region": "巴爾幹半島",
+    "days": 10,
+    "price_range": "HK$27,999起",
+    "departure_date_statuses": [
+      {
+        "date": "19/04",
+        "status": "成團"
+      },
+      {
+        "date": "03/05",
+        "status": "成團"
+      },
+      {
+        "date": "17/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/06",
+        "status": "成團"
+      },
+      {
+        "date": "14/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "18/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/08",
+        "status": "成團"
+      },
+      {
+        "date": "30/08",
+        "status": "成團"
+      },
+      {
+        "date": "05/09",
+        "status": "成團"
+      },
+      {
+        "date": "12/09",
+        "status": "成團"
+      },
+      {
+        "date": "19/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEBLB10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EBLB10/108.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "保加利亞、羅馬尼亞、塞爾維亞12天【卡贊勒克玫瑰花節】",
+    "destination": "巴爾幹半島",
+    "region": "巴爾幹半島",
+    "days": 12,
+    "price_range": "HK$36,999起",
+    "departure_date_statuses": [
+      {
+        "date": "04/06",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEBRF12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EBRF12/140.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "巴爾幹半島【季節限定 ‧ 卡贊勒克玫瑰花節】14天美景之旅",
+    "destination": "巴爾幹半島",
+    "region": "巴爾幹半島",
+    "days": 14,
+    "price_range": "HK$40,999起",
+    "departure_date_statuses": [
+      {
+        "date": "29/05",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEBRF14"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EBRF14/976.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "奧地利、捷克11天【心動之旅】",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 11,
+    "price_range": "HK$31,999起",
+    "departure_date_statuses": [
+      {
+        "date": "22/04",
+        "status": "成團"
+      },
+      {
+        "date": "06/05",
+        "status": "成團"
+      },
+      {
+        "date": "13/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/05",
+        "status": "成團"
+      },
+      {
+        "date": "10/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEEAC11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EEAC11/426.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐美景10天【精選推介】 ",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 10,
+    "price_range": "HK$30,999起",
+    "departure_date_statuses": [
+      {
+        "date": "21/04",
+        "status": "成團"
+      },
+      {
+        "date": "12/05",
+        "status": "成團"
+      },
+      {
+        "date": "02/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEEBB10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EEBB10/269.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐美景10天【精選推介】 ",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 10,
+    "price_range": "HK$32,999起",
+    "departure_date_statuses": [
+      {
+        "date": "12/04",
+        "status": "成團"
+      },
+      {
+        "date": "10/05",
+        "status": "成團"
+      },
+      {
+        "date": "14/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEEBC10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EEBC10/997.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐迷人景緻 10天【精選推介】",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 10,
+    "price_range": "HK$27,999起",
+    "departure_date_statuses": [
+      {
+        "date": "30/03",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/05",
+        "status": "成團"
+      },
+      {
+        "date": "21/05",
+        "status": "成團"
+      },
+      {
+        "date": "11/06",
+        "status": "成團"
+      },
+      {
+        "date": "22/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "25/06",
+        "status": "成團"
+      },
+      {
+        "date": "04/07",
+        "status": "成團"
+      },
+      {
+        "date": "11/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "18/07",
+        "status": "成團"
+      },
+      {
+        "date": "25/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/08",
+        "status": "成團"
+      },
+      {
+        "date": "15/08",
+        "status": "成團"
+      },
+      {
+        "date": "05/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/09",
+        "status": "成團"
+      },
+      {
+        "date": "20/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEEBE10"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EEBE10/199.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐迷人景緻12天【精選推介】",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 12,
+    "price_range": "HK$35,999起",
+    "departure_date_statuses": [
+      {
+        "date": "21/04",
+        "status": "成團"
+      },
+      {
+        "date": "12/05",
+        "status": "成團"
+      },
+      {
+        "date": "09/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEEBL12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EEBL12/591.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐 9天【抵玩之選】「稅項全包」 ",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 9,
+    "price_range": "HK$19,999起",
+    "departure_date_statuses": [
+      {
+        "date": "11/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "成團"
+      },
+      {
+        "date": "01/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/05",
+        "status": "成團"
+      },
+      {
+        "date": "06/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/06",
+        "status": "成團"
+      },
+      {
+        "date": "27/06",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEEBP09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EEBP09/249.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐9天【阿聯酋航空精選】",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 9,
+    "price_range": "HK$24,999起",
+    "departure_date_statuses": [
+      {
+        "date": "11/04",
+        "status": "成團"
+      },
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/06",
+        "status": "成團"
+      },
+      {
+        "date": "27/06",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEEEK09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EEEK09/249.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐12天【尋覓松露 品酒 美景】",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 12,
+    "price_range": "HK$32,999起",
+    "departure_date_statuses": [
+      {
+        "date": "28/04",
+        "status": "成團"
+      },
+      {
+        "date": "12/05",
+        "status": "成團"
+      },
+      {
+        "date": "19/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/06",
+        "status": "成團"
+      },
+      {
+        "date": "16/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEEEK12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EEEK12/231.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐美景12天【精選推介】",
+    "destination": "西歐",
+    "region": "西歐",
+    "days": 12,
+    "price_range": "HK$32,999起",
+    "departure_date_statuses": [
+      {
+        "date": "09/04",
+        "status": "成團"
+      },
+      {
+        "date": "23/04",
+        "status": "成團"
+      },
+      {
+        "date": "07/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/05",
+        "status": "成團"
+      },
+      {
+        "date": "03/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "18/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "01/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "16/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/07",
+        "status": "成團"
+      },
+      {
+        "date": "04/08",
+        "status": "成團"
+      },
+      {
+        "date": "13/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/08",
+        "status": "成團"
+      },
+      {
+        "date": "03/09",
+        "status": "成團"
+      },
+      {
+        "date": "10/09",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/09",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEELB12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EELB12/111.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐13天【歷史建築+醉人景緻+童話小鎮】",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 13,
+    "price_range": "HK$37,999起",
+    "departure_date_statuses": [
+      {
+        "date": "13/04",
+        "status": "成團"
+      },
+      {
+        "date": "27/04",
+        "status": "成團"
+      },
+      {
+        "date": "11/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "18/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/09",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEEPW13"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EEPW13/161.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "東歐7天【超值之選】「稅項全包」",
+    "destination": "東歐",
+    "region": "東歐",
+    "days": 7,
+    "price_range": "HK$15,999起",
+    "departure_date_statuses": [
+      {
+        "date": "19/04",
+        "status": "成團"
+      },
+      {
+        "date": "03/05",
+        "status": "成團"
+      },
+      {
+        "date": "17/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "31/05",
+        "status": "成團"
+      },
+      {
+        "date": "14/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTEESP07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/EESP07/514.png"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "沙迦、杜拜、阿布扎比7天【超值瀛遊 ‧ 國際品牌4星級酒店】",
+    "destination": "阿拉伯聯合酋長國",
+    "region": "阿拉伯聯合酋長國",
+    "days": 7,
+    "price_range": "HK$6,799起",
+    "departure_date_statuses": [
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "26/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "29/04",
+        "status": "成團"
+      },
+      {
+        "date": "03/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "12/05",
+        "status": "成團"
+      },
+      {
+        "date": "19/05",
+        "status": "成團"
+      },
+      {
+        "date": "20/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "24/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "07/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "15/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/06",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTDXCC07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/DXCC07/137.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "杜拜、阿布扎比7天【瀛遊樂滿FUN】DXEC07(A/B)",
+    "destination": "阿拉伯聯合酋長國",
+    "region": "阿拉伯聯合酋長國",
+    "days": 7,
+    "price_range": "HK$19,999起",
+    "departure_date_statuses": [
+      {
+        "date": "19/04",
+        "status": "成團"
+      },
+      {
+        "date": "26/04",
+        "status": "成團"
+      },
+      {
+        "date": "03/05",
+        "status": "成團"
+      },
+      {
+        "date": "10/05",
+        "status": "成團"
+      },
+      {
+        "date": "24/05",
+        "status": "成團"
+      },
+      {
+        "date": "31/05",
+        "status": "成團"
+      },
+      {
+        "date": "07/06",
+        "status": "成團"
+      },
+      {
+        "date": "15/06",
+        "status": "成團"
+      },
+      {
+        "date": "23/06",
+        "status": "成團"
+      },
+      {
+        "date": "28/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTDXEC07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/DXEC07/300.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "阿布扎比、杜拜7天【阿聯酋精選】DXEE07(A/B)",
+    "destination": "阿拉伯聯合酋長國",
+    "region": "阿拉伯聯合酋長國",
+    "days": 7,
+    "price_range": "HK$17,999起",
+    "departure_date_statuses": [
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/05",
+        "status": "成團"
+      },
+      {
+        "date": "30/05",
+        "status": "成團"
+      },
+      {
+        "date": "13/06",
+        "status": "成團"
+      },
+      {
+        "date": "26/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTDXEE07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/DXEE07/550.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "阿布扎比、杜拜7天奢華之旅【阿聯酋精選】DXEK07(A/B)",
+    "destination": "阿拉伯聯合酋長國",
+    "region": "阿拉伯聯合酋長國",
+    "days": 7,
+    "price_range": "HK$24,999起",
+    "departure_date_statuses": [
+      {
+        "date": "25/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/06",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTDXEK07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/DXEK07/311.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "杜拜、阿布扎比7天【瀛遊樂繽FUN】",
+    "destination": "阿拉伯聯合酋長國",
+    "region": "阿拉伯聯合酋長國",
+    "days": 7,
+    "price_range": "HK$15,999起",
+    "departure_date_statuses": [
+      {
+        "date": "12/04",
+        "status": "成團"
+      },
+      {
+        "date": "19/04",
+        "status": "成團"
+      },
+      {
+        "date": "26/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "03/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/05",
+        "status": "成團"
+      },
+      {
+        "date": "17/05",
+        "status": "成團"
+      },
+      {
+        "date": "20/05",
+        "status": "成團"
+      },
+      {
+        "date": "24/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "31/05",
+        "status": "成團"
+      },
+      {
+        "date": "07/06",
+        "status": "成團"
+      },
+      {
+        "date": "15/06",
+        "status": "成團"
+      },
+      {
+        "date": "23/06",
+        "status": "成團"
+      },
+      {
+        "date": "28/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTDXEQ07"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/DXEQ07/117.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【阿聯酋航空-超值之旅】西班牙、葡萄牙9天「稅項全包」",
+    "destination": "葡萄牙",
+    "region": "葡萄牙",
+    "days": 9,
+    "price_range": "HK$23,599起",
+    "departure_date_statuses": [
+      {
+        "date": "08/04",
+        "status": "成團"
+      },
+      {
+        "date": "29/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "20/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "02/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "09/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "17/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "23/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "30/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "14/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "28/07",
+        "status": "快將成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTESBL09"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ESBL09/177.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "西班牙、直布羅陀、葡萄牙11天 美景浪漫之旅",
+    "destination": "英國殖民地",
+    "region": "英國殖民地",
+    "days": 11,
+    "price_range": "HK$32,999起",
+    "departure_date_statuses": [
+      {
+        "date": "13/04",
+        "status": "成團"
+      },
+      {
+        "date": "27/04",
+        "status": "成團"
+      },
+      {
+        "date": "04/05",
+        "status": "成團"
+      },
+      {
+        "date": "11/05",
+        "status": "成團"
+      },
+      {
+        "date": "18/05",
+        "status": "成團"
+      },
+      {
+        "date": "08/06",
+        "status": "成團"
+      },
+      {
+        "date": "15/06",
+        "status": "成團"
+      },
+      {
+        "date": "29/06",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTESBL11"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ESBL11/167.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "西班牙、葡萄牙13天【深度瀛遊 ",
+    "destination": "葡萄牙",
+    "region": "葡萄牙",
+    "days": 13,
+    "price_range": "HK$34,599起",
+    "departure_date_statuses": [
+      {
+        "date": "08/04",
+        "status": "成團"
+      },
+      {
+        "date": "15/04",
+        "status": "成團"
+      },
+      {
+        "date": "22/04",
+        "status": "成團"
+      },
+      {
+        "date": "28/04",
+        "status": "快將成團"
+      },
+      {
+        "date": "06/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "13/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "21/05",
+        "status": "快將成團"
+      },
+      {
+        "date": "27/05",
+        "status": "成團"
+      },
+      {
+        "date": "01/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "10/06",
+        "status": "成團"
+      },
+      {
+        "date": "17/06",
+        "status": "成團"
+      },
+      {
+        "date": "24/06",
+        "status": "成團"
+      },
+      {
+        "date": "30/06",
+        "status": "快將成團"
+      },
+      {
+        "date": "08/07",
+        "status": "成團"
+      },
+      {
+        "date": "15/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "22/07",
+        "status": "成團"
+      },
+      {
+        "date": "30/07",
+        "status": "快將成團"
+      },
+      {
+        "date": "05/08",
+        "status": "成團"
+      },
+      {
+        "date": "12/08",
+        "status": "成團"
+      },
+      {
+        "date": "19/08",
+        "status": "快將成團"
+      },
+      {
+        "date": "26/08",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTESBO13"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/ESBO13/677.jpg"
+  },
+  {
+    "agency": "EGL 東瀛遊",
+    "type": "longhaul",
+    "title": "【中亞古文明 vs 中東奇蹟之城】高加索 + 杜拜 12天",
+    "destination": "阿拉伯聯合酋長國",
+    "region": "阿拉伯聯合酋長國",
+    "days": 12,
+    "price_range": "HK$36,999起",
+    "departure_date_statuses": [
+      {
+        "date": "10/04",
+        "status": "成團"
+      },
+      {
+        "date": "24/04",
+        "status": "成團"
+      }
+    ],
+    "features": [],
+    "affiliate_links": {
+      "egl": "https://www.egltours.com/itinerary/tour/HTMOCE12"
+    },
+    "image_url": "https://www.egltours.com/cabinet/images/MOCE12/200.jpg"
+  }
+]

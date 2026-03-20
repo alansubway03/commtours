@@ -1,0 +1,26 @@
+{
+  "$schema": "https://example.com/tour-agency-config.schema.json",
+  "description": "旅行社清單：之後新增旅行社只需在此加一筆，並依該站 HTML 在 selectors 覆寫（可選）",
+  "defaults": {
+    "maxPerSite": 10,
+    "type": "longhaul",
+    "region": "亞洲"
+  },
+  "agencies": [
+    {
+      "id": "wingon",
+      "name": "永安旅遊",
+      "url": "https://www.wingontravel.com/tours/dest/LongHaultravel-5-5"
+    },
+    {
+      "id": "egl",
+      "name": "EGL 東瀛遊",
+      "url": "https://www.egltours.com/website/tour-line/%E9%95%B7%E7%B7%9A"
+    },
+    {
+      "id": "jetour",
+      "name": "Jetour 捷旅",
+      "url": "https://www.jetour.com.hk/tour"
+    }
+  ]
+}

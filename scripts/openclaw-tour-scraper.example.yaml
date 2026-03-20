@@ -1,0 +1,66 @@
+# OpenClaw 旅行團抓取設定範例
+# 對應 Supabase public.tour 表欄位，每家旅行社需依實際 HTML 改 selectors
+# 文件參考: https://openclawdoc.com/docs/cookbook/web-scraping
+
+url: "https://example-travel-agency.com/tours"  # 改成目標旅行社列表頁
+pagination:
+  type: query_param
+  param: page
+  max_pages: 10
+
+selectors:
+  # 每個「一筆旅行團」的容器（卡片 / 列表項）
+  container: ".tour-card, .product-item, .tour-list li, [data-tour-id]"
+
+  fields:
+    title:
+      selector: "h2 a, .tour-title, .title, [data-title]"
+      type: text
+    destination:
+      selector: ".destination, .location, .route, [data-destination]"
+      type: text
+    region:
+      selector: ".region, .area, .continent"
+      type: text
+    days:
+      selector: ".days, .duration, .nights"
+      type: number
+      # 若只有「晚數」可設 transform 或後處理
+    price_range:
+      selector: ".price, .amount, .from-price"
+      type: text
+      transform: strip_currency   # 若有幣別符號可先 strip
+    departure_dates:
+      selector: ".departure-date, .dates, .schedule"
+      type: text
+      # 若多個日期可後處理拆成 array
+    features:
+      selector: ".tags .tag, .features li, .badge"
+      type: text
+      # 多筆會成 array
+    image_url:
+      selector: "img.tour-image, .thumb img, [data-src]"
+      attribute: src
+    link:
+      selector: "a.tour-link, h2 a, .view-detail"
+      attribute: href
+      # 可之後塞進 affiliate_links
+
+# 建議：rate_limit 避免被封
+rate_limit:
+  requests_per_minute: 12
+
+# 輸出給「寫入 Supabase」腳本用的格式（OpenClaw 若支援 export 可設為 json）
+# 以下為寫入 tour 表時需要的欄位對應（agency 需在跑不同旅行社時手動或依 url 設定）
+output_fields:
+  - agency      # 手動設為旅行社名稱，例如 "永安", "東瀛遊"
+  - type        # longhaul | cruise | cruise_ticket | hiking | diving | festival
+  - title
+  - destination
+  - region
+  - days
+  - price_range
+  - departure_dates  # array of strings
+  - features        # array of strings
+  - affiliate_links # { "wingon": "url", "tripdotcom": "url" }
+  - image_url
