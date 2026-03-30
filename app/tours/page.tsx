@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { createServerSupabaseClient } from "@/lib/supabase";
@@ -32,15 +33,36 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
-export const metadata = {
-  title: "長線特色團比價 - 香港出發歐洲/郵輪/潛水等",
-  description:
-    "篩選香港出發的長線、郵輪、行山、潛水、節日限定等團體行程，比較價格與特色。",
-  openGraph: {
-    title: "長線特色團比價 - 香港出發歐洲/郵輪/潛水等 | CommTours",
-    description: "篩選香港出發的長線、郵輪、行山、潛水、節日限定等團體行程。",
-  },
-};
+export const revalidate = 600;
+
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+}): Promise<Metadata> {
+  const resolved = await searchParams;
+  const page = toPositiveInt(getParam(resolved.page), 1);
+  const canonical = buildPageHref(resolved, page);
+  const title =
+    page > 1
+      ? `長線特色團比價（第 ${page} 頁）- 香港出發歐洲/郵輪/潛水等`
+      : "長線特色團比價 - 香港出發歐洲/郵輪/潛水等";
+  const description =
+    "篩選香港出發的長線、郵輪、行山、潛水、節日限定等團體行程，比較價格與特色。";
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical,
+    },
+    openGraph: {
+      title: `${title} | CommTours`,
+      description,
+      url: canonical,
+    },
+  };
+}
 
 const TYPE_LABELS: Record<string, string> = {
   longhaul: "長線團",
@@ -64,6 +86,9 @@ const PLACEHOLDER_IMAGE = "https://placehold.co/400x200?text=無圖片";
 
 /** 避免超長逗號清單造成查詢負擔 */
 const MAX_QUERY_LIST_LENGTH = 40;
+const PAGE_SIZE = 24;
+const LIST_SELECT_COLUMNS =
+  "id,created_at,agency,title,type,destination,region,days,price_range,departure_date_statuses,features,affiliate_links,image_url,updated_at";
 
 function matchesDestinationKeyword(row: TourRow, query: string): boolean {
   const needle = query.trim().toLowerCase();
@@ -112,6 +137,56 @@ function getParam(
   return typeof v === "string" ? v : v[0];
 }
 
+function toPositiveInt(value: string | undefined, fallback: number): number {
+  const parsed = Number(value);
+  if (!Number.isInteger(parsed) || parsed < 1) return fallback;
+  return parsed;
+}
+
+function buildPageHref(
+  searchParams: Record<string, string | string[] | undefined>,
+  page: number
+): string {
+  const qs = new URLSearchParams();
+  for (const [key, value] of Object.entries(searchParams)) {
+    if (value == null || key === "page") continue;
+    if (Array.isArray(value)) {
+      for (const item of value) qs.append(key, item);
+    } else {
+      qs.set(key, value);
+    }
+  }
+  if (page > 1) qs.set("page", String(page));
+  const queryString = qs.toString();
+  return queryString ? `/tours?${queryString}` : "/tours";
+}
+
+function getPageItems(currentPage: number, totalPages: number): number[] {
+  const items = new Set<number>([1, totalPages, currentPage]);
+  for (let p = currentPage - 2; p <= currentPage + 2; p += 1) {
+    if (p >= 1 && p <= totalPages) items.add(p);
+  }
+  return Array.from(items).sort((a, b) => a - b);
+}
+
+function buildItemListJsonLd(list: TourRow[], page: number) {
+  const siteUrl =
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "香港出發長線及特色團比價",
+    itemListOrder: "https://schema.org/ItemListOrderAscending",
+    numberOfItems: list.length,
+    itemListElement: list.map((row, index) => ({
+      "@type": "ListItem",
+      position: (page - 1) * PAGE_SIZE + index + 1,
+      url: `${siteUrl}/tours/${row.id}`,
+      name: row.title,
+    })),
+  };
+}
+
 export default async function ToursPage({
   searchParams: searchParamsPromise,
 }: {
@@ -131,6 +206,7 @@ export default async function ToursPage({
   const priceMax = Number(getParam(searchParams.priceMax) ?? getParam(searchParams.price_max));
   const monthParam = getParam(searchParams.month);
   const noShopping = getParam(searchParams.noShopping) === "1";
+  const page = toPositiveInt(getParam(searchParams.page), 1);
   const agenciesParam =
     getParam(searchParams.agencies) ?? getParam(searchParams.agency);
   const destinationQuery = (getParam(searchParams.destination) ?? "").trim();
@@ -154,11 +230,20 @@ export default async function ToursPage({
   const daysMaxNum = Number.isNaN(daysMaxRaw) ? undefined : daysMaxRaw;
   const priceMinNum = Number.isNaN(priceMin) ? undefined : priceMin;
   const priceMaxNum = Number.isNaN(priceMax) ? undefined : priceMax;
+  const needsMemoryFiltering =
+    !!destinationQuery ||
+    regions.length > 0 ||
+    priceMinNum != null ||
+    priceMaxNum != null ||
+    (monthParam != null && monthParam !== "" && monthParam !== "不限") ||
+    noShopping;
 
   const supabase = await createServerSupabaseClient();
+  const from = (page - 1) * PAGE_SIZE;
+  const to = from + PAGE_SIZE - 1;
   let query = supabase
     .from("tour")
-    .select("*")
+    .select(LIST_SELECT_COLUMNS, { count: "exact" })
     .order("created_at", { ascending: false });
 
   if (types.length > 0) query = query.in("type", types);
@@ -167,7 +252,9 @@ export default async function ToursPage({
   if (daysMinNum != null) query = query.gte("days", daysMinNum);
   if (daysMaxNum != null) query = query.lte("days", daysMaxNum);
 
-  const { data: tours, error } = await query;
+  const { data: tours, error, count } = needsMemoryFiltering
+    ? await query
+    : await query.range(from, to);
 
   if (error) {
     console.error("[tours] Supabase error:", error.message, error.code);
@@ -243,8 +330,25 @@ export default async function ToursPage({
     );
   }
 
+  const totalCount = needsMemoryFiltering ? list.length : (count ?? 0);
+  const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
+  const safePage = Math.min(page, totalPages);
+  const hasPrevPage = safePage > 1;
+  const hasNextPage = safePage < totalPages;
+  if (needsMemoryFiltering) {
+    const localFrom = (safePage - 1) * PAGE_SIZE;
+    const localTo = localFrom + PAGE_SIZE;
+    list = list.slice(localFrom, localTo);
+  }
+  const pageItems = getPageItems(safePage, totalPages);
+  const itemListJsonLd = buildItemListJsonLd(list, safePage);
+
   return (
     <div className="container px-4 py-6 md:py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       <header className="mb-6 md:mb-8">
         <h1 className="text-2xl font-bold tracking-tight md:text-3xl">
           香港出發長線及特色團比價
@@ -266,9 +370,14 @@ export default async function ToursPage({
         </aside>
 
         <div className="min-w-0 flex-1">
-          <h2 className="mb-4 text-lg font-semibold text-muted-foreground md:text-xl">
-            共 {list.length} 個行程
-          </h2>
+          <div className="mb-4 flex flex-col gap-2 md:mb-5 md:flex-row md:items-end md:justify-between">
+            <h2 className="text-lg font-semibold text-muted-foreground md:text-xl">
+              共 {totalCount} 個行程
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              第 {safePage} / {totalPages} 頁（每頁 {PAGE_SIZE} 筆）
+            </p>
+          </div>
           {list.length === 0 ? (
             <div className="rounded-xl border border-dashed border-border bg-muted/20 py-12 text-center text-muted-foreground md:py-16">
               <p className="font-medium">暫無符合的行程</p>
@@ -289,6 +398,7 @@ export default async function ToursPage({
                   >
                     <Link
                       href={`/tours/${row.id}`}
+                      prefetch={false}
                       className="group flex min-h-0 flex-1 flex-col text-left outline-none ring-offset-background focus-visible:ring-2 focus-visible:ring-ring"
                     >
                       <CardHeader className="p-0">
@@ -346,7 +456,9 @@ export default async function ToursPage({
                     </Link>
                     <CardFooter className="flex flex-col gap-2 p-4 pt-0 sm:flex-row">
                       <Button asChild variant="outline" className="w-full sm:flex-1">
-                        <Link href={`/tours/${row.id}`}>查看詳情</Link>
+                        <Link href={`/tours/${row.id}`} prefetch={false}>
+                          查看詳情
+                        </Link>
                       </Button>
                       {affiliateLink ? (
                         <Button asChild className="w-full sm:flex-1">
@@ -365,6 +477,61 @@ export default async function ToursPage({
               })}
             </div>
           )}
+          {totalCount > 0 ? (
+            <nav
+              className="mt-6 flex items-center justify-center gap-3 md:mt-8"
+              aria-label="行程分頁"
+            >
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                disabled={!hasPrevPage}
+                className={!hasPrevPage ? "pointer-events-none opacity-50" : ""}
+              >
+                <Link href={buildPageHref(searchParams, safePage - 1)}>
+                  上一頁
+                </Link>
+              </Button>
+              <span className="text-sm text-muted-foreground">
+                {safePage} / {totalPages}
+              </span>
+              {pageItems.map((p, i) => {
+                const prev = pageItems[i - 1];
+                const needGap = prev != null && p - prev > 1;
+                return (
+                  <span key={`page-slot-${p}`} className="contents">
+                    {needGap ? (
+                      <span className="px-1 text-sm text-muted-foreground">…</span>
+                    ) : null}
+                    <Button
+                      asChild
+                      variant={p === safePage ? "default" : "outline"}
+                      size="sm"
+                    >
+                      <Link
+                        href={buildPageHref(searchParams, p)}
+                        aria-current={p === safePage ? "page" : undefined}
+                      >
+                        {p}
+                      </Link>
+                    </Button>
+                  </span>
+                );
+              })}
+              <Button
+                asChild
+                variant="outline"
+                size="sm"
+                disabled={!hasNextPage}
+                className={!hasNextPage ? "pointer-events-none opacity-50" : ""}
+              >
+                <Link href={buildPageHref(searchParams, safePage + 1)}>
+                  下一頁
+                </Link>
+              </Button>
+            </nav>
+          ) : null}
         </div>
       </div>
     </div>

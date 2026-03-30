@@ -117,7 +117,7 @@ function rowToRecord(row: Record<string, unknown>, defaultAgency: string): TourR
   // 範本內建範例列，勿上傳
   if (str(row["旅行社"]) === "範例旅行社") return null;
 
-  let agency = str(row["旅行社"]) || defaultAgency;
+  const agency = str(row["旅行社"]) || defaultAgency;
   const link1Label = str(row["連結1名稱"]);
   const link1Url = str(row["連結1網址"]);
   const link2Label = str(row["連結2名稱"]);

@@ -6,6 +6,9 @@ import { Footer } from "@/components/Footer";
 import { PWARegister } from "@/components/PWARegister";
 import "./globals.css";
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -17,6 +20,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "CommTours | 香港出發長線及特色團比價",
     template: "%s | CommTours",
@@ -28,6 +32,10 @@ export const metadata: Metadata = {
     description:
       "連結世界，比較精彩。一站篩選香港出發的長線及特色團體行程。",
     type: "website",
+    url: "/",
+  },
+  alternates: {
+    canonical: "/",
   },
   // 瀏覽器分頁／加入主畫面圖示：使用 app/icon.png、app/apple-icon.png（與 public/logo.png 同圖，由 prepare-logo 同步）
 };

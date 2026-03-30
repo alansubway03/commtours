@@ -19,9 +19,8 @@ export function CommToursLogo({ className }: { className?: string }) {
         sizes="48px"
         unoptimized
       />
-      <span className="hidden text-foreground sm:inline">
-        <span className="font-semibold">Comm</span>
-        <span className="font-normal text-muted-foreground"> Tours</span>
+      <span className="hidden font-semibold text-foreground sm:inline">
+        CommTours
       </span>
     </Link>
   );

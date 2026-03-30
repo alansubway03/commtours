@@ -205,6 +205,20 @@ const EXTRACT_WINGON_CRUISE_LIST_JS = `
 })()
 `;
 
+type WingonCruiseOutput = {
+  agency: string;
+  type: string;
+  title: string;
+  destination: string;
+  region: string;
+  days: number;
+  price_range: string;
+  departure_date_statuses: { date: string; status: "成團" | "快將成團" | "未成團" }[];
+  features: string[];
+  affiliate_links: { wingon: string };
+  image_url: string | null;
+};
+
 async function main() {
   mkdirSync(OUTPUT_DIR, { recursive: true });
 
@@ -268,7 +282,7 @@ async function main() {
     console.log("debug: rawItems=0，頁面前 30 個 cruises href：", hrefSamples);
   }
 
-  const kept: any[] = [];
+  const kept: WingonCruiseOutput[] = [];
   const seenLink = new Set<string>();
 
   for (const it of rawItems) {

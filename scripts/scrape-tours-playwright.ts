@@ -369,7 +369,7 @@ async function main() {
               allRaws.push(r);
             }
           }
-        } catch (err) {
+        } catch {
           console.warn(`[${site.agency}] 略過 (逾時或失敗): ${u}`);
         }
       }

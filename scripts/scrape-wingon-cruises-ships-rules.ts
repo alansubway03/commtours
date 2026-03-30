@@ -65,13 +65,6 @@ const KNOWN_CRUISESHIP_LIST_URLS: Record<string, string> = {
   "鑽石公主號": "https://www.wingontravel.com/cruises/list/cruiseship-16.html",
 };
 
-function normalizeText(s: string) {
-  return String(s ?? "")
-    .replace(/\u00A0/g, " ")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
 function pickShipKeyword(title: string, keywords: string[]) {
   for (const k of keywords) {
     if (title.includes(k)) return k;

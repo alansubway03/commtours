@@ -20,7 +20,8 @@
     "scrape:goldjoy-formed": "tsx scripts/scrape-goldjoy-formed.ts",
     "scrape:goldjoy-cruise-article": "tsx scripts/scrape-goldjoy-cruise-article.ts",
     "logo:transparent": "tsx scripts/remove-logo-background.ts",
-    "logo:prepare": "tsx scripts/prepare-logo.ts"
+    "logo:prepare": "tsx scripts/prepare-logo.ts",
+    "smoke:e2e:member": "tsx scripts/smoke-e2e-member.ts"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.3",

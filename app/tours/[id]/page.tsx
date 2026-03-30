@@ -3,12 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import { getTourById } from "@/lib/data/tours";
+import { getTourReviewSummary, getTourReviews } from "@/lib/data/reviews";
 import { canonicalTourRegion } from "@/lib/canonicalTourRegion";
 import { filterDeparturesForDisplay } from "@/lib/departureDisplay";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { TourReviewForm } from "@/components/TourReviewForm";
+import { TourReviewList } from "@/components/TourReviewList";
 import { TOUR_TYPE_LABELS } from "@/types/tour";
 
 const AFFILIATE_EXTRA_LABEL: Record<string, string> = {
@@ -28,6 +31,17 @@ const TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
   festival: Calendar,
 };
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+
+function parsePriceValue(priceRange: string): string | undefined {
+  const nums = priceRange.replace(/[$,]/g, "").match(/\d+/g);
+  if (!nums || nums.length === 0) return undefined;
+  const parsed = nums.map(Number).filter((n) => Number.isFinite(n));
+  if (parsed.length === 0) return undefined;
+  return String(Math.min(...parsed));
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -37,10 +51,21 @@ export async function generateMetadata({
   const tour = await getTourById(id);
   if (!tour) return { title: "團體詳情" };
   const ogImage = getSafeHttpUrl(tour.image_url);
+  const canonical = `/tours/${tour.id}`;
   return {
     title: `${tour.title} - 香港出發長線團`,
     description: `${tour.destination} · ${tour.days} 天 · ${tour.price_range}`,
+    alternates: {
+      canonical,
+    },
     openGraph: {
+      title: `${tour.title} - 香港出發長線團 | CommTours`,
+      description: `${tour.destination} · ${tour.days} 天 · ${tour.price_range}`,
+      url: canonical,
+      images: ogImage ? [ogImage] : undefined,
+    },
+    twitter: {
+      card: ogImage ? "summary_large_image" : "summary",
       title: `${tour.title} - 香港出發長線團 | CommTours`,
       description: `${tour.destination} · ${tour.days} 天 · ${tour.price_range}`,
       images: ogImage ? [ogImage] : undefined,
@@ -56,6 +81,10 @@ export default async function TourDetailPage({
   const { id } = await params;
   const tour = await getTourById(id);
   if (!tour) notFound();
+  const [reviewSummary, reviewList] = await Promise.all([
+    getTourReviewSummary(id),
+    getTourReviews(id),
+  ]);
 
   const Icon = TYPE_ICONS[tour.type] ?? Plane;
   const regionLabel = canonicalTourRegion(tour);
@@ -89,9 +118,85 @@ export default async function TourDetailPage({
     !!safeTrip ||
     safeOthers.length > 0 ||
     safeDynamic.length > 0;
+  const primaryOfferUrl =
+    safeWingon ??
+    safeTrip ??
+    safeOthers[0]?.url ??
+    safeDynamic[0]?.url;
+  const imageUrl = getSafeHttpUrl(tour.image_url);
+  const canonical = `${SITE_URL}/tours/${tour.id}`;
+  const priceValue = parsePriceValue(tour.price_range);
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: tour.title,
+    description: `${tour.destination} · ${tour.days} 天 · ${tour.price_range}`,
+    category: TOUR_TYPE_LABELS[tour.type],
+    brand: {
+      "@type": "Brand",
+      name: tour.agency,
+    },
+    image: imageUrl ? [imageUrl] : undefined,
+    url: canonical,
+    offers: primaryOfferUrl
+      ? {
+          "@type": "Offer",
+          priceCurrency: "HKD",
+          price: priceValue,
+          availability: "https://schema.org/InStock",
+          url: primaryOfferUrl,
+        }
+      : undefined,
+  };
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "首頁",
+        item: `${SITE_URL}/`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "旅行團列表",
+        item: `${SITE_URL}/tours`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: tour.title,
+        item: canonical,
+      },
+    ],
+  };
 
   return (
     <div className="container px-4 py-6 md:py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <nav
+        aria-label="麵包屑導覽"
+        className="mb-2 flex flex-wrap items-center gap-2 text-sm text-muted-foreground"
+      >
+        <Link href="/" className="hover:underline">
+          首頁
+        </Link>
+        <span>/</span>
+        <Link href="/tours" className="hover:underline">
+          旅行團列表
+        </Link>
+        <span>/</span>
+        <span className="max-w-[70vw] truncate">{tour.title}</span>
+      </nav>
       <div className="mb-4 md:mb-6">
         <Button variant="ghost" size="sm" asChild>
           <Link href="/tours">← 返回列表</Link>
@@ -183,6 +288,9 @@ export default async function TourDetailPage({
               )}
             </CardContent>
           </Card>
+
+          <TourReviewForm tourId={tour.id} />
+          <TourReviewList summary={reviewSummary} reviews={reviewList} />
         </div>
 
         <div className="lg:col-span-1">

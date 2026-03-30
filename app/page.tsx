@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { getTours } from "@/lib/data/tours";
 import { HomeTourSections } from "@/components/HomeTourSections";
 
@@ -9,12 +10,16 @@ export default async function HomePage() {
       {/* Hero */}
       <section
         className="relative flex min-h-[380px] flex-col items-center justify-center gap-5 px-4 py-14 text-center text-white md:min-h-[420px]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=1920)`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
       >
+        <Image
+          src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=1920"
+          alt="世界地圖與旅遊主題背景"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/45 to-black/60" />
         <h1 className="max-w-3xl text-3xl font-bold leading-tight drop-shadow-md sm:text-4xl md:text-5xl">
           連結世界，比較精彩
         </h1>

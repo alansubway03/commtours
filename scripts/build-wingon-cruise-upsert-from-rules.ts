@@ -20,7 +20,7 @@ const OUTPUT_DIR = resolve(process.cwd(), "scripts", "output");
 const OUT_FILE = resolve(OUTPUT_DIR, "tours-wingon-cruise-selected.json");
 
 const AGENCY = "永安旅遊";
-const TYPE: "cruise" = "cruise";
+const TYPE = "cruise" as const;
 
 const MONTHS_EN = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -104,11 +104,30 @@ const EXTRACT_DETAIL_JS = `
 })()
 `;
 
+type RuleProduct = { title: string; link: string };
+type WingonRuleSource = {
+  allProductsByShip?: Record<string, RuleProduct[]>;
+};
+type WingonCruiseRecord = {
+  source_key: string;
+  agency: typeof AGENCY;
+  type: typeof TYPE;
+  title: string;
+  destination: string;
+  region: string;
+  days: number;
+  price_range: string;
+  departure_date_statuses: { date: string; status: "未成團" }[];
+  features: string[];
+  affiliate_links: { wingon: string };
+  image_url: string | null;
+};
+
 async function main() {
   mkdirSync(OUTPUT_DIR, { recursive: true });
 
-  const src = JSON.parse(readFileSync(INPUT, "utf-8")) as any;
-  const allByShip = (src?.allProductsByShip ?? {}) as Record<string, { title: string; link: string }[]>;
+  const src = JSON.parse(readFileSync(INPUT, "utf-8")) as WingonRuleSource;
+  const allByShip = (src?.allProductsByShip ?? {}) as Record<string, RuleProduct[]>;
   const links = Object.values(allByShip).flat().map((x) => x.link);
 
   // 去重保留順序
@@ -132,7 +151,7 @@ async function main() {
   });
   const page = await context.newPage();
 
-  const out: any[] = [];
+  const out: WingonCruiseRecord[] = [];
 
   for (let i = 0; i < uniq.length; i++) {
     const url = uniq[i]!;
@@ -171,7 +190,7 @@ async function main() {
         image_url: d.ogImage,
       });
       console.log(`  [${i + 1}/${uniq.length}] OK detail-${id}`);
-    } catch (e) {
+    } catch {
       console.log(`  [${i + 1}/${uniq.length}] FAIL ${url}`);
       out.push({
         source_key: `wingon-cruise:detail-${id}`,

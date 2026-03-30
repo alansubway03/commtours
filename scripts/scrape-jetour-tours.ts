@@ -208,7 +208,7 @@ async function main() {
 
   const records = [...byLink.values()].map((r) => {
     const ext = r as CardRow & { _dates?: { date: string; status: "成團" | "快將成團" | "未成團" }[] };
-    let departure_date_statuses =
+    const departure_date_statuses =
       ext._dates && ext._dates.length > 0
         ? ext._dates
         : departureFromRangeNote(r.departure_note || "");

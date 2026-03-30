@@ -194,7 +194,7 @@ async function scrapeCardLayout(page: Page): Promise<TravPholerCalendarRow[]> {
         const rm = dr.match(/(\d{1,2})月(\d{1,2})日/);
         if (!rm) continue;
 
-        let cardYear =
+        const cardYear =
           block.match(/年份[\s:：\n]*(\d{4})/)?.[1] ||
           block.slice(0, 500).match(/\b(20[2-3]\d)\b/)?.[1] ||
           String(year);

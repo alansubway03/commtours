@@ -1,6 +1,6 @@
 const CACHE_NAME = "hk-longhaul-tours-v4";
 
-self.addEventListener("install", (event) => {
+self.addEventListener("install", () => {
   self.skipWaiting();
 });
 

@@ -123,14 +123,10 @@ async function main() {
   }
 
   // 先 trim 掉外圍單色（灰底）
-  let buf = await sharp(input)
+  const buf = await sharp(input)
     .ensureAlpha()
     .trim({ threshold: TRIM_THRESHOLD })
     .toBuffer();
-
-  const meta = await sharp(buf).metadata();
-  const w0 = meta.width ?? 0;
-  const h0 = meta.height ?? 0;
 
   // 四角平均色作為「背景」做泛洪透明（處理 trim 後仍殘留的灰）
   const { data, info } = await sharp(buf)

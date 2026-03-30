@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
+import path from "path";
 
 const nextConfig: NextConfig = {
+  turbopack: {
+    // 父目錄另有 package-lock.json 時，請在專案根目錄執行 dev/build，並固定 root 為目前工作目錄
+    root: path.resolve(process.cwd()),
+  },
   async redirects() {
     return [
       {
