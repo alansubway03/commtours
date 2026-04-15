@@ -112,7 +112,7 @@ export function TourReviewForm({ tourId }: { tourId: string }) {
       setMessage(json.error ?? "提交失敗");
       return;
     }
-    setMessage("評分已提交，感謝分享！");
+    setMessage("評分已提交，管理員審核通過後會於評價專頁公開，感謝分享！");
     setComment("");
     setExtraInfo("");
     setParticipationProof("");
@@ -140,7 +140,13 @@ export function TourReviewForm({ tourId }: { tourId: string }) {
     <Card>
       <CardHeader>
         <h3 className="text-lg font-semibold">提交此旅行團評分</h3>
-        <p className="text-sm text-muted-foreground">必須提供參團證明與最少一張照片</p>
+        <p className="text-sm text-muted-foreground">
+          必須提供參團證明與最少一張照片。提交後會由管理員審核，通過後才會在
+          <Link className="mx-0.5 underline" href={`/tours/${tourId}/reviews`}>
+            評價專頁
+          </Link>
+          公開顯示。
+        </p>
       </CardHeader>
       <CardContent>
         <form className="space-y-3" onSubmit={onSubmit}>

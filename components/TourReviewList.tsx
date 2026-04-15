@@ -1,17 +1,13 @@
+import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import type { TourReviewListItem, TourReviewSummary } from "@/lib/data/reviews";
+import { Button } from "@/components/ui/button";
+import type { TourReviewSummary } from "@/lib/data/reviews";
 
 function renderScore(n: number): string {
   return n.toFixed(1);
 }
 
-export function TourReviewList({
-  summary,
-  reviews,
-}: {
-  summary: TourReviewSummary;
-  reviews: TourReviewListItem[];
-}) {
+export function TourReviewList({ tourId, summary }: { tourId: string; summary: TourReviewSummary }) {
   return (
     <Card>
       <CardHeader>
@@ -19,7 +15,13 @@ export function TourReviewList({
       </CardHeader>
       <CardContent className="space-y-4">
         {summary.total === 0 ? (
-          <p className="text-sm text-muted-foreground">暫時未有會員評分。</p>
+          <p className="text-sm text-muted-foreground">
+            暫時未有已公開的會員評分。
+            <Link className="ml-1 underline" href={`/tours/${tourId}/reviews`}>
+              前往評價專頁
+            </Link>
+            提交第一則評價（須審核）。
+          </p>
         ) : (
           <>
             <div className="grid gap-2 text-sm sm:grid-cols-2">
@@ -31,38 +33,9 @@ export function TourReviewList({
               <p>導遊/領隊：{renderScore(summary.guideAvg)} / 5</p>
               <p>會再報名比率：{summary.willRebookYesRate.toFixed(0)}%</p>
             </div>
-
-            <div className="space-y-3 border-t pt-3">
-              {reviews.map((review) => (
-                <div key={review.id} className="rounded-md border p-3 text-sm">
-                  <p className="text-xs text-muted-foreground">
-                    {new Date(review.createdAt).toLocaleDateString("zh-HK")}
-                  </p>
-                  <p>
-                    行程 {review.itineraryRating} / 膳食 {review.mealRating} / 住宿 {review.hotelRating} /
-                    導遊 {review.guideRating}
-                  </p>
-                  <p>會否再報：{review.willRebook ? "Yes" : "No"}</p>
-                  {review.participationProof ? <p>參團證明：{review.participationProof}</p> : null}
-                  {review.comment ? <p>評語：{review.comment}</p> : null}
-                  {review.extraInfo ? <p>額外資料：{review.extraInfo}</p> : null}
-                  {review.photos.length > 0 ? (
-                    <p>
-                      照片：{review.photos.length} 張（
-                      <a
-                        className="underline"
-                        href={review.photos[0].publicUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        查看第一張
-                      </a>
-                      ）
-                    </p>
-                  ) : null}
-                </div>
-              ))}
-            </div>
+            <Button variant="secondary" asChild className="w-full sm:w-auto">
+              <Link href={`/tours/${tourId}/reviews`}>查看全部會員評價（附圖文詳情）</Link>
+            </Button>
           </>
         )}
       </CardContent>

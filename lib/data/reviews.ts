@@ -1,7 +1,9 @@
 import { createServerSupabaseClient } from "@/lib/supabase";
+import { commentPreview, reviewOverallAverage } from "@/lib/reviewHelpers";
 
 export type TourReviewListItem = {
   id: string;
+  reviewerDisplayName: string;
   itineraryRating: number;
   mealRating: number;
   hotelRating: number;
@@ -11,7 +13,7 @@ export type TourReviewListItem = {
   extraInfo: string;
   participationProof: string;
   createdAt: string;
-  photos: { publicUrl: string }[];
+  photos: { publicUrl: string; createdAt: string }[];
 };
 
 export type TourReviewSummary = {
@@ -24,8 +26,18 @@ export type TourReviewSummary = {
   willRebookYesRate: number;
 };
 
+export type AgencyReviewSummary = {
+  total: number;
+  overallAvg: number;
+  itineraryAvg: number;
+  mealAvg: number;
+  hotelAvg: number;
+  guideAvg: number;
+};
+
 type ReviewRow = {
   id: string;
+  reviewer_display_name: string | null;
   itinerary_rating: number;
   meal_rating: number;
   hotel_rating: number;
@@ -35,8 +47,31 @@ type ReviewRow = {
   extra_info: string | null;
   participation_proof: string | null;
   created_at: string;
-  tour_review_photo: { public_url: string }[] | null;
+  tour_review_photo: { public_url: string; created_at: string }[] | null;
 };
+
+function mapReviewRow(row: ReviewRow): TourReviewListItem {
+  const rawPhotos = Array.isArray(row.tour_review_photo) ? row.tour_review_photo : [];
+  const photos = [...rawPhotos].sort(
+    (a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime()
+  );
+  return {
+    id: row.id,
+    reviewerDisplayName: row.reviewer_display_name?.trim() || "會員",
+    itineraryRating: Number(row.itinerary_rating ?? 0),
+    mealRating: Number(row.meal_rating ?? 0),
+    hotelRating: Number(row.hotel_rating ?? 0),
+    guideRating: Number(row.guide_rating ?? 0),
+    willRebook: Boolean(row.will_rebook),
+    comment: row.comment ?? "",
+    extraInfo: row.extra_info ?? "",
+    participationProof: row.participation_proof ?? "",
+    createdAt: row.created_at,
+    photos: photos.map((x) => ({ publicUrl: x.public_url, createdAt: x.created_at })),
+  };
+}
+
+export { commentPreview, reviewOverallAverage };
 
 export async function getTourReviewSummary(tourId: string): Promise<TourReviewSummary> {
   const numTourId = Number(tourId);
@@ -56,7 +91,8 @@ export async function getTourReviewSummary(tourId: string): Promise<TourReviewSu
   const { data, error } = await supabase
     .from("tour_review")
     .select("itinerary_rating, meal_rating, hotel_rating, guide_rating, will_rebook")
-    .eq("tour_id", numTourId);
+    .eq("tour_id", numTourId)
+    .eq("moderation_status", "approved");
 
   if (error || !data || data.length === 0) {
     return {
@@ -90,7 +126,7 @@ export async function getTourReviewSummary(tourId: string): Promise<TourReviewSu
   };
 }
 
-export async function getTourReviews(tourId: string, limit = 20): Promise<TourReviewListItem[]> {
+export async function getTourReviews(tourId: string, limit = 200): Promise<TourReviewListItem[]> {
   const numTourId = Number(tourId);
   if (!Number.isFinite(numTourId)) return [];
 
@@ -98,27 +134,53 @@ export async function getTourReviews(tourId: string, limit = 20): Promise<TourRe
   const { data, error } = await supabase
     .from("tour_review")
     .select(
-      "id, itinerary_rating, meal_rating, hotel_rating, guide_rating, will_rebook, comment, extra_info, participation_proof, created_at, tour_review_photo(public_url)"
+      "id, reviewer_display_name, itinerary_rating, meal_rating, hotel_rating, guide_rating, will_rebook, comment, extra_info, participation_proof, created_at, tour_review_photo(public_url, created_at)"
     )
     .eq("tour_id", numTourId)
+    .eq("moderation_status", "approved")
     .order("created_at", { ascending: false })
     .limit(limit);
 
   if (error || !data) return [];
 
-  return (data as ReviewRow[]).map((row) => ({
-    id: row.id,
-    itineraryRating: Number(row.itinerary_rating ?? 0),
-    mealRating: Number(row.meal_rating ?? 0),
-    hotelRating: Number(row.hotel_rating ?? 0),
-    guideRating: Number(row.guide_rating ?? 0),
-    willRebook: Boolean(row.will_rebook),
-    comment: row.comment ?? "",
-    extraInfo: row.extra_info ?? "",
-    participationProof: row.participation_proof ?? "",
-    createdAt: row.created_at,
-    photos: Array.isArray(row.tour_review_photo)
-      ? row.tour_review_photo.map((x) => ({ publicUrl: x.public_url }))
-      : [],
-  }));
+  return (data as ReviewRow[]).map(mapReviewRow);
+}
+
+export async function getAgencyReviewSummary(agency: string): Promise<AgencyReviewSummary | null> {
+  const name = agency.trim();
+  if (!name) return null;
+
+  const supabase = await createServerSupabaseClient();
+  const { data: tours, error: tourErr } = await supabase.from("tour").select("id").eq("agency", name);
+  if (tourErr || !tours?.length) return null;
+
+  const ids = tours.map((t) => Number(t.id)).filter((n) => Number.isFinite(n));
+  if (ids.length === 0) return null;
+
+  const { data, error } = await supabase
+    .from("tour_review")
+    .select("itinerary_rating, meal_rating, hotel_rating, guide_rating")
+    .eq("moderation_status", "approved")
+    .in("tour_id", ids);
+
+  if (error || !data || data.length === 0) {
+    return null;
+  }
+
+  const rows = data;
+  const total = rows.length;
+  const itineraryAvg = rows.reduce((s, x) => s + Number(x.itinerary_rating ?? 0), 0) / total;
+  const mealAvg = rows.reduce((s, x) => s + Number(x.meal_rating ?? 0), 0) / total;
+  const hotelAvg = rows.reduce((s, x) => s + Number(x.hotel_rating ?? 0), 0) / total;
+  const guideAvg = rows.reduce((s, x) => s + Number(x.guide_rating ?? 0), 0) / total;
+  const overallAvg = (itineraryAvg + mealAvg + hotelAvg + guideAvg) / 4;
+
+  return {
+    total,
+    overallAvg,
+    itineraryAvg,
+    mealAvg,
+    hotelAvg,
+    guideAvg,
+  };
 }

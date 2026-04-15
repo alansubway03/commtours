@@ -9,18 +9,17 @@ export function Footer() {
           <div>
             <Link
               href="/"
-              className="mb-3 inline-flex items-center gap-2.5 font-semibold text-foreground hover:opacity-90"
+              className="mb-3 inline-flex items-center text-foreground hover:opacity-90"
             >
               <Image
-                src="/logo.png"
+                src="/logo-brand.png"
                 alt="CommTours"
-                width={40}
-                height={40}
-                className="h-10 w-10 shrink-0 object-contain opacity-95"
-                sizes="40px"
+                width={1024}
+                height={1024}
+                className="h-12 w-12 shrink-0 object-contain opacity-95"
+                sizes="48px"
                 unoptimized
               />
-              <span>CommTours</span>
             </Link>
             <ul className="mt-2 space-y-1 text-sm text-muted-foreground">
               <li>

@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import Link from "next/link";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,6 +17,7 @@ type Member = {
   yearlyTrips: number;
   yearlyGroupTours: number;
   weeklyPromoSubscribed: boolean;
+  isAdmin?: boolean;
 };
 
 function getPasswordChecks(password: string) {
@@ -36,7 +38,7 @@ function isLikelyValidTel(value: string) {
 
 export function MemberAuthPanel({ initialMember = null }: { initialMember?: Member | null }) {
   const [member, setMember] = useState<Member | null>(initialMember);
-  const [tab, setTab] = useState<"login" | "register">("register");
+  const [tab, setTab] = useState<"login" | "register">("login");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -341,6 +343,11 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
           <Button type="button" variant="outline" onClick={onLogout} disabled={loading}>
             登出
           </Button>
+          {member.isAdmin ? (
+            <Button type="button" asChild>
+              <Link href="/admin/reviews">前往 Admin 審核頁</Link>
+            </Button>
+          ) : null}
           {message ? <p className="text-sm text-muted-foreground">{message}</p> : null}
         </CardContent>
       </Card>
@@ -355,17 +362,17 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
         <div className="flex gap-2">
           <Button
             type="button"
-            variant={tab === "register" ? "default" : "outline"}
-            onClick={() => setTab("register")}
-          >
-            註冊
-          </Button>
-          <Button
-            type="button"
             variant={tab === "login" ? "default" : "outline"}
             onClick={() => setTab("login")}
           >
             登入
+          </Button>
+          <Button
+            type="button"
+            variant={tab === "register" ? "default" : "outline"}
+            onClick={() => setTab("register")}
+          >
+            註冊
           </Button>
         </div>
       </CardHeader>
@@ -492,6 +499,11 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
             <Button type="submit" disabled={loading}>
               登入
             </Button>
+            <p className="text-sm text-muted-foreground">
+              <Link href="/member/forgot-password" className="underline">
+                忘記密碼？
+              </Link>
+            </p>
           </form>
         )}
         {message ? <p className="mt-3 text-sm text-muted-foreground">{message}</p> : null}

@@ -9,6 +9,11 @@ function toRating(raw: unknown): number {
   return n;
 }
 
+function reviewerDisplayName(memberName: string): string {
+  const t = memberName.trim();
+  return t.length > 0 ? t : "會員";
+}
+
 type ReviewPhotoPayload = {
   storagePath: string;
   publicUrl: string;
@@ -66,14 +71,78 @@ export async function POST(req: Request) {
       }
     }
 
+    const displayName = reviewerDisplayName(member.memberName);
+
     const { data: existingReview } = await supabase
       .from("tour_review")
-      .select("id")
+      .select("id, moderation_status")
       .eq("tour_id", tourId)
       .eq("member_id", member.id)
       .maybeSingle();
+
     if (existingReview?.id) {
-      return NextResponse.json({ error: "你已評分過此旅行團。" }, { status: 409 });
+      const st = existingReview.moderation_status;
+      if (st === "approved") {
+        return NextResponse.json({ error: "你已評分過此旅行團。" }, { status: 409 });
+      }
+      if (st === "pending") {
+        return NextResponse.json(
+          { error: "此團評分尚在審核中，請稍後再查看結果。" },
+          { status: 409 }
+        );
+      }
+      if (st !== "rejected") {
+        return NextResponse.json({ error: "無法提交評分。" }, { status: 409 });
+      }
+
+      const validPhotos = photos.filter(
+        (p: unknown): p is ReviewPhotoPayload =>
+          !!p &&
+          typeof p === "object" &&
+          typeof (p as { storagePath?: unknown }).storagePath === "string" &&
+          typeof (p as { publicUrl?: unknown }).publicUrl === "string"
+      );
+      const rows = validPhotos.map((p: ReviewPhotoPayload) => ({
+        review_id: existingReview.id,
+        storage_path: p.storagePath,
+        public_url: p.publicUrl,
+      }));
+
+      if (rows.length === 0) {
+        return NextResponse.json({ error: "照片資料格式錯誤。" }, { status: 400 });
+      }
+
+      await supabase.from("tour_review_photo").delete().eq("review_id", existingReview.id);
+
+      const { error: updErr } = await supabase
+        .from("tour_review")
+        .update({
+          itinerary_rating: itineraryRating,
+          meal_rating: mealRating,
+          hotel_rating: hotelRating,
+          guide_rating: guideRating,
+          will_rebook: willRebook,
+          comment,
+          extra_info: extraInfo,
+          participation_proof: participationProof,
+          reviewer_display_name: displayName,
+          moderation_status: "pending",
+          moderated_at: null,
+          moderation_note: "",
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", existingReview.id);
+
+      if (updErr) {
+        return NextResponse.json({ error: "更新評分失敗。" }, { status: 500 });
+      }
+
+      const { error: photoError } = await supabase.from("tour_review_photo").insert(rows);
+      if (photoError) {
+        return NextResponse.json({ error: "評分已更新，但照片儲存失敗。" }, { status: 500 });
+      }
+
+      return NextResponse.json({ ok: true, reviewId: existingReview.id });
     }
 
     const { data: review, error: reviewError } = await supabase
@@ -89,6 +158,7 @@ export async function POST(req: Request) {
         comment,
         extra_info: extraInfo,
         participation_proof: participationProof,
+        reviewer_display_name: displayName,
       })
       .select("id")
       .single();
@@ -100,19 +170,18 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "提交評分失敗。" }, { status: 500 });
     }
 
-    const validPhotos = photos
-      .filter(
-        (p: unknown): p is ReviewPhotoPayload =>
-          !!p &&
-          typeof p === "object" &&
-          typeof (p as { storagePath?: unknown }).storagePath === "string" &&
-          typeof (p as { publicUrl?: unknown }).publicUrl === "string"
-      );
+    const validPhotos = photos.filter(
+      (p: unknown): p is ReviewPhotoPayload =>
+        !!p &&
+        typeof p === "object" &&
+        typeof (p as { storagePath?: unknown }).storagePath === "string" &&
+        typeof (p as { publicUrl?: unknown }).publicUrl === "string"
+    );
     const rows = validPhotos.map((p: ReviewPhotoPayload) => ({
-        review_id: review.id,
-        storage_path: p.storagePath,
-        public_url: p.publicUrl,
-      }));
+      review_id: review.id,
+      storage_path: p.storagePath,
+      public_url: p.publicUrl,
+    }));
 
     if (rows.length === 0) {
       return NextResponse.json({ error: "照片資料格式錯誤。" }, { status: 400 });

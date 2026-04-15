@@ -1,27 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 
-/** 導覽列品牌：源檔 public/logo.png（最長邊 512px，Retina 足夠；此處顯示約 48px 高為常見工具列比例） */
+/** 導覽列品牌：白底 COMMTOURS 方圖，`/logo-brand.png` 與全站品牌圖同步。 */
 export function CommToursLogo({ className }: { className?: string }) {
   return (
     <Link
       href="/"
-      className={`flex items-center gap-2.5 font-semibold ${className ?? ""}`}
+      className={`flex items-center ${className ?? ""}`}
       aria-label="CommTours 首頁"
     >
       <Image
-        src="/logo.png"
+        src="/logo-brand.png"
         alt="CommTours"
-        width={48}
-        height={48}
-        className="h-12 w-12 shrink-0 object-contain"
+        width={1024}
+        height={1024}
+        className="h-11 w-11 shrink-0 object-contain sm:h-12 sm:w-12"
         priority
-        sizes="48px"
+        sizes="(min-width: 640px) 48px, 44px"
         unoptimized
       />
-      <span className="hidden font-semibold text-foreground sm:inline">
-        CommTours
-      </span>
     </Link>
   );
 }

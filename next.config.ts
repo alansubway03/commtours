@@ -9,8 +9,19 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: "/:path*",
+        has: [
+          {
+            type: "host",
+            value: "www.commtours.com",
+          },
+        ],
+        destination: "https://commtours.com/:path*",
+        permanent: true,
+      },
+      {
         source: "/favicon.ico",
-        destination: "/logo.png",
+        destination: "/favicon.png?v=20260414w",
         permanent: false,
       },
     ];

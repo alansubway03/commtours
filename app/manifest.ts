@@ -7,8 +7,8 @@ export default function manifest(): MetadataRoute.Manifest {
     description: "香港出發長線及特色團體行程比價平台",
     start_url: "/",
     display: "standalone",
-    background_color: "#ffffff",
-    theme_color: "#545b6a",
+    background_color: "#0a0a0a",
+    theme_color: "#ffb35c",
     icons: [
       {
         src: "/logo.png",

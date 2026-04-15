@@ -17,12 +17,12 @@ export default function AboutPage() {
     <div className="container px-4 py-10 md:py-16">
       <header className="mx-auto max-w-3xl text-center">
         <Image
-          src="/logo.png"
+          src="/logo-brand.png"
           alt="CommTours"
-          width={128}
-          height={128}
-          className="mx-auto mb-6 h-32 w-32 object-contain drop-shadow-sm"
-          sizes="128px"
+          width={1024}
+          height={1024}
+          className="mx-auto mb-6 h-40 w-40 object-contain drop-shadow-sm md:h-44 md:w-44"
+          sizes="(min-width: 768px) 176px, 160px"
           unoptimized
         />
         <h1 className="text-3xl font-bold tracking-tight md:text-4xl">

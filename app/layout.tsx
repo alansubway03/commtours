@@ -37,11 +37,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
-  // 瀏覽器分頁／加入主畫面圖示：使用 app/icon.png、app/apple-icon.png（與 public/logo.png 同圖，由 prepare-logo 同步）
+  icons: {
+    icon: [{ url: "/favicon.png?v=20260414w", type: "image/png" }],
+    shortcut: ["/favicon.png?v=20260414w"],
+    apple: [{ url: "/apple-icon.png?v=20260414w", type: "image/png" }],
+  },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#545b6a",
+  themeColor: "#ffb35c",
 };
 
 export default function RootLayout({
