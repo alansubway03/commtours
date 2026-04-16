@@ -17,7 +17,6 @@
     "scrape:egl-line": "tsx scripts/scrape-egl-tour-line.ts",
     "scrape:egl-api": "tsx scripts/scrape-egl-tour-line-api.ts",
     "scrape:jetour": "tsx scripts/scrape-jetour-tours.ts",
-    "scrape:dewonder": "tsx scripts/scrape-dewonder-tours.ts",
     "scrape:goldjoy-formed": "tsx scripts/scrape-goldjoy-formed.ts",
     "scrape:goldjoy-cruise-article": "tsx scripts/scrape-goldjoy-cruise-article.ts",
     "logo:transparent": "tsx scripts/remove-logo-background.ts",
