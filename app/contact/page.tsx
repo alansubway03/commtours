@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   description: "聯絡 CommTours 合作與查詢。",
 };
 
-const CONTACT_EMAIL = "hello@commtours.com";
+const CONTACT_EMAIL = "info@commtours.com";
 
 export default function ContactPage() {
   return (
