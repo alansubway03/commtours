@@ -68,6 +68,11 @@ const nextConfig: NextConfig = {
         hostname: "www.jetour.com.hk",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "dewonder.travel",
+        pathname: "/**",
+      },
     ],
   },
 };

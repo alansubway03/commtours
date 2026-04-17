@@ -57,7 +57,7 @@ export async function getCurrentMember() {
   const { data, error } = await supabase
     .from("member_session")
     .select(
-      "member_id, expires_at, member_account(id, email, tel, member_name, yearly_trips, yearly_group_tours, weekly_promo_subscribed, is_admin)"
+      "member_id, expires_at, member_account(id, email, tel, member_name, weekly_promo_subscribed, is_admin)"
     )
     .eq("session_token", token)
     .gt("expires_at", nowIso)
@@ -72,8 +72,6 @@ export async function getCurrentMember() {
     email: member.email as string,
     tel: member.tel as string,
     memberName: (member.member_name as string) ?? "",
-    yearlyTrips: Number(member.yearly_trips ?? 0),
-    yearlyGroupTours: Number(member.yearly_group_tours ?? 0),
     weeklyPromoSubscribed: Boolean(member.weekly_promo_subscribed),
     isAdmin: Boolean(member.is_admin),
   };

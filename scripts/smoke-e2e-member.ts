@@ -95,8 +95,6 @@ async function run() {
       email,
       tel: "+852 9123 4567",
       memberName,
-      yearlyTrips: 3,
-      yearlyGroupTours: 1,
       password: "abc12345",
       weeklyPromoSubscribed: true,
     }),

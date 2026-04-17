@@ -1,6 +1,7 @@
 import { createServerSupabaseClient } from "@/lib/supabase";
 import type { Tour, TourType } from "@/types/tour";
 import { normalizeDepartureDateStatusesInput } from "@/lib/departureDateStatuses";
+import { hasFeaturedTag } from "@/lib/featuredTours";
 
 type TourRow = {
   id: number;
@@ -62,7 +63,14 @@ export async function getTours(): Promise<Tour[]> {
     .order("created_at", { ascending: false });
 
   if (error) return [];
-  return (data ?? []).map((row) => mapRowToTour(row as TourRow));
+  return (data ?? [])
+    .map((row) => mapRowToTour(row as TourRow))
+    .sort((a, b) => {
+      const featuredDelta =
+        Number(hasFeaturedTag(b.features)) - Number(hasFeaturedTag(a.features));
+      if (featuredDelta !== 0) return featuredDelta;
+      return Number(b.id) - Number(a.id);
+    });
 }
 
 export async function getTourById(id: string): Promise<Tour | null> {

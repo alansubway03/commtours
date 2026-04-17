@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import Script from "next/script";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import { getTourById } from "@/lib/data/tours";
 import { getAgencyReviewSummary, getTourReviewSummary } from "@/lib/data/reviews";
@@ -176,11 +177,13 @@ export default async function TourDetailPage({
 
   return (
     <div className="container px-4 py-6 md:py-8">
-      <script
+      <Script
+        id="tour-product-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
-      <script
+      <Script
+        id="tour-breadcrumb-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />

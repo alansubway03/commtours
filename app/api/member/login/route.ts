@@ -1,8 +1,15 @@
 import { NextResponse } from "next/server";
 import { createMemberSession, verifyPassword } from "@/lib/memberAuth";
 import { createSupabaseAdminClient } from "@/lib/supabaseAdmin";
+import { EmailOtpError, issueEmailOtp } from "@/lib/memberEmailOtp";
 import { isValidEmail, normalizeEmail } from "@/lib/memberValidation";
 import { LOGIN_LOCK_MINUTES, LOGIN_MAX_ATTEMPTS, getRequestMeta } from "@/lib/memberSecurity";
+
+function isMissingColumnError(x: unknown): boolean {
+  if (!x || typeof x !== "object") return false;
+  const code = String((x as { code?: unknown }).code ?? "");
+  return code === "42703";
+}
 
 export async function POST(req: Request) {
   try {
@@ -38,7 +45,7 @@ export async function POST(req: Request) {
     const { data, error } = await supabase
       .from("member_account")
       .select(
-        "id, email, member_name, yearly_trips, yearly_group_tours, password_hash, weekly_promo_subscribed, failed_login_count, login_locked_until"
+        "id, email, member_name, password_hash, weekly_promo_subscribed, failed_login_count, login_locked_until"
       )
       .eq("email", email)
       .maybeSingle();
@@ -128,6 +135,48 @@ export async function POST(req: Request) {
       { onConflict: "email,ip" }
     );
 
+    let emailVerifiedAt: string | null = null;
+    const { data: verifyRow, error: verifyErr } = await supabase
+      .from("member_account")
+      .select("email_verified_at")
+      .eq("id", data.id)
+      .maybeSingle();
+    if (!verifyErr) {
+      emailVerifiedAt = String(verifyRow?.email_verified_at ?? "") || null;
+    }
+
+    if (!emailVerifiedAt && !isMissingColumnError(verifyErr)) {
+      let cooldownSeconds: number | undefined;
+      let codeSent = false;
+      let extraMessage = "";
+      try {
+        const issued = await issueEmailOtp(String(data.id), email);
+        cooldownSeconds = issued.cooldownSeconds;
+        codeSent = !issued.cooldownSeconds;
+        if (issued.cooldownSeconds) {
+          extraMessage = `驗證碼剛發送過，請 ${issued.cooldownSeconds} 秒後再重發。`;
+        } else {
+          extraMessage = "已向你的 Email 發送驗證碼。";
+        }
+      } catch (err) {
+        if (err instanceof EmailOtpError) {
+          extraMessage = err.message;
+        } else {
+          extraMessage = "驗證碼發送失敗，請稍後重試。";
+        }
+      }
+      return NextResponse.json(
+        {
+          error: `此帳號尚未完成 Email 驗證。${extraMessage}`,
+          needEmailVerification: true,
+          email,
+          codeSent,
+          cooldownSeconds,
+        },
+        { status: 403 }
+      );
+    }
+
     await createMemberSession(data.id as string);
     return NextResponse.json({
       ok: true,
@@ -135,8 +184,6 @@ export async function POST(req: Request) {
         id: data.id,
         email: data.email,
         memberName: data.member_name,
-        yearlyTrips: data.yearly_trips,
-        yearlyGroupTours: data.yearly_group_tours,
         weeklyPromoSubscribed: Boolean(data.weekly_promo_subscribed),
       },
     });

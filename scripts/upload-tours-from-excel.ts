@@ -1,19 +1,15 @@
 /**
- * 從 Excel 讀取旅行團並 upsert 到 Supabase public.tour
+ * 從 CSV 讀取旅行團並 upsert 到 Supabase public.tour
  *
- * 工作表名稱須為「旅行團資料」，第 1 列為欄位名（與範本一致）。
+ * 第 1 列須為欄位名（與範本一致）。
  *
  * 用法：
- *   npx tsx scripts/upload-tours-from-excel.ts path/to/檔案.xlsx
- *   npx tsx scripts/upload-tours-from-excel.ts --dry-run path/to/檔案.xlsx
+ *   npx tsx scripts/upload-tours-from-excel.ts path/to/檔案.csv
+ *   npx tsx scripts/upload-tours-from-excel.ts --dry-run path/to/檔案.csv
  *
  * 環境變數：與 push-tours-to-supabase 相同（.env.local）
- *
- * 安全：依賴 xlsx（SheetJS）曾有 prototype pollution / ReDoS 公告，請只處理**可信來源**的 .xlsx，
- * 勿對不可信上傳檔執行此腳本。連結與圖片網址僅接受 http/https。
  */
 import { createClient } from "@supabase/supabase-js";
-import * as XLSX from "xlsx";
 import { readFileSync, existsSync } from "fs";
 import { resolve } from "path";
 import { normalizeDepartureDateStatusesInput } from "../lib/departureDateStatuses";
@@ -111,6 +107,92 @@ interface TourRecord {
   image_url: string | null;
 }
 
+const CSV_HEADERS = [
+  "旅行社",
+  "團種",
+  "行程名稱",
+  "目的地",
+  "區域",
+  "天數",
+  "價錢",
+  "出發日與成團",
+  "特色",
+  "連結1名稱",
+  "連結1網址",
+  "連結2名稱",
+  "連結2網址",
+  "圖片網址",
+] as const;
+
+function parseCsv(content: string): string[][] {
+  const rows: string[][] = [];
+  let row: string[] = [];
+  let cell = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < content.length; i++) {
+    const ch = content[i];
+    const next = i + 1 < content.length ? content[i + 1] : "";
+
+    if (inQuotes) {
+      if (ch === '"' && next === '"') {
+        cell += '"';
+        i++;
+      } else if (ch === '"') {
+        inQuotes = false;
+      } else {
+        cell += ch;
+      }
+      continue;
+    }
+
+    if (ch === '"') {
+      inQuotes = true;
+      continue;
+    }
+    if (ch === ",") {
+      row.push(cell.trim());
+      cell = "";
+      continue;
+    }
+    if (ch === "\n") {
+      row.push(cell.trim());
+      rows.push(row);
+      row = [];
+      cell = "";
+      continue;
+    }
+    if (ch === "\r") {
+      continue;
+    }
+    cell += ch;
+  }
+
+  if (cell.length > 0 || row.length > 0) {
+    row.push(cell.trim());
+    rows.push(row);
+  }
+
+  return rows
+    .map((r) => r.map((x) => x.replace(/^\uFEFF/, "")))
+    .filter((r) => r.some((x) => x !== ""));
+}
+
+function csvRowsToObjects(rows: string[][]): Record<string, unknown>[] {
+  if (rows.length === 0) return [];
+  const header = rows[0] ?? [];
+  const dataRows = rows.slice(1);
+  return dataRows.map((r) => {
+    const out: Record<string, unknown> = {};
+    for (let i = 0; i < header.length; i++) {
+      const key = String(header[i] ?? "").trim();
+      if (!key) continue;
+      out[key] = String(r[i] ?? "").trim();
+    }
+    return out;
+  });
+}
+
 function rowToRecord(row: Record<string, unknown>, defaultAgency: string): TourRecord | null {
   const title = str(row["行程名稱"]);
   if (!title) return null;
@@ -154,7 +236,7 @@ async function main() {
   const dryRun = process.argv.includes("--dry-run");
   const fileArg = process.argv.slice(2).find((a) => a !== "--dry-run" && !a.startsWith("-"));
   if (!fileArg) {
-    console.error("用法: npx tsx scripts/upload-tours-from-excel.ts [--dry-run] <檔案.xlsx>");
+    console.error("用法: npx tsx scripts/upload-tours-from-excel.ts [--dry-run] <檔案.csv>");
     process.exit(1);
   }
   const filePath = resolve(process.cwd(), fileArg);
@@ -163,21 +245,23 @@ async function main() {
     process.exit(1);
   }
 
-  const buf = readFileSync(filePath);
-  const wb = XLSX.read(buf, { type: "buffer" });
-  const sheetName = wb.SheetNames.includes("旅行團資料")
-    ? "旅行團資料"
-    : wb.SheetNames[0];
-  const sheet = wb.Sheets[sheetName];
-  if (!sheet) {
-    console.error("找不到工作表「旅行團資料」或任何工作表");
+  if (!filePath.toLowerCase().endsWith(".csv")) {
+    console.error("只支援 CSV 檔案，請使用 .csv");
     process.exit(1);
   }
-
-  const rows = XLSX.utils.sheet_to_json<Record<string, unknown>>(sheet, {
-    defval: "",
-    raw: false,
-  });
+  const content = readFileSync(filePath, "utf-8");
+  const parsed = parseCsv(content);
+  const rows = csvRowsToObjects(parsed);
+  if (rows.length === 0) {
+    console.error("CSV 檔案沒有資料列");
+    process.exit(1);
+  }
+  const headerSet = new Set(Object.keys(rows[0] ?? {}));
+  const missing = CSV_HEADERS.filter((x) => !headerSet.has(x));
+  if (missing.length > 0) {
+    console.error(`CSV 欄位不足，缺少：${missing.join("、")}`);
+    process.exit(1);
+  }
 
   const defaultAgency = process.env.SCRAPER_AGENCY ?? "未知旅行社";
   const records: TourRecord[] = [];
@@ -187,7 +271,8 @@ async function main() {
   }
 
   if (records.length === 0) {
-    console.error("沒有有效資料列（至少需要「行程名稱」）");
+    console.error("沒有有效資料列（至少需要「行程名稱」）。");
+    console.error("提示：若你使用的是範本檔，請先刪除或覆寫「範例旅行社」那一列再上傳。");
     process.exit(1);
   }
 

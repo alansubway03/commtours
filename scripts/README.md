@@ -23,17 +23,17 @@ npm run scrape:egl-api
 輸出：`scripts/output/tours-egl-tour-line.json`（團名、價錢、出發日、成團狀態、圖、itinerary 連結）。  
 可選：`EGL_PAGE_SIZE`、`EGL_MAX_PAGES`。再 upsert：`npx tsx scripts/push-tours-to-supabase.ts --upsert scripts/output/tours-egl-tour-line.json`
 
-## 客人用 Excel 填資料 → 上傳 Supabase
+## 客人用 CSV 填資料 → 上傳 Supabase
 
-1. **範本**：`scripts/templates/旅行團資料範本.xlsx`（若需重產：`npm run excel:template`）  
-2. 客人在工作表 **「旅行團資料」** 填寫；**刪除或覆寫「範例旅行社」那一列**（該列不會匯入）。  
+1. **範本**：`scripts/templates/旅行團資料範本.csv`（若需重產：`npm run csv:template`）  
+2. 客人在 CSV 第 2 列開始填寫；**刪除或覆寫「範例旅行社」那一列**（該列不會匯入）。  
 3. **上傳**（需 `.env.local` 有 `NEXT_PUBLIC_SUPABASE_URL`、`SUPABASE_SERVICE_ROLE_KEY`）：
 
    ```bash
-   npm run excel:upload -- path/to/客人填的.xlsx
+   npm run csv:upload -- path/to/客人填的.csv
    ```
 
-4. 先檢查不寫入：`npm run excel:upload -- --dry-run path/to/檔案.xlsx`  
+4. 先檢查不寫入：`npm run csv:upload -- --dry-run path/to/檔案.csv`  
 5. 同一 **旅行社 + 行程名稱 + 目的地 + 天數** 視為同一筆，重複上傳會 **更新（upsert）**。
 
 ## 一、OpenClaw 抓取

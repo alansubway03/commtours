@@ -14,8 +14,6 @@ type Member = {
   email: string;
   tel: string;
   memberName: string;
-  yearlyTrips: number;
-  yearlyGroupTours: number;
   weeklyPromoSubscribed: boolean;
   isAdmin?: boolean;
 };
@@ -41,12 +39,12 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
   const [tab, setTab] = useState<"login" | "register">("login");
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [pendingVerifyEmail, setPendingVerifyEmail] = useState("");
+  const [verifyCode, setVerifyCode] = useState("");
 
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerTel, setRegisterTel] = useState("");
   const [registerMemberName, setRegisterMemberName] = useState("");
-  const [registerYearlyTrips, setRegisterYearlyTrips] = useState("1");
-  const [registerYearlyGroupTours, setRegisterYearlyGroupTours] = useState("1");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerSubscribe, setRegisterSubscribe] = useState(true);
 
@@ -57,6 +55,7 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [verifyMessage, setVerifyMessage] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const registerPasswordChecks = getPasswordChecks(registerPassword);
   const registerPasswordValid =
@@ -89,6 +88,7 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
     e.preventDefault();
     setLoading(true);
     setMessage("");
+    setVerifyMessage("");
     const res = await fetch("/api/member/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -96,8 +96,6 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
         email: registerEmail,
         tel: registerTel,
         memberName: registerMemberName,
-        yearlyTrips: Number(registerYearlyTrips),
-        yearlyGroupTours: Number(registerYearlyGroupTours),
         password: registerPassword,
         weeklyPromoSubscribed: registerSubscribe,
       }),
@@ -108,7 +106,15 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
       setMessage(json.error ?? "註冊失敗");
       return;
     }
-    setMessage("註冊成功，已自動登入。");
+    if (json.needEmailVerification) {
+      setPendingVerifyEmail(String(json.email ?? registerEmail).trim());
+      setVerifyCode("");
+      setMessage(
+        String(json.message ?? (json.codeSent ? "註冊成功，驗證碼已寄出。" : "註冊成功，請重發驗證碼後完成驗證。"))
+      );
+      return;
+    }
+    setMessage("註冊成功。");
     await refreshMe();
   }
 
@@ -116,6 +122,7 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
     e.preventDefault();
     setLoading(true);
     setMessage("");
+    setVerifyMessage("");
     const res = await fetch("/api/member/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -124,6 +131,10 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
     const json = await res.json();
     setLoading(false);
     if (!res.ok) {
+      if (json.needEmailVerification) {
+        setPendingVerifyEmail(String(json.email ?? loginEmail).trim());
+        setVerifyCode("");
+      }
       setMessage(json.error ?? "登入失敗");
       return;
     }
@@ -138,6 +149,45 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
     setLoading(false);
     setMember(null);
     setMessage("已登出。");
+  }
+
+  async function onVerifyEmail(e: FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setVerifyMessage("");
+    const res = await fetch("/api/member/verify-email", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: pendingVerifyEmail, code: verifyCode }),
+    });
+    const json = await res.json();
+    setLoading(false);
+    if (!res.ok) {
+      setVerifyMessage(json.error ?? "驗證失敗");
+      return;
+    }
+    setMessage(json.message ?? "Email 驗證成功。");
+    setVerifyMessage("");
+    setPendingVerifyEmail("");
+    setVerifyCode("");
+    await refreshMe();
+  }
+
+  async function onResendEmailOtp() {
+    setLoading(true);
+    setVerifyMessage("");
+    const res = await fetch("/api/member/verify-email/resend", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: pendingVerifyEmail }),
+    });
+    const json = await res.json();
+    setLoading(false);
+    if (!res.ok) {
+      setVerifyMessage(json.error ?? "重發失敗");
+      return;
+    }
+    setVerifyMessage(json.message ?? "驗證碼已重發。");
   }
 
   async function toggleSubscribe(next: boolean) {
@@ -377,6 +427,46 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
         </div>
       </CardHeader>
       <CardContent>
+        {pendingVerifyEmail ? (
+          <form className="mb-6 space-y-3 rounded-md border p-3" onSubmit={onVerifyEmail}>
+            <p className="text-sm font-medium">請先完成 Email 驗證</p>
+            <p className="text-xs text-muted-foreground">
+              已向 <span className="font-medium">{pendingVerifyEmail}</span> 發送 6 位數驗證碼。
+            </p>
+            <div className="space-y-1">
+              <Label htmlFor="verify-email">Email</Label>
+              <Input
+                id="verify-email"
+                type="email"
+                value={pendingVerifyEmail}
+                onChange={(e) => setPendingVerifyEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="verify-code">驗證碼（6 位數）</Label>
+              <Input
+                id="verify-code"
+                inputMode="numeric"
+                pattern="\d{6}"
+                maxLength={6}
+                value={verifyCode}
+                onChange={(e) => setVerifyCode(e.target.value.replace(/\D/g, "").slice(0, 6))}
+                required
+              />
+            </div>
+            <div className="flex gap-2">
+              <Button type="submit" disabled={loading || verifyCode.length !== 6}>
+                驗證並登入
+              </Button>
+              <Button type="button" variant="outline" disabled={loading} onClick={onResendEmailOtp}>
+                重發驗證碼
+              </Button>
+            </div>
+            {verifyMessage ? <p className="text-sm text-muted-foreground">{verifyMessage}</p> : null}
+          </form>
+        ) : null}
+
         {tab === "register" ? (
           <form className="space-y-3" onSubmit={onRegister}>
             <div className="space-y-1">
@@ -414,28 +504,6 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
               {registerTel.length > 0 && !registerTelValid ? (
                 <p className="text-xs text-red-600">電話格式不正確（6-20 字元，且至少 6 位數字）</p>
               ) : null}
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="register-yearly-trips">一年會去多少次旅行？</Label>
-              <Input
-                id="register-yearly-trips"
-                type="number"
-                min={0}
-                value={registerYearlyTrips}
-                onChange={(e) => setRegisterYearlyTrips(e.target.value)}
-                required
-              />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="register-yearly-group-tours">當中會有幾多次係跟旅行團？</Label>
-              <Input
-                id="register-yearly-group-tours"
-                type="number"
-                min={0}
-                value={registerYearlyGroupTours}
-                onChange={(e) => setRegisterYearlyGroupTours(e.target.value)}
-                required
-              />
             </div>
             <div className="space-y-1">
               <Label htmlFor="register-password">密碼（最少 8 字）</Label>

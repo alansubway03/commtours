@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { buildPasswordHash, createMemberSession } from "@/lib/memberAuth";
 import { createSupabaseAdminClient } from "@/lib/supabaseAdmin";
+import { EmailOtpError, issueEmailOtp } from "@/lib/memberEmailOtp";
 import {
   isStrongPassword,
   isValidEmail,
@@ -18,8 +19,6 @@ export async function POST(req: Request) {
     const tel = normalizeTel(body.tel);
     const password = String(body.password ?? "");
     const memberName = normalizeMemberName(body.memberName);
-    const yearlyTrips = Number(body.yearlyTrips);
-    const yearlyGroupTours = Number(body.yearlyGroupTours);
     const weeklyPromoSubscribed = Boolean(body.weeklyPromoSubscribed);
     if (!email || !tel || !memberName || password.length < 8) {
       return NextResponse.json(
@@ -48,18 +47,6 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-    if (
-      !Number.isInteger(yearlyTrips) ||
-      yearlyTrips < 0 ||
-      !Number.isInteger(yearlyGroupTours) ||
-      yearlyGroupTours < 0
-    ) {
-      return NextResponse.json({ error: "問卷次數必須是 0 或以上的整數。" }, { status: 400 });
-    }
-    if (yearlyGroupTours > yearlyTrips) {
-      return NextResponse.json({ error: "跟團次數不可多於總旅遊次數。" }, { status: 400 });
-    }
-
     const supabase = createSupabaseAdminClient();
 
     const { data: existing } = await supabase
@@ -86,16 +73,27 @@ export async function POST(req: Request) {
         email,
         tel,
         member_name: memberName,
-        yearly_trips: yearlyTrips,
-        yearly_group_tours: yearlyGroupTours,
         password_hash: passwordHash,
         weekly_promo_subscribed: weeklyPromoSubscribed,
       })
-      .select("id, email, member_name, yearly_trips, yearly_group_tours")
+      .select("id, email, member_name")
       .single();
 
     if (error || !data) {
       if (error?.code === "23505") {
+        const [{ data: dupEmail }, { data: dupName }] = await Promise.all([
+          supabase.from("member_account").select("id").eq("email", email).maybeSingle(),
+          supabase.from("member_account").select("id").ilike("member_name", memberName).maybeSingle(),
+        ]);
+        if (dupEmail?.id && dupName?.id) {
+          return NextResponse.json({ error: "email 與會員名稱已被使用。" }, { status: 409 });
+        }
+        if (dupName?.id) {
+          return NextResponse.json({ error: "會員名稱已被使用，請更換。" }, { status: 409 });
+        }
+        if (dupEmail?.id) {
+          return NextResponse.json({ error: "此 email 已註冊。" }, { status: 409 });
+        }
         return NextResponse.json({ error: "email 或會員名稱已被使用。" }, { status: 409 });
       }
       if (error?.code === "23514") {
@@ -120,18 +118,58 @@ export async function POST(req: Request) {
       );
     }
 
-    await createMemberSession(data.id);
+    try {
+      await issueEmailOtp(data.id, email);
+    } catch (err) {
+      // 向後相容：若尚未套用 OTP migration，先沿用舊流程自動登入，避免註冊卡死
+      if (
+        err instanceof EmailOtpError &&
+        err.message.includes("建立驗證碼失敗")
+      ) {
+        await createMemberSession(data.id);
+        return NextResponse.json({
+          ok: true,
+          member: {
+            id: data.id,
+            email: data.email,
+            memberName: data.member_name,
+            weeklyPromoSubscribed,
+          },
+          otpFallback: true,
+          message:
+            "註冊成功，已自動登入。提示：請先執行 migration 018 啟用 Email OTP。",
+        });
+      }
+      if (err instanceof EmailOtpError) {
+        return NextResponse.json(
+          {
+            ok: true,
+            needEmailVerification: true,
+            email,
+            codeSent: false,
+            message: `註冊成功，但驗證碼寄送失敗：${err.message} 你可於登入頁再次要求重發。`,
+          },
+          { status: 200 }
+        );
+      }
+      return NextResponse.json(
+        {
+          ok: true,
+          needEmailVerification: true,
+          email,
+          codeSent: false,
+          message: "註冊成功，但驗證碼寄送失敗。你可於登入頁再次要求重發。",
+        },
+        { status: 200 }
+      );
+    }
 
     return NextResponse.json({
       ok: true,
-      member: {
-        id: data.id,
-        email: data.email,
-        memberName: data.member_name,
-        yearlyTrips: data.yearly_trips,
-        yearlyGroupTours: data.yearly_group_tours,
-        weeklyPromoSubscribed,
-      },
+      needEmailVerification: true,
+      email,
+      codeSent: true,
+      message: "註冊成功，驗證碼已寄到你的 Email。完成驗證後即可登入。",
     });
   } catch {
     return NextResponse.json({ error: "請求格式不正確。" }, { status: 400 });

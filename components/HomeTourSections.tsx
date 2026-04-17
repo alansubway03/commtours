@@ -8,6 +8,7 @@ import type { Tour, TourType } from "@/types/tour";
 import { TOUR_TYPE_LABELS } from "@/types/tour";
 import { AGENCY_FILTER_OPTIONS } from "@/lib/agencies";
 import { CANONICAL_REGIONS, canonicalTourRegion } from "@/lib/canonicalTourRegion";
+import { hasFeaturedTag } from "@/lib/featuredTours";
 import {
   departureRangeContainsMonth,
   isDepartureRangeNote,
@@ -24,7 +25,7 @@ const TAB_ORDER: { id: "popular" | TourType; label: string }[] = [
   { id: "festival", label: TOUR_TYPE_LABELS.festival },
 ];
 
-const POPULAR_COUNT = 5;
+const POPULAR_COUNT = 10;
 const MONTHS = ["不限", "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"] as const;
 const DAY_OPTIONS = [7, 8, 9, 10, 12, 14, 16, 18, 20, 25, 30] as const;
 const PAGE_SIZE = 12;
@@ -79,7 +80,9 @@ export function HomeTourSections({ tours }: HomeTourSectionsProps) {
   const [noShopping, setNoShopping] = useState(false);
   const [page, setPage] = useState(1);
 
-  const popularTours = tours.slice(0, POPULAR_COUNT);
+  const featuredTours = tours.filter((t) => hasFeaturedTag(t.features));
+  const fallbackTours = tours.filter((t) => !hasFeaturedTag(t.features));
+  const popularTours = [...featuredTours, ...fallbackTours].slice(0, POPULAR_COUNT);
   let filteredTours =
     activeTab === "popular" ? popularTours : tours.filter((t) => t.type === activeTab);
 
@@ -170,38 +173,17 @@ export function HomeTourSections({ tours }: HomeTourSectionsProps) {
       </div>
 
       <div className="mb-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div>
-            <h2 className="text-lg font-semibold md:text-xl">
-              {activeTab === "popular"
-                ? "熱門行程"
-                : TOUR_TYPE_LABELS[activeTab]}
-            </h2>
-            {activeTab !== "popular" ? (
-              <p className="mt-0.5 text-xs text-muted-foreground">
-                首頁為精簡預覽，完整篩選與分頁請進入旅行團列表
-              </p>
-            ) : null}
-          </div>
-
-          {activeTab === "longhaul" && (
-            <div className="flex items-center gap-2">
-              <span className="text-sm text-muted-foreground">地區</span>
-              <select
-                value={region}
-                onChange={(e) => setRegion(e.target.value)}
-                className="h-9 rounded-md border border-border bg-card px-2 text-sm shadow-sm focus:outline-none focus:ring-1 focus:ring-ring"
-                aria-label="篩選地區"
-              >
-                <option value="不限">不限</option>
-                {CANONICAL_REGIONS.map((r) => (
-                  <option key={r} value={r}>
-                    {r}
-                  </option>
-                ))}
-              </select>
-            </div>
-          )}
+        <div>
+          <h2 className="text-lg font-semibold md:text-xl">
+            {activeTab === "popular"
+              ? "熱門行程"
+              : TOUR_TYPE_LABELS[activeTab]}
+          </h2>
+          {activeTab !== "popular" ? (
+            <p className="mt-0.5 text-xs text-muted-foreground">
+              首頁為精簡預覽，完整篩選與分頁請進入旅行團列表
+            </p>
+          ) : null}
         </div>
         <Button variant="outline" size="sm" asChild>
           <Link href={listLink} prefetch={false}>

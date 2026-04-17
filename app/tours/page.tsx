@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import Script from "next/script";
 import { createServerSupabaseClient } from "@/lib/supabase";
 import { normalizeDepartureDateStatusesInput } from "@/lib/departureDateStatuses";
 import { pickPrimaryAffiliate } from "@/lib/affiliateLinks";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import { canonicalTourRegion } from "@/lib/canonicalTourRegion";
+import { hasFeaturedTag } from "@/lib/featuredTours";
 import {
   departureRangeContainsMonth,
   isDepartureRangeNote,
@@ -243,7 +245,7 @@ export default async function ToursPage({
   const to = from + PAGE_SIZE - 1;
   let query = supabase
     .from("tour")
-    .select(LIST_SELECT_COLUMNS, { count: "exact" })
+    .select(LIST_SELECT_COLUMNS)
     .order("created_at", { ascending: false });
 
   if (types.length > 0) query = query.in("type", types);
@@ -252,9 +254,7 @@ export default async function ToursPage({
   if (daysMinNum != null) query = query.gte("days", daysMinNum);
   if (daysMaxNum != null) query = query.lte("days", daysMaxNum);
 
-  const { data: tours, error, count } = needsMemoryFiltering
-    ? await query
-    : await query.range(from, to);
+  const { data: tours, error } = await query;
 
   if (error) {
     console.error("[tours] Supabase error:", error.message, error.code);
@@ -279,6 +279,12 @@ export default async function ToursPage({
   }
 
   let list = (tours ?? []) as TourRow[];
+  list = list.sort((a, b) => {
+    const featuredDelta =
+      Number(hasFeaturedTag(b.features)) - Number(hasFeaturedTag(a.features));
+    if (featuredDelta !== 0) return featuredDelta;
+    return b.id - a.id;
+  });
 
   if (destinationQuery) {
     list = list.filter((row) => matchesDestinationKeyword(row, destinationQuery));
@@ -330,22 +336,21 @@ export default async function ToursPage({
     );
   }
 
-  const totalCount = needsMemoryFiltering ? list.length : (count ?? 0);
+  const totalCount = list.length;
   const totalPages = Math.max(1, Math.ceil(totalCount / PAGE_SIZE));
   const safePage = Math.min(page, totalPages);
   const hasPrevPage = safePage > 1;
   const hasNextPage = safePage < totalPages;
-  if (needsMemoryFiltering) {
-    const localFrom = (safePage - 1) * PAGE_SIZE;
-    const localTo = localFrom + PAGE_SIZE;
-    list = list.slice(localFrom, localTo);
-  }
+  const localFrom = (safePage - 1) * PAGE_SIZE;
+  const localTo = localFrom + PAGE_SIZE;
+  list = list.slice(localFrom, localTo);
   const pageItems = getPageItems(safePage, totalPages);
   const itemListJsonLd = buildItemListJsonLd(list, safePage);
 
   return (
     <div className="container px-4 py-6 md:py-8">
-      <script
+      <Script
+        id="tours-itemlist-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
       />
