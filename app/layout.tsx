@@ -27,13 +27,13 @@ const bebasNeue = Bebas_Neue({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "COMMTOURS | 尋找香港最適合你的旅行團",
+    default: "COMMTOURS | 尋找最適合你的旅行團",
     template: "%s | CommTours",
   },
   description:
     "連結世界，比較精彩。一站篩選香港出發的歐洲深度、潛水、極光、郵輪等長線及特色團體行程，享早鳥優惠。",
   openGraph: {
-    title: "COMMTOURS | 尋找香港最適合你的旅行團",
+    title: "COMMTOURS | 尋找最適合你的旅行團",
     description:
       "連結世界，比較精彩。一站篩選香港出發的長線及特色團體行程。",
     type: "website",
