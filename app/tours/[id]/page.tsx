@@ -249,9 +249,9 @@ export default async function TourDetailPage({
                 <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
                   <span>{tour.agency}</span>
                   {agencyReviewSummary && agencyReviewSummary.total > 0 ? (
-                    <span className="rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-900 dark:bg-amber-950/50 dark:text-amber-100">
+                    <span className="rounded-md bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-900">
                       全站平均 {agencyReviewSummary.overallAvg.toFixed(1)}★
-                      <span className="font-normal text-amber-800/80 dark:text-amber-200/80">
+                      <span className="font-normal text-amber-800/80">
                         （{agencyReviewSummary.total} 則已審核評價）
                       </span>
                     </span>

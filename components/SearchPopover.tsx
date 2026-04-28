@@ -70,7 +70,7 @@ export function SearchPopover() {
         <>
           <button
             type="button"
-            className="fixed inset-0 z-[90] bg-neutral-950/55 dark:bg-black/65"
+            className="fixed inset-0 z-[90] bg-neutral-950/55"
             aria-label="關閉篩選"
             onClick={() => setOpen(false)}
           />

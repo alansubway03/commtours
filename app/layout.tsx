@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from "@/components/ThemeProvider";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PWARegister } from "@/components/PWARegister";
@@ -28,13 +27,13 @@ const bebasNeue = Bebas_Neue({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "CommTours | 香港出發長線及特色團比價",
+    default: "COMMTOURS | 尋找香港最適合你的旅行團",
     template: "%s | CommTours",
   },
   description:
     "連結世界，比較精彩。一站篩選香港出發的歐洲深度、潛水、極光、郵輪等長線及特色團體行程，享早鳥優惠。",
   openGraph: {
-    title: "CommTours | 香港出發長線及特色團比價",
+    title: "COMMTOURS | 尋找香港最適合你的旅行團",
     description:
       "連結世界，比較精彩。一站篩選香港出發的長線及特色團體行程。",
     type: "website",
@@ -60,23 +59,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-HK" suppressHydrationWarning>
+    <html lang="zh-HK">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} min-h-screen antialiased`}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <PWARegister />
-          <div className="relative flex min-h-screen flex-col">
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <PWARegister />
+        <div className="relative flex min-h-screen flex-col">
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

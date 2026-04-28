@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ThemeToggle";
 import { SearchPopover } from "@/components/SearchPopover";
 import { CommToursLogo } from "@/components/CommToursLogo";
 import { getCurrentMember } from "@/lib/memberAuth";
@@ -27,7 +26,6 @@ export async function Navbar() {
             <Link href="/member">{memberLabel}</Link>
           </Button>
           <SearchPopover />
-          <ThemeToggle />
         </nav>
       </div>
     </header>
