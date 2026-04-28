@@ -12,6 +12,10 @@ function scoreLabel(n: number): string {
   return n.toFixed(1);
 }
 
+function feeLabel(n: number): string {
+  return n.toFixed(2);
+}
+
 export function TourReviewBrowseClient({ reviews }: { reviews: TourReviewListItem[] }) {
   const [active, setActive] = useState<TourReviewListItem | null>(null);
 
@@ -118,8 +122,18 @@ export function TourReviewBrowseClient({ reviews }: { reviews: TourReviewListIte
               <p>行程：{active.itineraryRating} / 5</p>
               <p>膳食：{active.mealRating} / 5</p>
               <p>住宿：{active.hotelRating} / 5</p>
-              <p>導遊/領隊：{active.guideRating} / 5</p>
+              <p>工作人員：{active.guideRating} / 5</p>
+              <p>性價比：{active.valueRating} / 5</p>
               <p className="col-span-2">會否再報此旅行社：{active.willRebook ? "會" : "不會"}</p>
+            </div>
+
+            <div className="mb-4 grid grid-cols-2 gap-2 text-sm">
+              <p>團費：HKD {feeLabel(active.baseFeeHkd)}</p>
+              <p>自費活動：HKD {feeLabel(active.optionalActivityFeeHkd)}</p>
+              <p>服務費：HKD {feeLabel(active.staffServiceFeeHkd)}</p>
+              <p className="font-medium">
+                總收費：HKD {feeLabel(active.baseFeeHkd + active.optionalActivityFeeHkd + active.staffServiceFeeHkd)}
+              </p>
             </div>
 
             {active.photos.length > 0 ? (

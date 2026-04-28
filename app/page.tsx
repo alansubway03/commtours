@@ -1,9 +1,11 @@
 import Image from "next/image";
 import { getTours } from "@/lib/data/tours";
+import { getAgencyScoreMap } from "@/lib/data/reviews";
 import { HomeTourSections } from "@/components/HomeTourSections";
 
 export default async function HomePage() {
   const tours = await getTours();
+  const agencyScoreMap = await getAgencyScoreMap(tours.map((tour) => String(tour.agency)));
 
   return (
     <div>
@@ -29,7 +31,7 @@ export default async function HomePage() {
       </section>
 
       {/* 類型分頁：熱門行程 + 各類型旅行團 */}
-      <HomeTourSections tours={tours} />
+      <HomeTourSections tours={tours} agencyScoreMap={agencyScoreMap} />
     </div>
   );
 }

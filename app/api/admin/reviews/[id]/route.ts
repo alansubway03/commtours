@@ -36,7 +36,7 @@ export async function PATCH(
 
   const supabase = createSupabaseAdminClient();
   const { data, error } = await supabase
-    .from("tour_review")
+    .from("agency_review")
     .update({
       moderation_status,
       moderated_at: now,

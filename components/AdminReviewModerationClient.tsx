@@ -6,13 +6,14 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export type AdminReviewItem = {
   id: string;
-  tour_id: number;
+  source_tour_id: number | null;
   moderation_status: "pending" | "approved" | "rejected";
   reviewer_display_name: string | null;
   itinerary_rating: number;
   meal_rating: number;
   hotel_rating: number;
   guide_rating: number;
+  value_rating: number | null;
   will_rebook: boolean;
   comment: string | null;
   extra_info: string | null;
@@ -20,11 +21,17 @@ export type AdminReviewItem = {
   created_at: string;
   tour: { id: string; title: string; agency: string } | { id: string; title: string; agency: string }[] | null;
   member_account: { email: string | null; member_name: string | null } | { email: string | null; member_name: string | null }[] | null;
-  tour_review_photo: { id: string; public_url: string; created_at: string }[] | null;
+  agency_review_photo: { id: string; public_url: string; created_at: string }[] | null;
 };
 
 function avgScore(x: AdminReviewItem): string {
-  const n = (x.itinerary_rating + x.meal_rating + x.hotel_rating + x.guide_rating) / 4;
+  const n =
+    (x.itinerary_rating +
+      x.meal_rating +
+      x.hotel_rating +
+      x.guide_rating +
+      Number(x.value_rating ?? 3)) /
+    5;
   return n.toFixed(1);
 }
 
@@ -79,14 +86,14 @@ export function AdminReviewModerationClient({ initialReviews }: { initialReviews
       {reviews.map((review) => {
         const tour = toOne(review.tour);
         const member = toOne(review.member_account);
-        const photos = Array.isArray(review.tour_review_photo) ? review.tour_review_photo : [];
+        const photos = Array.isArray(review.agency_review_photo) ? review.agency_review_photo : [];
         const cover = photos[0]?.public_url ?? "";
         return (
           <Card key={review.id}>
             <CardHeader>
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <h3 className="text-base font-semibold">
-                  {tour?.title ?? `Tour #${review.tour_id}`} · {tour?.agency ?? "未知旅行社"}
+                  {tour?.title ?? `Tour #${review.source_tour_id ?? "N/A"}`} · {tour?.agency ?? "未知旅行社"}
                 </h3>
                 <span className="text-xs text-muted-foreground">
                   {new Date(review.created_at).toLocaleString("zh-HK")}
@@ -99,7 +106,7 @@ export function AdminReviewModerationClient({ initialReviews }: { initialReviews
               </p>
               <p>
                 平均分：{avgScore(review)} / 5（行程 {review.itinerary_rating} / 膳食 {review.meal_rating} / 住宿{" "}
-                {review.hotel_rating} / 導遊 {review.guide_rating}）
+                {review.hotel_rating} / 導遊 {review.guide_rating} / 性價比 {Number(review.value_rating ?? 3)}）
               </p>
               <p>會否再報：{review.will_rebook ? "會" : "不會"}</p>
               {review.comment ? <p className="whitespace-pre-wrap">評語：{review.comment}</p> : null}

@@ -13,25 +13,26 @@ export default async function AdminReviewsPage() {
 
   const supabase = createSupabaseAdminClient();
   const { data } = await supabase
-    .from("tour_review")
+    .from("agency_review")
     .select(
       `
       id,
-      tour_id,
+      source_tour_id,
       moderation_status,
       reviewer_display_name,
       itinerary_rating,
       meal_rating,
       hotel_rating,
       guide_rating,
+      value_rating,
       will_rebook,
       comment,
       extra_info,
       participation_proof,
       created_at,
-      tour(id, title, agency),
+      tour:source_tour_id(id, title, agency),
       member_account(email, member_name),
-      tour_review_photo(id, public_url, created_at)
+      agency_review_photo(id, public_url, created_at)
     `
     )
     .eq("moderation_status", "pending")

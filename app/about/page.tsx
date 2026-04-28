@@ -17,7 +17,7 @@ export default function AboutPage() {
     <div className="container px-4 py-10 md:py-16">
       <header className="mx-auto max-w-3xl text-center">
         <Image
-          src="/logo-brand.png"
+          src="/logo-header-circle.png?v=20260427a"
           alt="CommTours"
           width={1024}
           height={1024}

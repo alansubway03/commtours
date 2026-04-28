@@ -190,23 +190,6 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
     setVerifyMessage(json.message ?? "驗證碼已重發。");
   }
 
-  async function toggleSubscribe(next: boolean) {
-    setLoading(true);
-    const res = await fetch("/api/member/subscribe", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ subscribed: next }),
-    });
-    const json = await res.json();
-    setLoading(false);
-    if (!res.ok) {
-      setMessage(json.error ?? "更新訂閱失敗");
-      return;
-    }
-    setMessage(next ? "已訂閱每週推廣 email。" : "已取消每週推廣 email。");
-    await refreshMe();
-  }
-
   async function onSaveProfile(e: FormEvent) {
     e.preventDefault();
     setLoading(true);
@@ -379,19 +362,11 @@ export function MemberAuthPanel({ initialMember = null }: { initialMember?: Memb
               </form>
             </>
           )}
-          <div className="flex items-center gap-2">
-            <Checkbox
-              id="weekly-promo"
-              checked={member.weeklyPromoSubscribed}
-              onCheckedChange={(v) => {
-                void toggleSubscribe(Boolean(v));
-              }}
-              disabled={loading}
-            />
-            <Label htmlFor="weekly-promo">接收每星期推廣（Email）</Label>
-          </div>
           <Button type="button" variant="outline" onClick={onLogout} disabled={loading}>
             登出
+          </Button>
+          <Button type="button" variant="outline" asChild>
+            <Link href="/reviews/my">我的分享</Link>
           </Button>
           {member.isAdmin ? (
             <Button type="button" asChild>

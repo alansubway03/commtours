@@ -52,6 +52,9 @@ export function TourReviewForm({ tourId }: { tourId: string }) {
   const [comment, setComment] = useState("");
   const [extraInfo, setExtraInfo] = useState("");
   const [participationProof, setParticipationProof] = useState("");
+  const [baseFeeHkd, setBaseFeeHkd] = useState("0");
+  const [optionalActivityFeeHkd, setOptionalActivityFeeHkd] = useState("0");
+  const [staffServiceFeeHkd, setStaffServiceFeeHkd] = useState("0");
   const [photos, setPhotos] = useState<UploadedPhoto[]>([]);
 
   useEffect(() => {
@@ -103,6 +106,9 @@ export function TourReviewForm({ tourId }: { tourId: string }) {
         comment,
         extraInfo,
         participationProof,
+        baseFeeHkd: Number(baseFeeHkd || 0),
+        optionalActivityFeeHkd: Number(optionalActivityFeeHkd || 0),
+        staffServiceFeeHkd: Number(staffServiceFeeHkd || 0),
         photos,
       }),
     });
@@ -116,6 +122,9 @@ export function TourReviewForm({ tourId }: { tourId: string }) {
     setComment("");
     setExtraInfo("");
     setParticipationProof("");
+    setBaseFeeHkd("0");
+    setOptionalActivityFeeHkd("0");
+    setStaffServiceFeeHkd("0");
     setPhotos([]);
   }
 
@@ -153,7 +162,7 @@ export function TourReviewForm({ tourId }: { tourId: string }) {
           <RatingField id="itinerary-rating" label="行程" value={itineraryRating} onChange={setItineraryRating} />
           <RatingField id="meal-rating" label="膳食" value={mealRating} onChange={setMealRating} />
           <RatingField id="hotel-rating" label="住宿" value={hotelRating} onChange={setHotelRating} />
-          <RatingField id="guide-rating" label="導遊/領隊表現" value={guideRating} onChange={setGuideRating} />
+          <RatingField id="guide-rating" label="工作人員表現" value={guideRating} onChange={setGuideRating} />
 
           <div className="space-y-1">
             <Label htmlFor="will-rebook">會否再報此旅行社</Label>
@@ -177,6 +186,55 @@ export function TourReviewForm({ tourId }: { tourId: string }) {
               onChange={(e) => setParticipationProof(e.target.value)}
               required
             />
+          </div>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="space-y-1">
+              <Label htmlFor="base-fee-hkd">團費（HKD）</Label>
+              <Input
+                id="base-fee-hkd"
+                type="number"
+                min={0}
+                step="0.01"
+                value={baseFeeHkd}
+                onChange={(e) => setBaseFeeHkd(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="optional-activity-fee-hkd">自費活動（HKD）</Label>
+              <Input
+                id="optional-activity-fee-hkd"
+                type="number"
+                min={0}
+                step="0.01"
+                value={optionalActivityFeeHkd}
+                onChange={(e) => setOptionalActivityFeeHkd(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-1">
+              <Label htmlFor="staff-service-fee-hkd">領隊導遊服務費（HKD）</Label>
+              <Input
+                id="staff-service-fee-hkd"
+                type="number"
+                min={0}
+                step="0.01"
+                value={staffServiceFeeHkd}
+                onChange={(e) => setStaffServiceFeeHkd(e.target.value)}
+                required
+              />
+            </div>
+            <div className="space-y-1 rounded-md border p-3 text-sm">
+              <p className="text-muted-foreground">總收費（HKD）</p>
+              <p className="text-lg font-semibold">
+                {(
+                  Number(baseFeeHkd || 0) +
+                  Number(optionalActivityFeeHkd || 0) +
+                  Number(staffServiceFeeHkd || 0)
+                ).toFixed(2)}
+              </p>
+            </div>
           </div>
 
           <div className="space-y-1">

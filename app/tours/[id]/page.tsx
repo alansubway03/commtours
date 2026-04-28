@@ -4,7 +4,7 @@ import Link from "next/link";
 import Script from "next/script";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import { getTourById } from "@/lib/data/tours";
-import { getAgencyReviewSummary, getTourReviewSummary } from "@/lib/data/reviews";
+import { getAgencyReviewSummary } from "@/lib/data/reviews";
 import { canonicalTourRegion } from "@/lib/canonicalTourRegion";
 import { filterDeparturesForDisplay } from "@/lib/departureDisplay";
 import { AffiliateButton } from "@/components/AffiliateButton";
@@ -83,10 +83,7 @@ export default async function TourDetailPage({
   const tour = await getTourById(id);
   if (!tour) notFound();
 
-  const [reviewSummary, agencyReviewSummary] = await Promise.all([
-    getTourReviewSummary(id),
-    getAgencyReviewSummary(tour.agency),
-  ]);
+  const agencyReviewSummary = await getAgencyReviewSummary(tour.agency);
 
   const Icon = TYPE_ICONS[tour.type] ?? Plane;
   const regionLabel = canonicalTourRegion(tour);
@@ -304,7 +301,21 @@ export default async function TourDetailPage({
           </Card>
 
           <TourReviewForm tourId={tour.id} />
-          <TourReviewList tourId={tour.id} summary={reviewSummary} />
+          <TourReviewList
+            tourId={tour.id}
+            agency={tour.agency}
+            summary={
+              agencyReviewSummary ?? {
+                total: 0,
+                itineraryAvg: 0,
+                mealAvg: 0,
+                hotelAvg: 0,
+                guideAvg: 0,
+                valueAvg: 0,
+                overallAvg: 0,
+              }
+            }
+          />
         </div>
 
         <div className="lg:col-span-1">

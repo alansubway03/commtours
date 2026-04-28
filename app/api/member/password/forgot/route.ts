@@ -15,6 +15,12 @@ function genericOk() {
   });
 }
 
+function isMissingResetTokenTable(error: unknown): boolean {
+  if (!error || typeof error !== "object") return false;
+  const message = String((error as { message?: unknown }).message ?? "");
+  return message.includes("member_password_reset_token");
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -27,7 +33,7 @@ export async function POST(req: Request) {
     const { data: member } = await supabase
       .from("member_account")
       .select("id, email")
-      .eq("email", email)
+      .ilike("email", email)
       .maybeSingle();
 
     if (!member?.id) {
@@ -52,17 +58,27 @@ export async function POST(req: Request) {
       expires_at: expiresAt,
     });
     if (tokenErr) {
+      if (isMissingResetTokenTable(tokenErr)) {
+        return NextResponse.json(
+          { error: "系統尚未完成密碼重設初始化，請先執行 member_password_reset migration。" },
+          { status: 500 }
+        );
+      }
       return NextResponse.json({ error: "建立重設連結失敗。" }, { status: 500 });
     }
 
     const siteUrl =
       process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
     const resetUrl = `${siteUrl.replace(/\/$/, "")}/member/reset-password?token=${rawToken}`;
-    await sendPasswordResetEmail({
-      to: member.email as string,
-      resetUrl,
-      expireMinutes: PASSWORD_RESET_EXPIRE_MINUTES,
-    });
+    try {
+      await sendPasswordResetEmail({
+        to: member.email as string,
+        resetUrl,
+        expireMinutes: PASSWORD_RESET_EXPIRE_MINUTES,
+      });
+    } catch {
+      return NextResponse.json({ error: "寄送重設電郵失敗，請檢查 SMTP 設定。" }, { status: 500 });
+    }
 
     return genericOk();
   } catch {

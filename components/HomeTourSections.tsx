@@ -32,6 +32,7 @@ const PAGE_SIZE = 12;
 
 interface HomeTourSectionsProps {
   tours: Tour[];
+  agencyScoreMap: Record<string, number>;
 }
 
 function parsePriceRange(range: string): [number, number] {
@@ -66,7 +67,7 @@ function matchesMonth(t: Tour, monthLabel: string): boolean {
   });
 }
 
-export function HomeTourSections({ tours }: HomeTourSectionsProps) {
+export function HomeTourSections({ tours, agencyScoreMap }: HomeTourSectionsProps) {
   const [activeTab, setActiveTab] = useState<"popular" | TourType>("popular");
   const [region, setRegion] = useState<string>("不限"); // 原有快捷篩選保留
   const [destination, setDestination] = useState("");
@@ -352,7 +353,12 @@ export function HomeTourSections({ tours }: HomeTourSectionsProps) {
           </p>
         ) : (
           pagedTours.map((tour) => (
-            <TourCard key={tour.id} tour={tour} showAffiliate />
+            <TourCard
+              key={tour.id}
+              tour={tour}
+              showAffiliate
+              agencyScore={agencyScoreMap[String(tour.agency).trim()]}
+            />
           ))
         )}
       </div>

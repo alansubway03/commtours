@@ -42,13 +42,21 @@ export async function POST(req: Request) {
       );
     }
 
-    const { data, error } = await supabase
+    let memberQuery = await supabase
       .from("member_account")
       .select(
         "id, email, member_name, password_hash, weekly_promo_subscribed, failed_login_count, login_locked_until"
       )
-      .eq("email", email)
+      .ilike("email", email)
       .maybeSingle();
+    if (memberQuery.error && isMissingColumnError(memberQuery.error)) {
+      memberQuery = await supabase
+        .from("member_account")
+        .select("id, email, member_name, password_hash, weekly_promo_subscribed")
+        .ilike("email", email)
+        .maybeSingle();
+    }
+    const { data, error } = memberQuery;
 
     if (error || !data) {
       const failedCount = Number(ipAttempt?.failed_count ?? 0) + 1;

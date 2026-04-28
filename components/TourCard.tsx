@@ -22,6 +22,7 @@ const TYPE_ICONS: Record<Tour["type"], React.ComponentType<{ className?: string 
 interface TourCardProps {
   tour: Tour;
   showAffiliate?: boolean;
+  agencyScore?: number;
 }
 
 function destinationOrRegionLine(tour: Tour): string | null {
@@ -33,7 +34,7 @@ function destinationOrRegionLine(tour: Tour): string | null {
   return null;
 }
 
-export function TourCard({ tour, showAffiliate = true }: TourCardProps) {
+export function TourCard({ tour, showAffiliate = true, agencyScore }: TourCardProps) {
   const Icon = TYPE_ICONS[tour.type];
   const primary = pickPrimaryAffiliate(tour.affiliate_links as Record<string, unknown>);
   const firstLink = primary?.url;
@@ -71,6 +72,9 @@ export function TourCard({ tour, showAffiliate = true }: TourCardProps) {
           <h3 className="line-clamp-2 font-semibold leading-tight">{tour.title}</h3>
           <p className="mt-1.5 text-sm leading-snug">
             <span className="font-medium text-foreground/90">{tour.agency}</span>
+            {typeof agencyScore === "number" ? (
+              <span className="ml-1 font-semibold text-amber-700">{agencyScore.toFixed(1)}⭐</span>
+            ) : null}
             {placeLine ? (
               <span className="text-muted-foreground"> · {placeLine}</span>
             ) : null}

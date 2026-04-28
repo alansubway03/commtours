@@ -14,6 +14,7 @@ import {
   parseDepartureDay,
 } from "@/lib/departureDisplay";
 import { agenciesFromSlugs } from "@/lib/agencies";
+import { getAgencyScoreMap } from "@/lib/data/reviews";
 import {
   Card,
   CardContent,
@@ -344,6 +345,7 @@ export default async function ToursPage({
   const localFrom = (safePage - 1) * PAGE_SIZE;
   const localTo = localFrom + PAGE_SIZE;
   list = list.slice(localFrom, localTo);
+  const agencyScoreMap = await getAgencyScoreMap(list.map((x) => String(x.agency ?? "")));
   const pageItems = getPageItems(safePage, totalPages);
   const itemListJsonLd = buildItemListJsonLd(list, safePage);
 
@@ -432,6 +434,17 @@ export default async function ToursPage({
                         </h2>
                         <p className="flex flex-wrap items-center gap-1.5 text-sm text-muted-foreground">
                           <span>{row.agency}</span>
+                          {agencyScoreMap[row.agency] != null ? (
+                            <>
+                              <span>·</span>
+                              <Link
+                                href={`/reviews?agency=${encodeURIComponent(row.agency)}`}
+                                className="font-medium text-amber-700 hover:underline"
+                              >
+                                {agencyScoreMap[row.agency]!.toFixed(1)}⭐
+                              </Link>
+                            </>
+                          ) : null}
                           <span>·</span>
                           <span className="inline-flex items-center gap-0.5">
                             <CalendarDays className="h-3.5 w-3.5" />

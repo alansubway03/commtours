@@ -12,7 +12,7 @@ export function Footer() {
               className="mb-3 inline-flex items-center text-foreground hover:opacity-90"
             >
               <Image
-                src="/logo-brand.png"
+                src="/logo-header-circle.png?v=20260427a"
                 alt="CommTours"
                 width={1024}
                 height={1024}

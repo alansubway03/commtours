@@ -21,11 +21,11 @@ export async function GET(req: Request) {
 
   const supabase = createSupabaseAdminClient();
   let q = supabase
-    .from("tour_review")
+    .from("agency_review")
     .select(
       `
       id,
-      tour_id,
+      source_tour_id,
       member_id,
       moderation_status,
       moderation_note,
@@ -35,14 +35,15 @@ export async function GET(req: Request) {
       meal_rating,
       hotel_rating,
       guide_rating,
+      value_rating,
       will_rebook,
       comment,
       extra_info,
       participation_proof,
       created_at,
-      tour(id, title, agency),
+      tour:source_tour_id(id, title, agency),
       member_account(email, member_name),
-      tour_review_photo(id, public_url, created_at)
+      agency_review_photo(id, public_url, created_at)
     `
     )
     .order("created_at", { ascending: false })

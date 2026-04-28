@@ -11,14 +11,11 @@
  * 可選：管理安全概覽 API（須與伺服器 .env.local 的 ADMIN_DASHBOARD_KEY 相同）
  *   SMOKE_ADMIN_KEY=你的密鑰 npx tsx scripts/smoke-e2e-member.ts
  *
- * 含登入失敗鎖定（帳號維度）：需已套用 migration 013／014 與 SERVICE ROLE。
+ * 註冊後流程採 Email OTP 驗證模式（不接受註冊後自動登入）。
  */
 const base = process.env.SMOKE_BASE_URL?.trim() || "http://localhost:3000";
 const smokeAdminKey = process.env.SMOKE_ADMIN_KEY?.trim();
 const skipServerWait = process.env.SMOKE_SKIP_SERVER_WAIT === "1";
-
-/** 與 lib/memberSecurity.ts 的 LOGIN_MAX_ATTEMPTS 保持一致 */
-const LOGIN_MAX_ATTEMPTS = 5;
 
 function sleep(ms: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, ms));
@@ -67,16 +64,6 @@ async function run() {
     return { status: res.status, body: await res.text() };
   }
 
-  /** 不帶 session cookie，避免干擾登入鎖定計次 */
-  async function postLoginOnly(body: object): Promise<HttpRes> {
-    const res = await fetch(`${base}/api/member/login`, {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    return { status: res.status, body: await res.text() };
-  }
-
   function assertOk(label: string, cond: boolean, detail: string) {
     if (!cond) throw new Error(`${label} 失敗: ${detail}`);
     console.log(`✓ ${label}`);
@@ -102,57 +89,24 @@ async function run() {
   assertOk("註冊", register.status === 200, `${register.status} ${register.body}`);
 
   const me1 = await req("/api/member/me");
-  assertOk("註冊後已登入", me1.status === 200 && me1.body.includes('"authenticated":true'), me1.body);
-
-  const profile = await req("/api/member/profile", {
-    method: "PUT",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      email,
-      tel: "+852 9876 5432",
-    }),
-  });
-  assertOk("更新 email/電話", profile.status === 200, `${profile.status} ${profile.body}`);
-
-  const password = await req("/api/member/password", {
-    method: "PUT",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({
-      currentPassword: "abc12345",
-      newPassword: "new12345",
-      confirmPassword: "new12345",
-    }),
-  });
-  assertOk("更改密碼", password.status === 200, `${password.status} ${password.body}`);
-
-  const logout = await req("/api/member/logout", { method: "POST" });
-  assertOk("登出", logout.status === 200, `${logout.status} ${logout.body}`);
-
-  const me2 = await req("/api/member/me");
-  assertOk("登出後未登入", me2.status === 200 && me2.body.includes('"authenticated":false'), me2.body);
-
-  const finalPassword = "new12345";
-  const wrongPassword = "definitely-wrong-pass9";
-  for (let i = 1; i < LOGIN_MAX_ATTEMPTS; i++) {
-    const bad = await postLoginOnly({ email, password: wrongPassword });
-    assertOk(
-      `錯誤密碼登入第 ${i} 次應 401`,
-      bad.status === 401,
-      `${bad.status} ${bad.body}`
-    );
-  }
-  const lockNth = await postLoginOnly({ email, password: wrongPassword });
+  const registerBody = (() => {
+    try {
+      return JSON.parse(register.body) as {
+        ok?: boolean;
+        needEmailVerification?: boolean;
+        codeSent?: boolean;
+      };
+    } catch {
+      return {};
+    }
+  })();
+  const needsEmailVerification = Boolean(registerBody.needEmailVerification);
   assertOk(
-    `第 ${LOGIN_MAX_ATTEMPTS} 次錯誤密碼應鎖定帳號 (429)`,
-    lockNth.status === 429,
-    `${lockNth.status} ${lockNth.body}`
+    "註冊後需 Email 驗證（OTP 流程）",
+    needsEmailVerification,
+    `register=${register.body} / me=${me1.body}`
   );
-  const stillLocked = await postLoginOnly({ email, password: finalPassword });
-  assertOk(
-    "鎖定期間正確密碼仍應拒絕 (429)",
-    stillLocked.status === 429,
-    `${stillLocked.status} ${stillLocked.body}`
-  );
+  assertOk("註冊後未登入", me1.status === 200 && me1.body.includes('"authenticated":false'), me1.body);
 
   const reviewNoAuth = await req("/api/reviews", {
     method: "POST",
