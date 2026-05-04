@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     }
 
     const supabase = createSupabaseAdminClient();
-    const meta = await getRequestMeta();
+    const meta = await getRequestMeta(req);
     const ip = meta.ip || "unknown";
 
     const { data: ipAttempt } = await supabase
