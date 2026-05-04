@@ -1,9 +1,42 @@
 import { randomBytes, randomUUID, scryptSync, timingSafeEqual } from "crypto";
+import type { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createSupabaseAdminClient } from "@/lib/supabaseAdmin";
 
 const SESSION_COOKIE_NAME = "member_session_token";
 const SESSION_DAYS = 30;
+
+function getSessionCookieOptions() {
+  return {
+    httpOnly: true,
+    sameSite: "lax" as const,
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: SESSION_DAYS * 24 * 60 * 60,
+  };
+}
+
+/** 寫入會員 session cookie（請優先用於 Route Handler 的 NextResponse，較 `cookies().set` 穩定） */
+export function attachMemberSessionCookie(res: NextResponse, sessionToken: string) {
+  res.cookies.set(SESSION_COOKIE_NAME, sessionToken, getSessionCookieOptions());
+}
+
+export async function createMemberSessionToken(memberId: string): Promise<string | null> {
+  const supabase = createSupabaseAdminClient();
+  const sessionToken = randomUUID();
+  const expiresAt = new Date(Date.now() + SESSION_DAYS * 24 * 60 * 60 * 1000).toISOString();
+
+  const { error } = await supabase.from("member_session").insert({
+    member_id: memberId,
+    session_token: sessionToken,
+    expires_at: expiresAt,
+  });
+  if (error) {
+    console.error("[member_session] insert failed", error);
+    return null;
+  }
+  return sessionToken;
+}
 
 function hashPassword(password: string, salt: string): string {
   return scryptSync(password, salt, 64).toString("hex");
@@ -23,28 +56,6 @@ export function verifyPassword(password: string, stored: string): boolean {
   const calculatedBuf = Buffer.from(calculated, "hex");
   if (digestBuf.length !== calculatedBuf.length) return false;
   return timingSafeEqual(digestBuf, calculatedBuf);
-}
-
-export async function createMemberSession(memberId: string) {
-  const supabase = createSupabaseAdminClient();
-  const sessionToken = randomUUID();
-  const expiresAt = new Date(Date.now() + SESSION_DAYS * 24 * 60 * 60 * 1000).toISOString();
-
-  const { error } = await supabase.from("member_session").insert({
-    member_id: memberId,
-    session_token: sessionToken,
-    expires_at: expiresAt,
-  });
-  if (error) throw error;
-
-  const cookieStore = await cookies();
-  cookieStore.set(SESSION_COOKIE_NAME, sessionToken, {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    maxAge: SESSION_DAYS * 24 * 60 * 60,
-  });
 }
 
 export async function getCurrentMember() {

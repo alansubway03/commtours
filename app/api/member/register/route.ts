@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { buildPasswordHash, createMemberSession } from "@/lib/memberAuth";
+import {
+  attachMemberSessionCookie,
+  buildPasswordHash,
+  createMemberSessionToken,
+} from "@/lib/memberAuth";
 import { createSupabaseAdminClient } from "@/lib/supabaseAdmin";
 import { EmailOtpError, issueEmailOtp } from "@/lib/memberEmailOtp";
 import {
@@ -126,8 +130,14 @@ export async function POST(req: Request) {
         err instanceof EmailOtpError &&
         err.message.includes("建立驗證碼失敗")
       ) {
-        await createMemberSession(data.id);
-        return NextResponse.json({
+        const sessionToken = await createMemberSessionToken(data.id);
+        if (!sessionToken) {
+          return NextResponse.json(
+            { error: "無法建立登入工作階段，請稍後再試。" },
+            { status: 503 }
+          );
+        }
+        const otpRes = NextResponse.json({
           ok: true,
           member: {
             id: data.id,
@@ -139,6 +149,8 @@ export async function POST(req: Request) {
           message:
             "註冊成功，已自動登入。提示：請先執行 migration 018 啟用 Email OTP。",
         });
+        attachMemberSessionCookie(otpRes, sessionToken);
+        return otpRes;
       }
       if (err instanceof EmailOtpError) {
         return NextResponse.json(

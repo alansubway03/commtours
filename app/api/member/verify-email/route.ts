@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createMemberSession } from "@/lib/memberAuth";
+import { attachMemberSessionCookie, createMemberSessionToken } from "@/lib/memberAuth";
 import { createSupabaseAdminClient } from "@/lib/supabaseAdmin";
 import { EmailOtpError, verifyEmailOtp } from "@/lib/memberEmailOtp";
 import { isValidEmail, normalizeEmail } from "@/lib/memberValidation";
@@ -51,8 +51,16 @@ export async function POST(req: Request) {
       }
     }
 
-    await createMemberSession(String(member.id));
-    return NextResponse.json({ ok: true, message: "Email 驗證成功，已為你登入。" });
+    const sessionToken = await createMemberSessionToken(String(member.id));
+    if (!sessionToken) {
+      return NextResponse.json(
+        { error: "無法建立登入工作階段，請稍後再試。" },
+        { status: 503 }
+      );
+    }
+    const res = NextResponse.json({ ok: true, message: "Email 驗證成功，已為你登入。" });
+    attachMemberSessionCookie(res, sessionToken);
+    return res;
   } catch {
     return NextResponse.json({ error: "請求格式不正確。" }, { status: 400 });
   }

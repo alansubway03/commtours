@@ -1,5 +1,9 @@
 import { NextResponse } from "next/server";
-import { createMemberSession, verifyPassword } from "@/lib/memberAuth";
+import {
+  attachMemberSessionCookie,
+  createMemberSessionToken,
+  verifyPassword,
+} from "@/lib/memberAuth";
 import { createSupabaseAdminClient } from "@/lib/supabaseAdmin";
 import { EmailOtpError, issueEmailOtp } from "@/lib/memberEmailOtp";
 import { isValidEmail, normalizeEmail } from "@/lib/memberValidation";
@@ -12,8 +16,13 @@ function isMissingColumnError(x: unknown): boolean {
 }
 
 export async function POST(req: Request) {
+  let body: { email?: unknown; password?: unknown };
   try {
-    const body = await req.json();
+    body = await req.json();
+  } catch {
+    return NextResponse.json({ error: "請求格式不正確。" }, { status: 400 });
+  }
+  try {
     const email = normalizeEmail(body.email);
     const password = String(body.password ?? "");
     if (!email || !password) {
@@ -63,17 +72,22 @@ export async function POST(req: Request) {
       const lockAt = failedCount >= LOGIN_MAX_ATTEMPTS
         ? new Date(Date.now() + LOGIN_LOCK_MINUTES * 60 * 1000).toISOString()
         : null;
-      await supabase.from("member_login_attempt").upsert(
-        {
-          email,
-          ip,
-          failed_count: failedCount,
-          locked_until: lockAt,
-          last_failed_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        },
-        { onConflict: "email,ip" }
-      );
+      try {
+        const ur = await supabase.from("member_login_attempt").upsert(
+          {
+            email,
+            ip,
+            failed_count: failedCount,
+            locked_until: lockAt,
+            last_failed_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "email,ip" }
+        );
+        if (ur.error) console.error("[member_login_attempt] upsert", ur.error);
+      } catch (e) {
+        console.error("[member_login_attempt] upsert threw", e);
+      }
       return NextResponse.json({ error: "帳號或密碼錯誤。" }, { status: 401 });
     }
 
@@ -103,17 +117,22 @@ export async function POST(req: Request) {
       const ipLockAt = ipFailed >= LOGIN_MAX_ATTEMPTS
         ? new Date(Date.now() + LOGIN_LOCK_MINUTES * 60 * 1000).toISOString()
         : null;
-      await supabase.from("member_login_attempt").upsert(
-        {
-          email,
-          ip,
-          failed_count: ipFailed,
-          locked_until: ipLockAt,
-          last_failed_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        },
-        { onConflict: "email,ip" }
-      );
+      try {
+        const ur = await supabase.from("member_login_attempt").upsert(
+          {
+            email,
+            ip,
+            failed_count: ipFailed,
+            locked_until: ipLockAt,
+            last_failed_at: new Date().toISOString(),
+            updated_at: new Date().toISOString(),
+          },
+          { onConflict: "email,ip" }
+        );
+        if (ur.error) console.error("[member_login_attempt] upsert", ur.error);
+      } catch (e) {
+        console.error("[member_login_attempt] upsert threw", e);
+      }
       if (lockAt) {
         return NextResponse.json(
           { error: `登入失敗過多，帳號已鎖定 ${LOGIN_LOCK_MINUTES} 分鐘。` },
@@ -131,17 +150,22 @@ export async function POST(req: Request) {
         last_failed_login_at: null,
       })
       .eq("id", data.id);
-    await supabase.from("member_login_attempt").upsert(
-      {
-        email,
-        ip,
-        failed_count: 0,
-        locked_until: null,
-        last_failed_at: null,
-        updated_at: new Date().toISOString(),
-      },
-      { onConflict: "email,ip" }
-    );
+    try {
+      const ur = await supabase.from("member_login_attempt").upsert(
+        {
+          email,
+          ip,
+          failed_count: 0,
+          locked_until: null,
+          last_failed_at: null,
+          updated_at: new Date().toISOString(),
+        },
+        { onConflict: "email,ip" }
+      );
+      if (ur.error) console.error("[member_login_attempt] upsert", ur.error);
+    } catch (e) {
+      console.error("[member_login_attempt] upsert threw", e);
+    }
 
     let emailVerifiedAt: string | null = null;
     const { data: verifyRow, error: verifyErr } = await supabase
@@ -185,8 +209,14 @@ export async function POST(req: Request) {
       );
     }
 
-    await createMemberSession(data.id as string);
-    return NextResponse.json({
+    const sessionToken = await createMemberSessionToken(data.id as string);
+    if (!sessionToken) {
+      return NextResponse.json(
+        { error: "無法建立登入工作階段，請稍後再試。" },
+        { status: 503 }
+      );
+    }
+    const res = NextResponse.json({
       ok: true,
       member: {
         id: data.id,
@@ -195,7 +225,10 @@ export async function POST(req: Request) {
         weeklyPromoSubscribed: Boolean(data.weekly_promo_subscribed),
       },
     });
-  } catch {
-    return NextResponse.json({ error: "請求格式不正確。" }, { status: 400 });
+    attachMemberSessionCookie(res, sessionToken);
+    return res;
+  } catch (err) {
+    console.error("[member/login]", err);
+    return NextResponse.json({ error: "登入暫時失敗，請稍後再試。" }, { status: 500 });
   }
 }
