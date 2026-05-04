@@ -41,6 +41,14 @@ function parseGroupCode(input: string): string {
   return (m?.[1] ?? input).trim();
 }
 
+/** 與 `Number(null) === 0` 區分，自訂旅行社時前端傳 null 不應當成 tour id 0 */
+function parseSourceTourId(raw: unknown): number | null {
+  if (raw === null || raw === undefined || raw === "") return null;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n <= 0 || !Number.isInteger(n)) return null;
+  return n;
+}
+
 export async function POST(req: Request) {
   const member = await getCurrentMember();
   if (!member) {
@@ -49,7 +57,7 @@ export async function POST(req: Request) {
 
   try {
     const body = await req.json();
-    const tourId = Number(body.tourId);
+    const sourceTourId = parseSourceTourId(body.tourId);
     const manualAgency = String(body.agency ?? "").trim();
     const destinationCategory = String(body.destinationCategory ?? "").trim() || "其他";
     const rawGroupCode = String(body.groupCode ?? "").trim();
@@ -100,11 +108,15 @@ export async function POST(req: Request) {
     }
 
     const displayName = reviewerDisplayName(member.memberName);
-    const { data: sourceTour } = Number.isFinite(tourId)
-      ? await supabase.from("tour").select("id,agency").eq("id", tourId).maybeSingle()
-      : { data: null };
+    const { data: sourceTour } =
+      sourceTourId !== null
+        ? await supabase.from("tour").select("id,agency").eq("id", sourceTourId).maybeSingle()
+        : { data: null };
     const agency = manualAgency || String(sourceTour?.agency ?? "").trim();
     if (!agency) return NextResponse.json({ error: "旅行社資料錯誤。" }, { status: 400 });
+    if (agency.length > 120) {
+      return NextResponse.json({ error: "旅行社名稱過長。" }, { status: 400 });
+    }
 
     const { data: existingReview } = await supabase
       .from("agency_review")
@@ -152,7 +164,7 @@ export async function POST(req: Request) {
         agency,
         destination_category: destinationCategory,
         group_code: groupCode,
-        source_tour_id: Number.isFinite(tourId) ? tourId : null,
+        source_tour_id: sourceTourId,
         itinerary_rating: itineraryRating,
         meal_rating: mealRating,
         hotel_rating: hotelRating,
@@ -195,7 +207,7 @@ export async function POST(req: Request) {
       agency,
       destination_category: destinationCategory,
       group_code: groupCode,
-      source_tour_id: Number.isFinite(tourId) ? tourId : null,
+      source_tour_id: sourceTourId,
       member_id: member.id,
       itinerary_rating: itineraryRating,
       meal_rating: mealRating,

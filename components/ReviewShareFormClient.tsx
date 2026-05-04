@@ -128,7 +128,11 @@ export function ReviewShareFormClient({ tours }: { tours: ShareTourSource[] }) {
     setMessage("");
     const selectedAgency = agency === "__other__" ? customAgency.trim() : agency.trim();
     if (!selectedAgency) {
-      setMessage("請先選擇旅行社（或輸入其他旅行社名稱）。");
+      setMessage("請先選擇旅行社；若選「其他」，請輸入旅行社名稱。");
+      return;
+    }
+    if (agency === "__other__" && selectedAgency.length < 2) {
+      setMessage("請輸入至少 2 個字的旅行社名稱。");
       return;
     }
 
@@ -212,7 +216,11 @@ export function ReviewShareFormClient({ tours }: { tours: ShareTourSource[] }) {
                 id="agency"
                 className="h-9 w-full rounded-md border border-input bg-transparent px-3 text-sm"
                 value={agency}
-                onChange={(e) => setAgency(e.target.value)}
+                onChange={(e) => {
+                  const v = e.target.value;
+                  setAgency(v);
+                  if (v !== "__other__") setCustomAgency("");
+                }}
                 required
               >
                 <option value="">請選擇</option>
@@ -221,8 +229,23 @@ export function ReviewShareFormClient({ tours }: { tours: ShareTourSource[] }) {
                     {item}
                   </option>
                 ))}
-                <option value="__other__">其他（自行輸入）</option>
+                <option value="__other__">其他</option>
               </select>
+              {agency === "__other__" ? (
+                <div className="space-y-1 pt-2">
+                  <Label htmlFor="custom-agency">請輸入旅行社名稱</Label>
+                  <Input
+                    id="custom-agency"
+                    value={customAgency}
+                    onChange={(e) => setCustomAgency(e.target.value)}
+                    placeholder="例如：某某假期"
+                    maxLength={120}
+                    autoComplete="organization"
+                    required
+                  />
+                  <p className="text-xs text-muted-foreground">請填寫正式／常用名稱，方便管理員審核。</p>
+                </div>
+              ) : null}
             </div>
             <div className="space-y-1">
               <Label htmlFor="country-category">目的地</Label>
@@ -254,19 +277,6 @@ export function ReviewShareFormClient({ tours }: { tours: ShareTourSource[] }) {
               required
             />
           </div>
-
-          {agency === "__other__" ? (
-            <div className="space-y-1">
-              <Label htmlFor="custom-agency">其他旅行社名稱</Label>
-              <Input
-                id="custom-agency"
-                value={customAgency}
-                onChange={(e) => setCustomAgency(e.target.value)}
-                placeholder="請輸入旅行社名稱"
-                required
-              />
-            </div>
-          ) : null}
 
           <RatingField id="itinerary-rating" label="行程" value={itineraryRating} onChange={setItineraryRating} />
           <RatingField id="meal-rating" label="膳食" value={mealRating} onChange={setMealRating} />
