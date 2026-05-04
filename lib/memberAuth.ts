@@ -49,13 +49,18 @@ export function buildPasswordHash(password: string): string {
 }
 
 export function verifyPassword(password: string, stored: string): boolean {
-  const [salt, digest] = stored.split(":");
-  if (!salt || !digest) return false;
-  const calculated = hashPassword(password, salt);
-  const digestBuf = Buffer.from(digest, "hex");
-  const calculatedBuf = Buffer.from(calculated, "hex");
-  if (digestBuf.length !== calculatedBuf.length) return false;
-  return timingSafeEqual(digestBuf, calculatedBuf);
+  try {
+    const [salt, digest] = stored.split(":");
+    if (!salt || !digest) return false;
+    const calculated = hashPassword(password, salt);
+    const digestBuf = Buffer.from(digest, "hex");
+    const calculatedBuf = Buffer.from(calculated, "hex");
+    if (digestBuf.length !== calculatedBuf.length) return false;
+    return timingSafeEqual(digestBuf, calculatedBuf);
+  } catch (e) {
+    console.error("[verifyPassword] invalid hash or crypto error", e);
+    return false;
+  }
 }
 
 export async function getCurrentMember() {

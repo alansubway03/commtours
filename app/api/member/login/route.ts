@@ -36,12 +36,19 @@ export async function POST(req: Request) {
     const meta = await getRequestMeta(req);
     const ip = meta.ip || "unknown";
 
-    const { data: ipAttempt } = await supabase
-      .from("member_login_attempt")
-      .select("failed_count, locked_until")
-      .eq("email", email)
-      .eq("ip", ip)
-      .maybeSingle();
+    let ipAttempt: { failed_count?: number | null; locked_until?: string | null } | null = null;
+    try {
+      const ipRow = await supabase
+        .from("member_login_attempt")
+        .select("failed_count, locked_until")
+        .eq("email", email)
+        .eq("ip", ip)
+        .maybeSingle();
+      if (ipRow.error) console.error("[member_login_attempt] select", ipRow.error);
+      ipAttempt = ipRow.data ?? null;
+    } catch (e) {
+      console.error("[member_login_attempt] select threw", e);
+    }
 
     const ipLockUntil = ipAttempt?.locked_until ? new Date(String(ipAttempt.locked_until)) : null;
     if (ipLockUntil && ipLockUntil.getTime() > Date.now()) {
@@ -51,19 +58,32 @@ export async function POST(req: Request) {
       );
     }
 
-    let memberQuery = await supabase
-      .from("member_account")
-      .select(
-        "id, email, member_name, password_hash, weekly_promo_subscribed, failed_login_count, login_locked_until"
-      )
-      .ilike("email", email)
-      .maybeSingle();
-    if (memberQuery.error && isMissingColumnError(memberQuery.error)) {
-      memberQuery = await supabase
+    let memberQuery: {
+      data: Record<string, unknown> | null;
+      error: { code?: string; message?: string } | null;
+    };
+    try {
+      let mq = await supabase
         .from("member_account")
-        .select("id, email, member_name, password_hash, weekly_promo_subscribed")
+        .select(
+          "id, email, member_name, password_hash, weekly_promo_subscribed, failed_login_count, login_locked_until"
+        )
         .ilike("email", email)
         .maybeSingle();
+      if (mq.error && isMissingColumnError(mq.error)) {
+        mq = await supabase
+          .from("member_account")
+          .select("id, email, member_name, password_hash, weekly_promo_subscribed")
+          .ilike("email", email)
+          .maybeSingle();
+      }
+      memberQuery = mq as typeof memberQuery;
+    } catch (e) {
+      console.error("[member_account] login select threw", e);
+      return NextResponse.json(
+        { error: "無法讀取會員資料，請稍後再試。" },
+        { status: 503 }
+      );
     }
     const { data, error } = memberQuery;
 
@@ -105,14 +125,19 @@ export async function POST(req: Request) {
       const lockAt = failedCount >= LOGIN_MAX_ATTEMPTS
         ? new Date(Date.now() + LOGIN_LOCK_MINUTES * 60 * 1000).toISOString()
         : null;
-      await supabase
-        .from("member_account")
-        .update({
-          failed_login_count: failedCount,
-          last_failed_login_at: new Date().toISOString(),
-          login_locked_until: lockAt,
-        })
-        .eq("id", data.id);
+      try {
+        const ur = await supabase
+          .from("member_account")
+          .update({
+            failed_login_count: failedCount,
+            last_failed_login_at: new Date().toISOString(),
+            login_locked_until: lockAt,
+          })
+          .eq("id", data.id);
+        if (ur.error) console.error("[member_account] update failed_login", ur.error);
+      } catch (e) {
+        console.error("[member_account] update failed_login threw", e);
+      }
       const ipFailed = Number(ipAttempt?.failed_count ?? 0) + 1;
       const ipLockAt = ipFailed >= LOGIN_MAX_ATTEMPTS
         ? new Date(Date.now() + LOGIN_LOCK_MINUTES * 60 * 1000).toISOString()
@@ -142,14 +167,19 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "帳號或密碼錯誤。" }, { status: 401 });
     }
 
-    await supabase
-      .from("member_account")
-      .update({
-        failed_login_count: 0,
-        login_locked_until: null,
-        last_failed_login_at: null,
-      })
-      .eq("id", data.id);
+    try {
+      const ur = await supabase
+        .from("member_account")
+        .update({
+          failed_login_count: 0,
+          login_locked_until: null,
+          last_failed_login_at: null,
+        })
+        .eq("id", data.id);
+      if (ur.error) console.error("[member_account] reset login counters", ur.error);
+    } catch (e) {
+      console.error("[member_account] reset login counters threw", e);
+    }
     try {
       const ur = await supabase.from("member_login_attempt").upsert(
         {
@@ -168,13 +198,23 @@ export async function POST(req: Request) {
     }
 
     let emailVerifiedAt: string | null = null;
-    const { data: verifyRow, error: verifyErr } = await supabase
-      .from("member_account")
-      .select("email_verified_at")
-      .eq("id", data.id)
-      .maybeSingle();
-    if (!verifyErr) {
-      emailVerifiedAt = String(verifyRow?.email_verified_at ?? "") || null;
+    let verifyErr: { code?: string } | null | undefined;
+    try {
+      const vr = await supabase
+        .from("member_account")
+        .select("email_verified_at")
+        .eq("id", data.id)
+        .maybeSingle();
+      verifyErr = vr.error;
+      if (!vr.error) {
+        emailVerifiedAt = String(vr.data?.email_verified_at ?? "") || null;
+      }
+    } catch (e) {
+      console.error("[member_account] email_verified_at select threw", e);
+      return NextResponse.json(
+        { error: "無法讀取驗證狀態，請稍後再試。" },
+        { status: 503 }
+      );
     }
 
     if (!emailVerifiedAt && !isMissingColumnError(verifyErr)) {
@@ -209,7 +249,7 @@ export async function POST(req: Request) {
       );
     }
 
-    const sessionToken = await createMemberSessionToken(data.id as string);
+    const sessionToken = await createMemberSessionToken(String(data.id));
     if (!sessionToken) {
       return NextResponse.json(
         { error: "無法建立登入工作階段，請稍後再試。" },
@@ -225,7 +265,15 @@ export async function POST(req: Request) {
         weeklyPromoSubscribed: Boolean(data.weekly_promo_subscribed),
       },
     });
-    attachMemberSessionCookie(res, sessionToken);
+    try {
+      attachMemberSessionCookie(res, sessionToken);
+    } catch (e) {
+      console.error("[member/login] attachMemberSessionCookie", e);
+      return NextResponse.json(
+        { error: "無法寫入登入狀態（Cookie），請檢查瀏覽器設定後再試。" },
+        { status: 503 }
+      );
+    }
     return res;
   } catch (err) {
     console.error("[member/login]", err);
