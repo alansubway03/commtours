@@ -14,8 +14,8 @@ export default async function HomePage() {
         className="relative flex min-h-[380px] flex-col items-center justify-center gap-5 px-4 py-14 text-center text-white md:min-h-[420px]"
       >
         <Image
-          src="https://images.unsplash.com/photo-1526779259212-939e64788e3c?w=1920"
-          alt="世界地圖與旅遊主題背景"
+          src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=1920&auto=format&fit=crop&q=80"
+          alt="藍色調旅行地圖與探索主題背景"
           fill
           priority
           className="object-cover"

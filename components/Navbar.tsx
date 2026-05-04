@@ -9,7 +9,7 @@ export async function Navbar() {
   const memberLabel = member?.memberName?.trim() ? member.memberName : "登入";
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/90">
+    <header className="sticky top-0 z-50 w-full border-b border-[#bcd2ff] bg-[#f3f7ff]/95 backdrop-blur supports-[backdrop-filter]:bg-[#f3f7ff]/85 dark:border-[#2a57a3] dark:bg-[#031233]/90">
       <div className="container flex h-14 items-center justify-between gap-2 px-4 sm:h-16">
         <CommToursLogo />
         <nav className="flex items-center gap-1">

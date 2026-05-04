@@ -1,51 +1,51 @@
 @import "tailwindcss";
 
-/* CommTOURS 品牌：琥珀橙 #FFB35C、黑底主視覺、淺色模式為暖灰底 */
+/* CommTOURS 品牌（B版）：活力高對比藍（移除螢光綠） */
 :root {
-  --background: #f7f5f2;
-  --foreground: #0f0f0f;
+  --background: #eef4ff;
+  --foreground: #081a3a;
   --card: #ffffff;
-  --card-foreground: #0f0f0f;
+  --card-foreground: #081a3a;
   --popover: #ffffff;
-  --popover-foreground: #0f0f0f;
-  --primary: #ffb35c;
-  --primary-foreground: #0a0a0a;
-  --secondary: #ebe6de;
-  --secondary-foreground: #0f0f0f;
-  --muted: #ece8e3;
-  --muted-foreground: #5c5854;
-  --accent: #fff0dc;
-  --accent-foreground: #0f0f0f;
+  --popover-foreground: #081a3a;
+  --primary: #0d5bff;
+  --primary-foreground: #ffffff;
+  --secondary: #d6e5ff;
+  --secondary-foreground: #081a3a;
+  --muted: #e5eeff;
+  --muted-foreground: #41557e;
+  --accent: #cfe0ff;
+  --accent-foreground: #081a3a;
   --destructive: #ef4444;
-  --destructive-foreground: #f8fafc;
-  --border: #e4dfd7;
-  --input: #e4dfd7;
-  --ring: #ffb35c;
+  --destructive-foreground: #ffffff;
+  --border: #bfd4ff;
+  --input: #bfd4ff;
+  --ring: #0d5bff;
   --radius: 0.5rem;
-  --price: #c2410c;
+  --price: #0d5bff;
 }
 
 .dark {
-  --background: #0a0a0a;
-  --foreground: #f5f5f4;
-  --card: #141414;
-  --card-foreground: #f5f5f4;
-  --popover: #141414;
-  --popover-foreground: #f5f5f4;
-  --primary: #ffb35c;
-  --primary-foreground: #0a0a0a;
-  --secondary: #262626;
-  --secondary-foreground: #fafafa;
-  --muted: #1f1f1f;
-  --muted-foreground: #a8a29e;
-  --accent: #1f1f1f;
-  --accent-foreground: #fafafa;
+  --background: #031233;
+  --foreground: #f1f6ff;
+  --card: #08245a;
+  --card-foreground: #f1f6ff;
+  --popover: #08245a;
+  --popover-foreground: #f1f6ff;
+  --primary: #4b8dff;
+  --primary-foreground: #031233;
+  --secondary: #10306f;
+  --secondary-foreground: #f1f6ff;
+  --muted: #0c2a62;
+  --muted-foreground: #b5cbf8;
+  --accent: #2a57a3;
+  --accent-foreground: #f1f6ff;
   --destructive: #991b1b;
   --destructive-foreground: #fef2f2;
-  --border: #2a2a2a;
-  --input: #2a2a2a;
-  --ring: #ffb35c;
-  --price: #fb923c;
+  --border: #2a57a3;
+  --input: #2a57a3;
+  --ring: #4b8dff;
+  --price: #9fc2ff;
 }
 
 @theme inline {
