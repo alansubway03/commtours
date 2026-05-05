@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/favicon.ico",
-        destination: "/favicon.png?v=20260414w",
+        destination: "/favicon.png?v=20260505a",
         permanent: false,
       },
     ];
