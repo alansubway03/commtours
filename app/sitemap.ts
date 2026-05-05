@@ -5,7 +5,12 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const tours = await getTours();
+  let tours = [];
+  try {
+    tours = await getTours();
+  } catch (error) {
+    console.error("[sitemap] Failed to load tours:", error);
+  }
 
   const staticPages: MetadataRoute.Sitemap = [
     {
