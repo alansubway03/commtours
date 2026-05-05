@@ -14,9 +14,9 @@ export function CommToursLogo({ className }: { className?: string }) {
         alt="CommTours"
         width={1024}
         height={1024}
-        className="h-10 w-10 shrink-0 object-contain sm:h-11 sm:w-11"
+        className="h-[52px] w-[52px] shrink-0 object-contain sm:h-11 sm:w-11"
         priority
-        sizes="(min-width: 640px) 44px, 40px"
+        sizes="(min-width: 640px) 44px, 52px"
         unoptimized
       />
     </Link>
