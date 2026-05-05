@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
 export default function robots(): MetadataRoute.Robots {
   return {

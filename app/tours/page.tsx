@@ -174,7 +174,7 @@ function getPageItems(currentPage: number, totalPages: number): number[] {
 
 function buildItemListJsonLd(list: TourRow[], page: number) {
   const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",

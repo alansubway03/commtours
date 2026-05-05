@@ -32,7 +32,7 @@ const TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
 };
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
 function parsePriceValue(priceRange: string): string | undefined {
   const nums = priceRange.replace(/[$,]/g, "").match(/\d+/g);

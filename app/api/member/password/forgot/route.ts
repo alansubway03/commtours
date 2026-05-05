@@ -68,7 +68,7 @@ export async function POST(req: Request) {
     }
 
     const siteUrl =
-      process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+      process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
     const resetUrl = `${siteUrl.replace(/\/$/, "")}/member/reset-password?token=${rawToken}`;
     try {
       await sendPasswordResetEmail({

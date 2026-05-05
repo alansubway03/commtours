@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getTours } from "@/lib/data/tours";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const tours = await getTours();

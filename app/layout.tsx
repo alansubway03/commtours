@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "http://localhost:3000";
+  process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
