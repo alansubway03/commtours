@@ -3,6 +3,7 @@ import { Bebas_Neue, Geist, Geist_Mono } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PWARegister } from "@/components/PWARegister";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const SITE_URL =
@@ -69,6 +70,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </div>
+        <Analytics />
       </body>
     </html>
   );
