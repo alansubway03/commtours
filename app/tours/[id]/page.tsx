@@ -11,7 +11,6 @@ import { AffiliateButton } from "@/components/AffiliateButton";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { TourReviewForm } from "@/components/TourReviewForm";
 import { TourReviewList } from "@/components/TourReviewList";
 import { TOUR_TYPE_LABELS } from "@/types/tour";
 
@@ -300,7 +299,6 @@ export default async function TourDetailPage({
             </CardContent>
           </Card>
 
-          <TourReviewForm tourId={tour.id} />
           <TourReviewList
             tourId={tour.id}
             agency={tour.agency}
