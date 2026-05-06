@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { pickPrimaryAffiliate } from "@/lib/affiliateLinks";
+import { buildTrackedRedirectUrl } from "@/lib/referralTracking";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import type { Tour } from "@/types/tour";
 import { TOUR_TYPE_LABELS } from "@/types/tour";
@@ -41,6 +42,30 @@ export function TourCard({ tour, showAffiliate = true, agencyScore }: TourCardPr
   const placeLine = destinationOrRegionLine(tour);
   const safeWingon = getSafeHttpUrl(tour.affiliate_links.wingon);
   const safeTrip = getSafeHttpUrl(tour.affiliate_links.tripdotcom);
+  const trackedWingon = safeWingon
+    ? buildTrackedRedirectUrl({
+        targetUrl: safeWingon,
+        tourId: tour.id,
+        agencyName: tour.agency,
+        vendor: "wingon",
+      })
+    : null;
+  const trackedTrip = safeTrip
+    ? buildTrackedRedirectUrl({
+        targetUrl: safeTrip,
+        tourId: tour.id,
+        agencyName: tour.agency,
+        vendor: "tripdotcom",
+      })
+    : null;
+  const trackedPrimary = firstLink
+    ? buildTrackedRedirectUrl({
+        targetUrl: firstLink,
+        tourId: tour.id,
+        agencyName: tour.agency,
+        vendor: "primary",
+      })
+    : null;
 
   return (
     <Card className="overflow-hidden transition-shadow hover:shadow-lg">
@@ -97,15 +122,15 @@ export function TourCard({ tour, showAffiliate = true, agencyScore }: TourCardPr
       </CardContent>
       {showAffiliate && firstLink && (
         <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
-          {safeWingon && (
-            <AffiliateButton vendor="wingon" href={safeWingon} />
+          {trackedWingon && (
+            <AffiliateButton vendor="wingon" href={trackedWingon} />
           )}
-          {safeTrip && (
-            <AffiliateButton vendor="tripdotcom" href={safeTrip} />
+          {trackedTrip && (
+            <AffiliateButton vendor="tripdotcom" href={trackedTrip} />
           )}
-          {!safeWingon && !safeTrip && firstLink && (
+          {!trackedWingon && !trackedTrip && trackedPrimary && (
             <Button size="sm" className="flex-1" asChild>
-              <Link href={firstLink} target="_blank" rel="noopener noreferrer sponsored">
+              <Link href={trackedPrimary} target="_blank" rel="noopener noreferrer sponsored">
                 {primary?.shortLabel ?? "官網報名"}
               </Link>
             </Button>

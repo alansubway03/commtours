@@ -5,6 +5,7 @@ import Script from "next/script";
 import { createServerSupabaseClient } from "@/lib/supabase";
 import { normalizeDepartureDateStatusesInput } from "@/lib/departureDateStatuses";
 import { pickPrimaryAffiliate } from "@/lib/affiliateLinks";
+import { buildTrackedRedirectUrl } from "@/lib/referralTracking";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import { canonicalTourRegion } from "@/lib/canonicalTourRegion";
 import { hasFeaturedTag } from "@/lib/featuredTours";
@@ -397,6 +398,14 @@ export default async function ToursPage({
                 const primary = pickPrimaryAffiliate(row.affiliate_links ?? undefined);
                 const affiliateLink = primary?.url;
                 const affiliateLabel = primary?.shortLabel ?? "查看詳情";
+                const trackedAffiliateLink = affiliateLink
+                  ? buildTrackedRedirectUrl({
+                      targetUrl: affiliateLink,
+                      tourId: String(row.id),
+                      agencyName: row.agency,
+                      vendor: "primary",
+                    })
+                  : null;
 
                 return (
                   <Card
@@ -478,10 +487,10 @@ export default async function ToursPage({
                           查看詳情
                         </Link>
                       </Button>
-                      {affiliateLink ? (
+                      {trackedAffiliateLink ? (
                         <Button asChild className="w-full sm:flex-1">
                           <a
-                            href={affiliateLink}
+                            href={trackedAffiliateLink}
                             target="_blank"
                             rel="noopener noreferrer sponsored"
                           >

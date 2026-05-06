@@ -7,6 +7,7 @@ import { getTourById } from "@/lib/data/tours";
 import { getAgencyReviewSummary } from "@/lib/data/reviews";
 import { canonicalTourRegion } from "@/lib/canonicalTourRegion";
 import { filterDeparturesForDisplay } from "@/lib/departureDisplay";
+import { buildTrackedRedirectUrl } from "@/lib/referralTracking";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -121,6 +122,42 @@ export default async function TourDetailPage({
     safeTrip ??
     safeOthers[0]?.url ??
     safeDynamic[0]?.url;
+  const trackedWingon = safeWingon
+    ? buildTrackedRedirectUrl({
+        targetUrl: safeWingon,
+        tourId: tour.id,
+        agencyName: tour.agency,
+        vendor: "wingon",
+      })
+    : null;
+  const trackedTrip = safeTrip
+    ? buildTrackedRedirectUrl({
+        targetUrl: safeTrip,
+        tourId: tour.id,
+        agencyName: tour.agency,
+        vendor: "tripdotcom",
+      })
+    : null;
+  const trackedOthers = safeOthers.map(({ label, url, i }) => ({
+    label,
+    i,
+    url: buildTrackedRedirectUrl({
+      targetUrl: url,
+      tourId: tour.id,
+      agencyName: tour.agency,
+      vendor: "others",
+    }),
+  }));
+  const trackedDynamic = safeDynamic.map(({ key, url }) => ({
+    key,
+    url: buildTrackedRedirectUrl({
+      targetUrl: url,
+      tourId: tour.id,
+      agencyName: tour.agency,
+      vendor: key,
+    }),
+  }));
+
   const imageUrl = getSafeHttpUrl(tour.image_url);
   const canonical = `${SITE_URL}/tours/${tour.id}`;
   const priceValue = parsePriceValue(tour.price_range);
@@ -325,20 +362,20 @@ export default async function TourDetailPage({
               </p>
             </CardHeader>
             <CardContent className="flex flex-col gap-2">
-              {safeWingon && (
-                <AffiliateButton vendor="wingon" href={safeWingon} className="w-full" />
+              {trackedWingon && (
+                <AffiliateButton vendor="wingon" href={trackedWingon} className="w-full" />
               )}
-              {safeTrip && (
-                <AffiliateButton vendor="tripdotcom" href={safeTrip} className="w-full" />
+              {trackedTrip && (
+                <AffiliateButton vendor="tripdotcom" href={trackedTrip} className="w-full" />
               )}
-              {safeOthers.map(({ label, url, i }) => (
+              {trackedOthers.map(({ label, url, i }) => (
                 <Button key={`${url}-${i}`} asChild variant="outline" className="w-full">
                   <Link href={url} target="_blank" rel="noopener noreferrer sponsored">
                     {label}
                   </Link>
                 </Button>
               ))}
-              {safeDynamic.map(({ key, url }) => (
+              {trackedDynamic.map(({ key, url }) => (
                 <Button key={key} asChild className="w-full">
                   <Link href={url} target="_blank" rel="noopener noreferrer sponsored">
                     {AFFILIATE_EXTRA_LABEL[key] ?? `${key} 官網報名`}
