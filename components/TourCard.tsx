@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { pickPrimaryAffiliate } from "@/lib/affiliateLinks";
-import { buildTrackedRedirectUrl } from "@/lib/referralTracking";
+import { buildTrackedRedirectUrl } from "@/lib/referralUrls";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import type { Tour } from "@/types/tour";
 import { TOUR_TYPE_LABELS } from "@/types/tour";

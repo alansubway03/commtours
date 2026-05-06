@@ -5,7 +5,7 @@ const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  let tours = [];
+  let tours: Awaited<ReturnType<typeof getTours>> = [];
   try {
     tours = await getTours();
   } catch (error) {

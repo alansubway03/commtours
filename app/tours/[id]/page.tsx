@@ -7,7 +7,7 @@ import { getTourById } from "@/lib/data/tours";
 import { getAgencyReviewSummary } from "@/lib/data/reviews";
 import { canonicalTourRegion } from "@/lib/canonicalTourRegion";
 import { filterDeparturesForDisplay } from "@/lib/departureDisplay";
-import { buildTrackedRedirectUrl } from "@/lib/referralTracking";
+import { buildTrackedRedirectUrl } from "@/lib/referralUrls";
 import { AffiliateButton } from "@/components/AffiliateButton";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";

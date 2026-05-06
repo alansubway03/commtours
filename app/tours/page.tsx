@@ -5,7 +5,7 @@ import Script from "next/script";
 import { createServerSupabaseClient } from "@/lib/supabase";
 import { normalizeDepartureDateStatusesInput } from "@/lib/departureDateStatuses";
 import { pickPrimaryAffiliate } from "@/lib/affiliateLinks";
-import { buildTrackedRedirectUrl } from "@/lib/referralTracking";
+import { buildTrackedRedirectUrl } from "@/lib/referralUrls";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import { canonicalTourRegion } from "@/lib/canonicalTourRegion";
 import { hasFeaturedTag } from "@/lib/featuredTours";
