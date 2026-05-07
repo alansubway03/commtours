@@ -4,6 +4,12 @@ import { getTours } from "@/lib/data/tours";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
+function toValidDateOrUndefined(value: string | undefined): Date | undefined {
+  if (!value) return undefined;
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? undefined : date;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let tours: Awaited<ReturnType<typeof getTours>> = [];
   try {
@@ -52,7 +58,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const tourPages: MetadataRoute.Sitemap = tours.map((tour) => ({
     url: `${SITE_URL}/tours/${tour.id}`,
-    lastModified: tour.last_updated ? new Date(tour.last_updated) : undefined,
+    lastModified: toValidDateOrUndefined(tour.last_updated),
     changeFrequency: "daily",
     priority: 0.8,
   }));
