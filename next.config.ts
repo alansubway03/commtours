@@ -19,11 +19,6 @@ const nextConfig: NextConfig = {
         destination: "https://commtours.com/:path*",
         permanent: true,
       },
-      {
-        source: "/favicon.ico",
-        destination: "/favicon.png?v=20260505a",
-        permanent: false,
-      },
     ];
   },
   images: {
