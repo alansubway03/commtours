@@ -68,6 +68,46 @@ const nextConfig: NextConfig = {
         hostname: "dewonder.travel",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.australia.com",
+        pathname: "/content/dam/**",
+      },
+      {
+        protocol: "https",
+        hostname: "media.timeout.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "lp-cms-production.imgix.net",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "*.cloudinary.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.tichk.org",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.taiwan.net.tw",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "eng.taiwan.net.tw",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.discoverhongkong.com",
+        pathname: "/**",
+      },
     ],
   },
 };
