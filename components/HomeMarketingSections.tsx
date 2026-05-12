@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 type AdSlide = {
   id: string;
@@ -130,9 +130,80 @@ const INFO_CARDS: InfoCard[] = [
 
 const ROTATE_MS = 4000;
 
+function InfoCardTile({ card, compact }: { card: InfoCard; compact: boolean }) {
+  const external = isExternalHref(card.href);
+  const cardClassName = compact
+    ? "group flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card transition-colors hover:border-primary/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+    : "group overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
+  const body = (
+    <>
+      <div className={compact ? "relative aspect-[4/3] w-full" : "relative h-36 w-full"}>
+        <Image
+          src={card.image}
+          alt=""
+          fill
+          className="object-cover transition-transform duration-300 group-hover:scale-105"
+          sizes={
+            compact
+              ? "(max-width: 767px) 25vw, 25vw"
+              : "(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+          }
+        />
+      </div>
+      <div className={compact ? "flex min-h-0 flex-1 flex-col gap-0.5 p-1.5" : "space-y-1.5 p-3"}>
+        <p
+          className={
+            compact
+              ? "text-[8px] font-semibold uppercase tracking-wider text-primary"
+              : "text-[10px] font-semibold uppercase tracking-wider text-primary"
+          }
+        >
+          {card.category}
+        </p>
+        <h3
+          className={
+            compact
+              ? "line-clamp-3 text-[10px] font-semibold leading-tight"
+              : "text-sm font-semibold leading-snug md:text-base"
+          }
+        >
+          {card.title}
+        </h3>
+        {compact ? null : (
+          <p className="line-clamp-3 text-xs leading-relaxed text-muted-foreground md:text-sm">
+            {card.description}
+          </p>
+        )}
+        {external && !compact ? (
+          <p className="text-[10px] text-muted-foreground">外部連結 · 新分頁開啟</p>
+        ) : null}
+      </div>
+    </>
+  );
+  if (external) {
+    return (
+      <a
+        href={card.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cardClassName}
+        aria-label={`${card.title}（${card.category}，外部網站，於新分頁開啟）`}
+      >
+        {body}
+      </a>
+    );
+  }
+  return (
+    <Link href={card.href} prefetch={false} className={cardClassName} aria-label={`${card.title}（${card.category}）`}>
+      {body}
+    </Link>
+  );
+}
+
 export function HomeMarketingSections() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [infoPage, setInfoPage] = useState(0);
+  const infoScrollRef = useRef<HTMLDivElement>(null);
   const totalSlides = AD_SLIDES.length;
 
   const infoTotalPages = Math.ceil(INFO_CARDS.length / INFO_PAGE_SIZE);
@@ -140,6 +211,27 @@ export function HomeMarketingSections() {
     const start = infoPage * INFO_PAGE_SIZE;
     return INFO_CARDS.slice(start, start + INFO_PAGE_SIZE);
   }, [infoPage]);
+
+  const goInfoPage = useCallback(
+    (next: number) => {
+      const p = Math.max(0, Math.min(infoTotalPages - 1, next));
+      setInfoPage(p);
+      const el = infoScrollRef.current;
+      if (el && typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches) {
+        el.scrollTo({ left: p * el.clientWidth, behavior: "smooth" });
+      }
+    },
+    [infoTotalPages],
+  );
+
+  const onInfoScroll = useCallback(() => {
+    const el = infoScrollRef.current;
+    if (!el || el.clientWidth <= 0) return;
+    const p = Math.round(el.scrollLeft / el.clientWidth);
+    if (p >= 0 && p < infoTotalPages) {
+      setInfoPage((prev) => (prev !== p ? p : prev));
+    }
+  }, [infoTotalPages]);
 
   useEffect(() => {
     if (totalSlides <= 1) return;
@@ -200,61 +292,39 @@ export function HomeMarketingSections() {
 
       <div className="mt-7">
         <h2 className="mb-4 text-xl font-semibold md:text-2xl">旅遊資訊</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {visibleInfoCards.map((card) => {
-            const external = isExternalHref(card.href);
-            const cardClassName =
-              "group overflow-hidden rounded-xl border border-border bg-card transition-colors hover:border-primary/35 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background";
-            const body = (
-              <>
-                <div className="relative h-36 w-full">
-                  <Image
-                    src={card.image}
-                    alt=""
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  />
+        {/* 手機：橫向滑動分頁，每頁一排 4 個較細格仔 */}
+        <div
+          ref={infoScrollRef}
+          onScroll={onInfoScroll}
+          className="flex snap-x snap-mandatory overflow-x-auto pb-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden md:hidden"
+        >
+          {Array.from({ length: infoTotalPages }, (_, pageIdx) => (
+            <div
+              key={`info-page-${pageIdx}`}
+              className="grid w-full min-w-full shrink-0 grid-cols-4 gap-1.5 snap-start snap-always"
+            >
+              {INFO_CARDS.slice(
+                pageIdx * INFO_PAGE_SIZE,
+                pageIdx * INFO_PAGE_SIZE + INFO_PAGE_SIZE,
+              ).map((card) => (
+                <div key={card.id} className="min-w-0">
+                  <InfoCardTile card={card} compact />
                 </div>
-                <div className="space-y-1.5 p-3">
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-primary">{card.category}</p>
-                  <h3 className="text-sm font-semibold leading-snug md:text-base">{card.title}</h3>
-                  <p className="line-clamp-3 text-xs leading-relaxed text-muted-foreground md:text-sm">
-                    {card.description}
-                  </p>
-                  {external ? (
-                    <p className="text-[10px] text-muted-foreground">外部連結 · 新分頁開啟</p>
-                  ) : null}
-                </div>
-              </>
-            );
-            if (external) {
-              return (
-                <a
-                  key={card.id}
-                  href={card.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cardClassName}
-                  aria-label={`${card.title}（${card.category}，外部網站，於新分頁開啟）`}
-                >
-                  {body}
-                </a>
-              );
-            }
-            return (
-              <Link key={card.id} href={card.href} prefetch={false} className={cardClassName} aria-label={`${card.title}（${card.category}）`}>
-                {body}
-              </Link>
-            );
-          })}
+              ))}
+            </div>
+          ))}
+        </div>
+        <div className="hidden gap-4 md:grid md:grid-cols-2 lg:grid-cols-4">
+          {visibleInfoCards.map((card) => (
+            <InfoCardTile key={card.id} card={card} compact={false} />
+          ))}
         </div>
         {infoTotalPages > 1 ? (
           <div className="mt-3 flex items-center justify-center gap-2">
             <button
               type="button"
               disabled={infoPage <= 0}
-              onClick={() => setInfoPage((p) => Math.max(0, p - 1))}
+              onClick={() => goInfoPage(infoPage - 1)}
               className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-30"
               aria-label="上一頁"
             >
@@ -262,10 +332,13 @@ export function HomeMarketingSections() {
                 <path d="m15 18-6-6 6-6" />
               </svg>
             </button>
+            <span className="min-w-[3rem] text-center text-xs text-muted-foreground tabular-nums md:hidden">
+              {infoPage + 1} / {infoTotalPages}
+            </span>
             <button
               type="button"
               disabled={infoPage >= infoTotalPages - 1}
-              onClick={() => setInfoPage((p) => Math.min(infoTotalPages - 1, p + 1))}
+              onClick={() => goInfoPage(infoPage + 1)}
               className="inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground transition hover:bg-muted hover:text-foreground disabled:pointer-events-none disabled:opacity-30"
               aria-label="下一頁"
             >
