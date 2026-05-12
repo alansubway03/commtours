@@ -2,13 +2,16 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
+import { cn } from "@/lib/utils";
+
+/** 站內導流（相對路徑）；getSafeHttpUrl 只接受 http(s)，否則永安／Trip 按鈕會被誤判為不安全而不渲染 */
+function safeAffiliateHref(href: string): string | null {
+  const t = href.trim();
+  if (t.startsWith("/api/referral/redirect?")) return t;
+  return getSafeHttpUrl(t);
+}
 
 type AffiliateVendor = "wingon" | "tripdotcom";
-
-const VENDOR_LABELS: Record<AffiliateVendor, string> = {
-  wingon: "經永安報名",
-  tripdotcom: "經 Trip.com 查價",
-};
 
 interface AffiliateButtonProps {
   vendor: AffiliateVendor;
@@ -16,18 +19,20 @@ interface AffiliateButtonProps {
   className?: string;
 }
 
-export function AffiliateButton({ vendor, href, className }: AffiliateButtonProps) {
-  const safe = getSafeHttpUrl(href);
+export function AffiliateButton({ vendor: _vendor, href, className }: AffiliateButtonProps) {
+  void _vendor;
+  const safe = safeAffiliateHref(href);
   if (!safe) return null;
   return (
-    <Button asChild size="sm" className={className}>
+    <Button asChild size="sm" className={cn("min-w-0", className)}>
       <Link
         href={safe}
         target="_blank"
         rel="noopener noreferrer sponsored"
-        className="inline-flex items-center gap-1.5"
+        className="inline-flex w-full min-w-0 items-center justify-center gap-1.5"
+        aria-label="了解更多（於新分頁開啟旅行社連結）"
       >
-        {VENDOR_LABELS[vendor]}
+        了解更多
         <ExternalLink className="h-3.5 w-3.5" />
       </Link>
     </Button>

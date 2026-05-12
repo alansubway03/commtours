@@ -123,15 +123,15 @@ export function TourCard({ tour, showAffiliate = true, agencyScore }: TourCardPr
       {showAffiliate && firstLink && (
         <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
           {trackedWingon && (
-            <AffiliateButton vendor="wingon" href={trackedWingon} />
+            <AffiliateButton vendor="wingon" href={trackedWingon} className="flex-1" />
           )}
           {trackedTrip && (
-            <AffiliateButton vendor="tripdotcom" href={trackedTrip} />
+            <AffiliateButton vendor="tripdotcom" href={trackedTrip} className="flex-1" />
           )}
           {!trackedWingon && !trackedTrip && trackedPrimary && (
-            <Button size="sm" className="flex-1" asChild>
+            <Button size="sm" className="min-w-0 flex-1" asChild>
               <Link href={trackedPrimary} target="_blank" rel="noopener noreferrer sponsored">
-                {primary?.shortLabel ?? "官網報名"}
+                了解更多
               </Link>
             </Button>
           )}

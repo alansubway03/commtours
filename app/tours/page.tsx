@@ -397,7 +397,6 @@ export default async function ToursPage({
                 const TypeIcon = TYPE_ICONS[row.type] ?? Plane;
                 const primary = pickPrimaryAffiliate(row.affiliate_links ?? undefined);
                 const affiliateLink = primary?.url;
-                const affiliateLabel = primary?.shortLabel ?? "查看詳情";
                 const trackedAffiliateLink = affiliateLink
                   ? buildTrackedRedirectUrl({
                       targetUrl: affiliateLink,
@@ -494,7 +493,7 @@ export default async function ToursPage({
                             target="_blank"
                             rel="noopener noreferrer sponsored"
                           >
-                            即時報名 · {affiliateLabel}
+                            了解更多
                           </a>
                         </Button>
                       ) : null}

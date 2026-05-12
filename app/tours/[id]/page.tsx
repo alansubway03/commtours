@@ -14,13 +14,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { TourReviewList } from "@/components/TourReviewList";
 import { TOUR_TYPE_LABELS } from "@/types/tour";
-
-const AFFILIATE_EXTRA_LABEL: Record<string, string> = {
-  egl: "東瀛遊 官網報名",
-  jetour: "捷旅 官網報名",
-  goldjoy: "金怡 官網報名",
-  wwpkg: "縱橫遊 官網報名",
-};
 import { Plane, Ship, Mountain, Waves, Calendar, MapPin, CalendarDays } from "lucide-react";
 
 const TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -378,7 +371,7 @@ export default async function TourDetailPage({
               {trackedDynamic.map(({ key, url }) => (
                 <Button key={key} asChild className="w-full">
                   <Link href={url} target="_blank" rel="noopener noreferrer sponsored">
-                    {AFFILIATE_EXTRA_LABEL[key] ?? `${key} 官網報名`}
+                    了解更多
                   </Link>
                 </Button>
               ))}
