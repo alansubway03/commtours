@@ -77,7 +77,7 @@ function addBullets(slide: PptxGenJS.Slide, bullets: string[], x = 0.9, y = 1.7,
       fontSize: 21,
       color: theme.body,
       breakLine: true,
-      paraSpaceAfterPt: 14,
+      paraSpaceAfter: 14,
     },
   );
 }
@@ -89,7 +89,6 @@ async function generate() {
   pptx.company = "CommTours";
   pptx.subject = "Partnership proposal";
   pptx.title = "CommTours x Partner 合作簡報";
-  pptx.lang = "zh-HK";
 
   // Slide 1: Cover
   const s1 = pptx.addSlide();

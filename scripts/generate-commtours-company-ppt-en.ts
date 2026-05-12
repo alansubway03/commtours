@@ -69,7 +69,7 @@ function bullets(slide: PptxGenJS.Slide, list: string[], x = 0.9, y = 1.7, w = 1
       fontSize: 20,
       color: colors.body,
       breakLine: true,
-      paraSpaceAfterPt: 14,
+      paraSpaceAfter: 14,
     },
   );
 }
@@ -81,7 +81,6 @@ async function generateProfilePptEn() {
   pptx.company = "CommTours";
   pptx.title = "CommTours Company Profile";
   pptx.subject = "Company profile";
-  pptx.lang = "en-US";
 
   // Cover
   const s1 = pptx.addSlide();
