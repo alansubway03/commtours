@@ -38,16 +38,16 @@ export function Footer() {
   ];
 
   return (
-    <footer className="border-t border-[#2a57a3] bg-[#05245a] text-white">
+    <footer className="border-t border-white/12 bg-[#1a2b50] text-white">
       <div className="container px-4 py-8">
         <div className="grid gap-6 md:grid-cols-12">
           {footerGroups.map((group) => (
-            <div key={group.title} className="md:col-span-2 md:border-l md:border-[#2a57a3] md:pl-4">
+            <div key={group.title} className="md:col-span-2 md:border-l md:border-white/15 md:pl-4">
               <h4 className="mb-3 text-sm font-semibold tracking-wide text-white">{group.title}</h4>
-              <ul className="space-y-1.5 text-sm text-[#c0d4ff]">
+              <ul className="space-y-1.5 text-sm text-white/70">
                 {group.links.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="hover:text-[#8eb6ff]">
+                    <Link href={link.href} className="transition-colors hover:text-white">
                       {link.label}
                     </Link>
                   </li>
@@ -56,18 +56,18 @@ export function Footer() {
             </div>
           ))}
 
-          <div className="rounded-lg border border-[#2a57a3] bg-[#0a2f6b] p-4 md:col-span-2">
+          <div className="rounded-lg border border-white/20 bg-[#243558] p-4 md:col-span-2">
             <h4 className="mb-2 text-sm font-semibold">合作與支援</h4>
-            <p className="text-sm text-[#c0d4ff]">商務合作、行程更新或平台查詢：</p>
+            <p className="text-sm text-white/70">商務合作、行程更新或平台查詢：</p>
             <Link
               href="mailto:info@commtours.com"
-              className="mt-3 inline-block text-sm font-medium text-[#8eb6ff] hover:text-white"
+              className="mt-3 inline-block text-sm font-medium text-[#b8c9e8] hover:text-white"
             >
               info@commtours.com
             </Link>
           </div>
         </div>
-        <div className="mt-8 border-t border-[#2a57a3] pt-6 text-center text-sm text-[#c0d4ff]">
+        <div className="mt-8 border-t border-white/15 pt-6 text-center text-sm text-white/65">
           © {new Date().getFullYear()} CommTours. All rights reserved.
         </div>
       </div>

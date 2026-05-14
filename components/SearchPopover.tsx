@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Slider } from "@/components/ui/slider";
 import { Checkbox } from "@/components/ui/checkbox";
 import { TOUR_TYPES, TOUR_TYPE_LABELS } from "@/types/tour";
+import { cn } from "@/lib/utils";
 import { Search } from "lucide-react";
 
 const MONTHS = [
@@ -16,7 +17,7 @@ const MONTHS = [
   "7月", "8月", "9月", "10月", "11月", "12月",
 ];
 
-export function SearchPopover() {
+export function SearchPopover({ className }: { className?: string }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [destination, setDestination] = useState("");
@@ -59,12 +60,15 @@ export function SearchPopover() {
       <Button
         variant="ghost"
         size="icon"
-        className="h-9 w-9"
+        className={cn(
+          "h-9 w-9 text-foreground hover:bg-muted hover:text-foreground",
+          className
+        )}
         onClick={() => setOpen((v) => !v)}
         data-search-trigger
         aria-label="搜尋行程"
       >
-        <Search className="h-5 w-5" />
+        <Search className="h-5 w-5 text-current" />
       </Button>
       {open && (
         <>

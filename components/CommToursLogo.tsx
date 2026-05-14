@@ -1,22 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
 
-/** 導覽列品牌：左上角專用圓形 logo 圖。 */
+/**
+ * 導覽列品牌圖標（透明底 PNG，由 `npm run logo:navbar-transparent` 從白底稿產生）。
+ */
 export function CommToursLogo({ className }: { className?: string }) {
   return (
     <Link
       href="/"
-      className={`flex items-center ${className ?? ""}`}
+      className={`flex shrink-0 items-center py-1.5 pl-0.5 pr-1 sm:pl-1 sm:pr-2 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${className ?? ""}`}
       aria-label="CommTours 首頁"
     >
       <Image
-        src="/logo-header-circle.png?v=20260427a"
+        src="/logo-commtours-mark.png?v=20260516a"
         alt="CommTours"
-        width={1024}
-        height={1024}
-        className="h-[52px] w-[52px] shrink-0 object-contain sm:h-11 sm:w-11"
+        width={512}
+        height={512}
+        className="h-10 w-10 shrink-0 object-contain sm:h-12 sm:w-12"
         priority
-        sizes="(min-width: 640px) 44px, 52px"
+        sizes="(min-width: 640px) 48px, 40px"
         unoptimized
       />
     </Link>

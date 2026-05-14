@@ -1,51 +1,54 @@
 @import "tailwindcss";
 
-/* CommTOURS 品牌（B版）：活力高對比藍（移除螢光綠） */
+/* CommTours 名片：深藍 #1A2B50、淺灰底 #F2F2F2、炭灰字；印刷紅色為剪裁線，唔作品牌色 */
 :root {
-  --background: #eef4ff;
-  --foreground: #081a3a;
+  --brand-navy: #1a2b50;
+  --background: #f2f2f2;
+  --foreground: #1a2b50;
   --card: #ffffff;
-  --card-foreground: #081a3a;
+  --card-foreground: #1a2b50;
   --popover: #ffffff;
-  --popover-foreground: #081a3a;
-  --primary: #0d5bff;
+  --popover-foreground: #1a2b50;
+  --primary: #1a2b50;
   --primary-foreground: #ffffff;
-  --secondary: #d6e5ff;
-  --secondary-foreground: #081a3a;
-  --muted: #e5eeff;
-  --muted-foreground: #41557e;
-  --accent: #cfe0ff;
-  --accent-foreground: #081a3a;
-  --destructive: #ef4444;
+  --secondary: #e4e7ec;
+  --secondary-foreground: #1a2b50;
+  --muted: #e8e9ed;
+  --muted-foreground: #4a5568;
+  --accent: #f0f1f4;
+  --accent-foreground: #1a2b50;
+  --destructive: #c53030;
   --destructive-foreground: #ffffff;
-  --border: #bfd4ff;
-  --input: #bfd4ff;
-  --ring: #0d5bff;
+  --border: #d4d7de;
+  --input: #d4d7de;
+  --ring: #3d5588;
   --radius: 0.5rem;
-  --price: #0d5bff;
+  --price: #1a2b50;
+  /* 名片拱形水印（低對比） */
+  --body-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cpath fill='none' stroke='%231A2B50' stroke-opacity='0.055' stroke-width='1' d='M8 72V44c0-14 14-26 28-26s28 12 28 26v28'/%3E%3C/svg%3E");
 }
 
 .dark {
-  --background: #031233;
-  --foreground: #f1f6ff;
-  --card: #08245a;
-  --card-foreground: #f1f6ff;
-  --popover: #08245a;
-  --popover-foreground: #f1f6ff;
-  --primary: #4b8dff;
-  --primary-foreground: #031233;
-  --secondary: #10306f;
-  --secondary-foreground: #f1f6ff;
-  --muted: #0c2a62;
-  --muted-foreground: #b5cbf8;
-  --accent: #2a57a3;
-  --accent-foreground: #f1f6ff;
-  --destructive: #991b1b;
-  --destructive-foreground: #fef2f2;
-  --border: #2a57a3;
-  --input: #2a57a3;
-  --ring: #4b8dff;
-  --price: #9fc2ff;
+  --background: #111827;
+  --foreground: #f2f2f2;
+  --card: #1a2b50;
+  --card-foreground: #f2f2f2;
+  --popover: #1a2b50;
+  --popover-foreground: #f2f2f2;
+  --primary: #f2f2f2;
+  --primary-foreground: #1a2b50;
+  --secondary: #243558;
+  --secondary-foreground: #f2f2f2;
+  --muted: #243558;
+  --muted-foreground: #b8c0d4;
+  --accent: #2d4066;
+  --accent-foreground: #f2f2f2;
+  --destructive: #f87171;
+  --destructive-foreground: #1a0a0a;
+  --border: #33466e;
+  --input: #33466e;
+  --ring: #8ea3cc;
+  --price: #e8edf7;
 }
 
 @theme inline {
@@ -79,7 +82,9 @@
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
+  background-image: var(--body-pattern);
+  background-size: 72px 72px;
   color: var(--foreground);
   font-family: var(--font-sans);
 }
