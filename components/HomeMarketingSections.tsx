@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -14,7 +15,7 @@ type AdSlide = {
   href: string;
 };
 
-/** 首頁「旅遊資訊」精選：大圖直式卡，左下 headline / tagline */
+/** 首頁「旅遊資訊」精選：正方形卡片，左下 headline / tagline */
 type InfoCategory = "Blog" | "行程" | "旅行社" | "旅遊景點";
 
 type InfoCard = {
@@ -167,8 +168,8 @@ function InfoCardTile({ card, dense = false }: { card: InfoCard; dense?: boolean
         <p
           className={
             dense
-              ? "line-clamp-2 text-[10px] font-bold leading-tight tracking-tight text-white drop-shadow md:text-[11px]"
-              : "text-sm font-bold leading-tight tracking-tight text-white drop-shadow md:text-base"
+              ? "line-clamp-2 text-[11px] font-bold leading-tight tracking-tight text-white drop-shadow md:text-[12px]"
+              : "text-[15.5px] font-bold leading-tight tracking-tight text-white drop-shadow md:text-[17.5px]"
           }
         >
           {card.headline}
@@ -176,8 +177,8 @@ function InfoCardTile({ card, dense = false }: { card: InfoCard; dense?: boolean
         <p
           className={
             dense
-              ? "mt-0.5 line-clamp-2 text-[8px] font-normal leading-snug text-white/88 md:text-[9px]"
-              : "mt-0.5 text-[10px] font-normal leading-snug text-white/90 md:text-xs"
+              ? "mt-0.5 line-clamp-2 text-[9px] font-normal leading-snug text-white/88 md:text-[10px]"
+              : "mt-0.5 text-[11px] font-normal leading-snug text-white/90 md:text-[13px]"
           }
         >
           {card.tagline}
@@ -187,8 +188,8 @@ function InfoCardTile({ card, dense = false }: { card: InfoCard; dense?: boolean
   );
 
   const cardClassName = dense
-    ? "group relative block aspect-[2/3] min-h-0 w-full overflow-hidden rounded-lg bg-muted shadow-sm ring-1 ring-black/10 transition-[transform,box-shadow] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:ring-white/10"
-    : "group relative block aspect-[2/3] min-h-0 w-full overflow-hidden rounded-xl bg-muted shadow-sm ring-1 ring-black/10 transition-[transform,box-shadow] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:ring-white/10";
+    ? "group relative mx-auto block aspect-square min-h-0 w-[88%] overflow-hidden rounded-lg bg-muted shadow-sm ring-1 ring-black/10 transition-[transform,box-shadow] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:ring-white/10"
+    : "group relative mx-auto block aspect-square min-h-0 w-[88%] overflow-hidden rounded-xl bg-muted shadow-sm ring-1 ring-black/10 transition-[transform,box-shadow] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:ring-white/10";
 
   if (external) {
     return (
@@ -210,7 +211,12 @@ function InfoCardTile({ card, dense = false }: { card: InfoCard; dense?: boolean
   );
 }
 
-export function HomeMarketingSections() {
+export function HomeMarketingSections({
+  betweenBannerAndInfo,
+}: {
+  /** 插入於首頁橫幅與「旅遊資訊」之間（例如熱門行程橫列） */
+  betweenBannerAndInfo?: ReactNode;
+} = {}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [infoPage, setInfoPage] = useState(0);
   const infoScrollRef = useRef<HTMLDivElement>(null);
@@ -301,6 +307,8 @@ export function HomeMarketingSections() {
           />
         ))}
       </div>
+
+      {betweenBannerAndInfo ? <div className="mt-7">{betweenBannerAndInfo}</div> : null}
 
       <div className="mt-7">
         <h2 className="mb-4 text-xl font-semibold md:text-2xl">旅遊資訊</h2>
