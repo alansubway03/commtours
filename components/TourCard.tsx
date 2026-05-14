@@ -68,8 +68,8 @@ export function TourCard({ tour, showAffiliate = true, agencyScore }: TourCardPr
     : null;
 
   return (
-    <Card className="overflow-hidden transition-shadow hover:shadow-lg">
-      <Link href={`/tours/${tour.id}`} className="block">
+    <Card className="flex h-full flex-col overflow-hidden transition-shadow hover:shadow-lg">
+      <Link href={`/tours/${tour.id}`} className="block shrink-0">
         <div className="relative aspect-[16/10] w-full overflow-hidden bg-muted">
           <Image
             src={
@@ -93,9 +93,13 @@ export function TourCard({ tour, showAffiliate = true, agencyScore }: TourCardPr
             )}
           </div>
         </div>
-        <CardHeader className="pb-2">
-          <h3 className="line-clamp-2 font-semibold leading-tight">{tour.title}</h3>
-          <p className="mt-1.5 text-sm leading-snug">
+      </Link>
+      <Link href={`/tours/${tour.id}`} className="block shrink-0">
+        <CardHeader className="space-y-0 p-0 px-6 pb-2 pt-4">
+          <div className="min-h-[3.5rem] sm:min-h-[3.75rem]">
+            <h3 className="line-clamp-2 text-base font-semibold leading-snug sm:text-[1.05rem]">{tour.title}</h3>
+          </div>
+          <p className="mt-2.5 line-clamp-2 min-h-[2.75rem] text-sm leading-snug">
             <span className="font-medium text-foreground/90">{tour.agency}</span>
             {typeof agencyScore === "number" ? (
               <span className="ml-1 font-semibold text-amber-700">{agencyScore.toFixed(1)}⭐</span>
@@ -106,22 +110,24 @@ export function TourCard({ tour, showAffiliate = true, agencyScore }: TourCardPr
           </p>
         </CardHeader>
       </Link>
-      <CardContent className="pb-2">
-        <div className="flex flex-wrap gap-1">
-          {tour.features.slice(0, 3).map((f) => (
-            <Badge key={f} variant="outline" className="text-xs">
-              {f}
-            </Badge>
-          ))}
+      <CardContent className="flex flex-1 flex-col gap-3 p-0 px-6 pb-2 pt-0">
+        <div className="min-h-[2.75rem]">
+          <div className="flex flex-wrap gap-1.5">
+            {tour.features.slice(0, 3).map((f) => (
+              <Badge key={f} variant="outline" className="text-xs">
+                {f}
+              </Badge>
+            ))}
+          </div>
         </div>
-        <p className="mt-2 text-lg font-semibold text-price">
+        <p className="text-lg font-semibold leading-snug text-price">
           {tour.price_range.includes("-")
             ? `${tour.price_range.split("-")[0]?.trim()} 起`
             : tour.price_range}
         </p>
       </CardContent>
       {showAffiliate && firstLink && (
-        <CardFooter className="flex flex-wrap gap-2 border-t pt-4">
+        <CardFooter className="mt-auto flex flex-wrap gap-2 border-t border-border p-0 px-6 pb-4 pt-4">
           {trackedWingon && (
             <AffiliateButton vendor="wingon" href={trackedWingon} className="flex-1" />
           )}
@@ -138,7 +144,7 @@ export function TourCard({ tour, showAffiliate = true, agencyScore }: TourCardPr
         </CardFooter>
       )}
       {showAffiliate && !firstLink && (
-        <CardFooter className="border-t pt-4">
+        <CardFooter className="mt-auto border-t border-border p-0 px-6 pb-4 pt-4">
           <Button variant="outline" size="sm" className="w-full" asChild>
             <Link href={`/tours/${tour.id}`}>查看詳情</Link>
           </Button>

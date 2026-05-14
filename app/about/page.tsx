@@ -4,11 +4,11 @@ import Image from "next/image";
 export const metadata: Metadata = {
   title: "關於我們",
   description:
-    "CommTours 的誕生，源於 Compare、Tours 與 Communication。100% 香港血統的旅遊資訊比較平台，讓旅行團變得分明。",
+    "CommTours 由具前線經驗的團隊主理，為香港旅客整理多間旅行社的行程與條款，方便並排比較，減少資訊落差。",
   openGraph: {
     title: "關於我們 | CommTours",
     description:
-      "100% 香港人創立的旅遊資訊比較平台，從領隊視角出發，打破隔閡，讓旅行團變得分明。",
+      "中立旅遊比較平台：把住宿、膳食、自費節目與條款等資料整理成同一套檢視方式，方便香港旅客自行判斷。",
   },
 };
 
@@ -25,71 +25,49 @@ export default function AboutPage() {
           sizes="(min-width: 768px) 176px, 160px"
           unoptimized
         />
-        <h1 className="text-3xl font-bold tracking-tight md:text-4xl">
-          關於 CommTours
-        </h1>
-        <p className="mt-3 text-lg text-muted-foreground">
+        <h1 className="text-3xl font-bold tracking-tight md:text-4xl">關於我們</h1>
+        <p className="mt-2 text-xl font-semibold tracking-tight text-foreground md:text-2xl">
           連結世界，比較精彩
+        </p>
+        <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          CommTours 由具多年外遊領隊經驗的團隊主理，是香港人的中立旅遊比較平台：把各社行程資料集中、用同一個方式呈現，方便大家自行對照各細節，再決定是否向旅行社查詢或報名。
         </p>
       </header>
 
-      <article className="mx-auto mt-12 max-w-2xl space-y-10 text-muted-foreground">
+      <article className="mx-auto mt-12 max-w-2xl space-y-12 text-muted-foreground">
         <section>
+          <h2 className="mb-4 text-xl font-semibold text-foreground">創辦初心</h2>
+          <h3 className="mb-3 text-lg font-medium text-foreground/95">
+            從領隊前線經驗出發，收窄宣傳與實際之間的落差
+          </h3>
           <p className="leading-relaxed">
-            CommTours 的誕生，源於一個簡單卻深刻的理念：
-            <strong className="text-foreground">Compare（比較）</strong>、
-            <strong className="text-foreground">Tours（團體旅遊）</strong>
-            與
-            <strong className="text-foreground">Communication（溝通）</strong>。
+            團隊成員曾長期以領隊身份跟團出發，處理過港人對行程、膳食、交通與自費節目的實際查詢；亦見過旅客在報名前，要花大量時間翻閱不同單張與網頁，仍難以判斷兩個「看似相近」的團在住宿級別、膳食次數、購物或小費等等上，究竟有何分別。
+          </p>
+          <p className="mt-4 leading-relaxed">
+            市場上選擇多，但資訊分散、表述方式不一，比較成本往往落在旅客身上。CommTours 希望把這類功課變得有系統：以同一版面整理重點，讓大家用較短時間掌握差異，再按個人需要向旅行社跟進。
           </p>
         </section>
 
         <section>
-          <h2 className="mb-3 text-xl font-semibold text-foreground">
-            100% 香港血統，最懂香港人的旅行家
-          </h2>
+          <h2 className="mb-4 text-xl font-semibold text-foreground">核心價值</h2>
+          <h3 className="mb-3 text-lg font-medium text-foreground/95">
+            比較平台：整理各旅行社的旅行團
+          </h3>
           <p className="leading-relaxed">
-            我們是一間 100% 由香港人創立的旅遊資訊比較平台。我們深知香港人生活節奏快，追求效率之餘，更追求高品質的休閒體驗。
+            CommTours 的定位很單純——並排呈現各旅行社行程頁上已列出的內容，方便大家對照出發日、目的地、日數、價錢等等資料。
+          </p>
+          <p className="mt-4 leading-relaxed">
+            CommTours 獨立於各間旅行社；展示與排序以可核對的行程資料為依歸，方便大家自行判斷合適與否。
           </p>
         </section>
 
-        <section>
-          <h2 className="mb-3 text-xl font-semibold text-foreground">
-            從領隊視角出發，看見市場的缺口
-          </h2>
+        <section className="rounded-xl border border-border bg-muted/30 p-6 md:p-8">
+          <h2 className="mb-4 text-xl font-semibold text-foreground">願景</h2>
           <p className="leading-relaxed">
-            CommTour 的創辦團隊前身為活躍於各大旅行社的外遊領隊。我們曾帶領無數港人走遍全球，親身經歷過旅客在挑選團體行程時的掙扎——市面上旅行社眾多，行程琳瑯滿目，但要逐一翻閱手冊、對比細節（如住宿等級、膳食次數或隱藏收費），既費時又費神。
+            CommTours 致力增加業界透明度，發掘更多優質旅行團。
           </p>
-        </section>
-
-        <section>
-          <h2 className="mb-3 text-xl font-semibold text-foreground">
-            打破隔閡，讓旅行團變得分明
-          </h2>
-          <p className="leading-relaxed">
-            我們發現，市場上一直缺乏一個中立且透明的平台來集中比較各間旅行社。因此，我們創立了 CommTour。
-          </p>
-          <ul className="mt-4 space-y-2">
-            <li className="flex gap-2">
-              <span className="text-primary font-medium">·</span>
-              <span>
-                <strong className="text-foreground">精準比較：</strong>
-                透過直覺的界面，讓你一鍵對比各大旅行社的行程與價格。
-              </span>
-            </li>
-            <li className="flex gap-2">
-              <span className="text-primary font-medium">·</span>
-              <span>
-                <strong className="text-foreground">專業溝通：</strong>
-                利用我們過去的專業領隊經驗，轉化為簡單易懂的標籤與評分，消除旅客與旅行社之間的資訊不對稱。
-              </span>
-            </li>
-          </ul>
-        </section>
-
-        <section className="rounded-xl border border-border bg-muted/30 p-6">
-          <p className="leading-relaxed">
-            在 CommTour，我們不只是做比較，更是你的數位旅遊顧問。我們希望每一位香港人，都能在這裡輕鬆找到最適合自己的夢想行程，讓出發旅遊變得前所未有的簡單。
+          <p className="mt-4 leading-relaxed">
+            我們希望 CommTours 成為整理旅行團資訊時的好幫手：先在這裏比較各旅行團的差異，搵出心水後，再直接向旅行社深入了解及報名。
           </p>
         </section>
       </article>

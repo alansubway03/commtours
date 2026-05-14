@@ -129,7 +129,7 @@ export function TourReviewBrowseClient({ reviews }: { reviews: TourReviewListIte
 
             <div className="mb-4 grid grid-cols-2 gap-2 text-sm">
               <p>團費：HKD {feeLabel(active.baseFeeHkd)}</p>
-              <p>自費活動：HKD {feeLabel(active.optionalActivityFeeHkd)}</p>
+              <p>自費節目：HKD {feeLabel(active.optionalActivityFeeHkd)}</p>
               <p>服務費：HKD {feeLabel(active.staffServiceFeeHkd)}</p>
               <p className="font-medium">
                 總收費：HKD {feeLabel(active.baseFeeHkd + active.optionalActivityFeeHkd + active.staffServiceFeeHkd)}

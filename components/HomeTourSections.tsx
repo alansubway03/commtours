@@ -346,7 +346,7 @@ export function HomeTourSections({ tours, agencyScoreMap }: HomeTourSectionsProp
         </div>
       ) : null}
 
-      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="grid auto-rows-fr gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {pagedTours.length === 0 ? (
           <p className="col-span-full py-8 text-center text-muted-foreground">
             暫無此類型行程

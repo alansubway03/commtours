@@ -310,7 +310,7 @@ export function ReviewShareFormClient({ tours }: { tours: ShareTourSource[] }) {
               />
             </div>
             <div className="space-y-1">
-              <Label htmlFor="optional-activity-fee-hkd">自費活動（HKD）</Label>
+              <Label htmlFor="optional-activity-fee-hkd">自費節目（HKD）</Label>
               <Input
                 id="optional-activity-fee-hkd"
                 type="text"

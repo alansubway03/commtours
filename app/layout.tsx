@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Bebas_Neue, Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_HK } from "next/font/google";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { PWARegister } from "@/components/PWARegister";
@@ -9,20 +9,22 @@ import "./globals.css";
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/** Noto Sans HK = 思源黑體（香港）網頁版，與 Adobe「思源黑體」同源 */
+const sourceHanSans = Noto_Sans_HK({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const bebasNeue = Bebas_Neue({
-  variable: "--font-bebas-neue",
-  subsets: ["latin"],
-  weight: "400",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-noto-sans-hk",
+  display: "swap",
+  adjustFontFallback: true,
+  fallback: [
+    "ui-sans-serif",
+    "system-ui",
+    "PingFang HK",
+    "PingFang TC",
+    "Microsoft JhengHei",
+    "Heiti TC",
+    "sans-serif",
+  ],
 });
 
 export const metadata: Metadata = {
@@ -64,9 +66,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-HK">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${bebasNeue.variable} min-h-screen antialiased`}
-      >
+      <body className={`${sourceHanSans.variable} min-h-screen font-sans antialiased`}>
         <PWARegister />
         <div className="relative flex min-h-screen flex-col">
           <Navbar />

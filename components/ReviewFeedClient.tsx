@@ -201,7 +201,7 @@ export function ReviewFeedClient({
                 <p className="text-xs text-muted-foreground">
                   總收費：HKD{" "}
                   {(review.baseFeeHkd + review.optionalActivityFeeHkd + review.staffServiceFeeHkd).toFixed(2)}（團費{" "}
-                  {review.baseFeeHkd.toFixed(2)} / 自費 {review.optionalActivityFeeHkd.toFixed(2)} / 服務費{" "}
+                  {review.baseFeeHkd.toFixed(2)} / 自費節目 {review.optionalActivityFeeHkd.toFixed(2)} / 服務費{" "}
                   {review.staffServiceFeeHkd.toFixed(2)}）
                 </p>
                 <p className="whitespace-pre-wrap text-muted-foreground">
