@@ -28,6 +28,45 @@ const TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
+/** 符合 Google 商家資訊／Offer 建議：運費與時效（香港；無實體運費以 0 表示） */
+const DEFAULT_HK_OFFER_SHIPPING_DETAILS = {
+  "@type": "OfferShippingDetails",
+  shippingDestination: {
+    "@type": "DefinedRegion",
+    addressCountry: "HK",
+  },
+  shippingRate: {
+    "@type": "MonetaryAmount",
+    value: 0,
+    currency: "HKD",
+  },
+  deliveryTime: {
+    "@type": "ShippingDeliveryTime",
+    handlingTime: {
+      "@type": "QuantitativeValue",
+      minValue: 0,
+      maxValue: 1,
+      unitCode: "DAY",
+    },
+    transitTime: {
+      "@type": "QuantitativeValue",
+      minValue: 0,
+      maxValue: 0,
+      unitCode: "DAY",
+    },
+  },
+};
+
+/**
+ * CommTours 為比價／導流，實際銷售與退改由合作旅行社處理，
+ * 標示為不適用本平台退貨（符合 schema.org MerchantReturnNotPermitted）。
+ */
+const DEFAULT_HK_MERCHANT_RETURN_POLICY = {
+  "@type": "MerchantReturnPolicy",
+  applicableCountry: "HK",
+  returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+};
+
 function parsePriceValue(priceRange: string): string | undefined {
   const nums = priceRange.replace(/[$,]/g, "").match(/\d+/g);
   if (!nums || nums.length === 0) return undefined;
@@ -173,6 +212,8 @@ export default async function TourDetailPage({
           price: priceValue,
           availability: "https://schema.org/InStock",
           url: primaryOfferUrl,
+          shippingDetails: DEFAULT_HK_OFFER_SHIPPING_DETAILS,
+          hasMerchantReturnPolicy: DEFAULT_HK_MERCHANT_RETURN_POLICY,
         }
       : undefined,
   };
