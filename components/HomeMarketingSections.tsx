@@ -66,71 +66,97 @@ const AD_SLIDES: AdSlide[] = [
 /** 旅遊資訊每頁格數（Klook 式一排 6 張；最後一頁不足則用 col-span 補齊） */
 const INFO_PAGE_SIZE = 6;
 
+/** 深度／微旅主題外部精選（圖為主題示意，著作權屬攝影師；連結以外站正文為準） */
 const INFO_CARDS: InfoCard[] = [
   {
-    id: "info-threads-yfl-victor",
+    id: "info-mr-angkor",
     category: "Blog",
-    headline: "Threads｜@yfl_victor",
-    tagline: "香港玩食靈感（帖文內文為準）",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&auto=format&fit=crop&q=80",
-    href: "https://www.threads.com/@yfl_victor/post/DWBVWeXFDnd?hl=zh-hk",
-  },
-  {
-    id: "info-threads-lovestoryhk",
-    category: "Blog",
-    headline: "Threads｜@lovestoryhk",
-    tagline: "拍拖打卡・約會路線精選",
-    image: "https://images.unsplash.com/photo-1536599018102-9f803c140fc1?w=1200&auto=format&fit=crop&q=80",
-    href: "https://www.threads.com/@lovestoryhk/post/DPyD9PIEnn2?hl=zh-hk",
-  },
-  {
-    id: "info-lp-pak-sing-hall",
-    category: "旅遊景點",
-    headline: "百年卜公祠",
-    tagline: "上環太平山街｜Lonely Planet",
+    headline: "吳哥窟深度旅遊日記",
+    tagline: "Mr.Angkor｜小圈大圈外圈・簽證・暹粒日常",
     image:
-      "https://lp-cms-production.imgix.net/2023-03/shutterstockRF_369907814.jpg?auto=format%2Ccompress&q=80&w=1200&h=1800&fit=crop",
-    href: "https://www.lonelyplanet.com/points-of-interest/pak-sing-ancestral-hall/1489383",
+      "https://images.unsplash.com/photo-1553603227-2358aabe821e?w=1200&auto=format&fit=crop&q=80",
+    href: "https://www.mr-angkor.com/",
   },
   {
-    id: "info-lp-maritime-museum",
+    id: "info-matcha-kyoto",
     category: "旅遊景點",
-    headline: "香港海事博物館",
-    tagline: "中環八號碼頭｜Lonely Planet",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&auto=format&fit=crop&q=80",
-    href: "https://www.lonelyplanet.com/points-of-interest/hong-kong-maritime-museum/1489158",
+    headline: "嚴選京都景點 22 選",
+    tagline: "MATCHA｜初訪・深度・近郊・美食祭典",
+    image:
+      "https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?w=1200&auto=format&fit=crop&q=80",
+    href: "https://matcha-jp.com/tw/3092",
   },
   {
-    id: "info-yahoo-korea-tips",
+    id: "info-aurora-spain",
     category: "Blog",
-    headline: "韓遊10大須知",
-    tagline: "Yahoo旅遊｜入境·禁藥·暖包",
-    image: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=1200&auto=format&fit=crop&q=80",
-    href: "https://hk.news.yahoo.com/%E9%9F%93%E5%9C%8B%E6%97%85%E9%81%8A-10%E5%80%8B-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A0%85-144238021.html",
+    headline: "西班牙深度旅遊規劃",
+    tagline: "吉光旅遊｜歷史藝術・慢遊・在地體驗",
+    image:
+      "https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=1200&auto=format&fit=crop&q=80",
+    href: "https://www.auroratour.com.tw/blog/articles/spain-depth-tours",
   },
   {
-    id: "info-yahoo-seoul-solo",
+    id: "info-wanderlust-tokyo",
     category: "Blog",
-    headline: "首爾獨遊攻略",
-    tagline: "Yahoo旅遊｜景點·燒肉·優惠",
-    image: "https://images.unsplash.com/photo-1513622470522-26c3c8a854bc?w=1200&auto=format&fit=crop&q=80",
-    href: "https://hk.news.yahoo.com/%E9%A6%96%E7%88%BE%E7%8D%A8%E9%81%8A-2026-%E6%94%BB%E7%95%A5-8-%E5%A4%A7%E5%BF%85%E5%8E%BB%E6%99%AF%E9%BB%9E-060100924.html",
+    headline: "2026 東京自由行攻略",
+    tagline: "Wanderlust Annie｜深度・美學・下町散步",
+    image:
+      "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1200&auto=format&fit=crop&q=80",
+    href: "https://wanderlustannie.com.tw/tokyo/",
   },
   {
-    id: "info-commtours-compare-tours",
-    category: "行程",
-    headline: "旅行團比較",
-    tagline: "CommTours｜多社同屏列陣",
-    image: "https://www.tichk.org/sites/default/files/2021-06/home_img_HongKong_Harbour.png",
-    href: "/tours",
+    id: "info-letsgo-kyoto-depth",
+    category: "旅遊景點",
+    headline: "京都深度旅遊攻略",
+    tagline: "樂吃購！日本｜私房景點・冷門寺社・建築",
+    image:
+      "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&auto=format&fit=crop&q=80",
+    href: "https://osaka.letsgojp.com/archives/734038/",
   },
   {
-    id: "info-commtours-agency-reviews",
-    category: "旅行社",
-    headline: "旅行社評分",
-    tagline: "CommTours｜用家評論集中睇",
-    image: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1200&auto=format&fit=crop&q=80",
-    href: "/reviews/agencies",
+    id: "info-klook-osaka-suburbs",
+    category: "旅遊景點",
+    headline: "大阪近郊深度景點",
+    tagline: "Klook 旅遊部落格｜一日遊與小鎮提案",
+    image:
+      "https://images.unsplash.com/photo-1596422846543-75c6fc197f07?w=1200&auto=format&fit=crop&q=80",
+    href: "https://www.klook.com/zh-HK/blog/%E5%A4%A7%E9%98%AA%E8%BF%91%E9%83%8A%E6%99%AF%E9%BB%9E-%E6%B7%B1%E5%BA%A6%E6%97%85%E9%81%8A-%E6%8E%A8%E4%BB%8B/",
+  },
+  {
+    id: "info-stevemadden-eu-us",
+    category: "Blog",
+    headline: "歐美深度景點懶人包",
+    tagline: "Steve Madden TW｜紐約・巴黎・東京・峇里",
+    image:
+      "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1200&auto=format&fit=crop&q=80",
+    href: "https://stevemadden.com.tw/pages/%E6%AD%90%E7%BE%8E%E8%87%AA%E7%94%B1%E8%A1%8C%E6%94%BB%E7%95%A5-2025%E6%B7%B1%E5%BA%A6%E6%97%85%E9%81%8A%E6%99%AF%E9%BB%9E%E6%87%B6%E4%BA%BA%E5%8C%85-%E9%AB%98cp%E5%80%BC%E9%A3%AF%E5%BA%97%E6%8E%A8%E8%96%A6",
+  },
+  {
+    id: "info-jnto-tohoku-micro",
+    category: "Blog",
+    headline: "東北「深度微旅」",
+    tagline: "JNTO｜岩手・宮城・三陸海岸・Mini Tour",
+    image:
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80",
+    href: "https://www.japan.travel/tw/tw/blog/92iwate_miyagi/",
+  },
+  {
+    id: "info-tmtravel-bali",
+    category: "旅遊景點",
+    headline: "峇里島深度文化之旅",
+    tagline: "鈦美旅遊｜信仰・中部北部・藍夢島",
+    image:
+      "https://images.unsplash.com/photo-1506929562872-bb421503ef21?w=1200&auto=format&fit=crop&q=80",
+    href: "https://blog.tmtravel.com.tw/travel-in-bali/",
+  },
+  {
+    id: "info-lillian-france",
+    category: "Blog",
+    headline: "2026 法國自由行全攻略",
+    tagline: "嗯嗯莉莉嗯｜景點・交通・心理準備",
+    image:
+      "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1200&auto=format&fit=crop&q=80",
+    href: "https://lillian.tw/france/",
   },
 ];
 
