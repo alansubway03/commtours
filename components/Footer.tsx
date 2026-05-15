@@ -31,7 +31,7 @@ export function Footer() {
       title: "快速入口",
       links: [
         { label: "全部行程", href: "/tours" },
-        { label: "熱門精選", href: "/tours?sort=popular" },
+        { label: "熱門精選", href: "/tours?featured=1" },
         { label: "無購物團", href: "/tours?noShopping=1" },
       ],
     },

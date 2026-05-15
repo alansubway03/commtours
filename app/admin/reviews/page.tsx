@@ -1,9 +1,16 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { getCurrentMember } from "@/lib/memberAuth";
+import { NOINDEX_FOLLOW } from "@/lib/seo/listingPage";
 import { createSupabaseAdminClient } from "@/lib/supabaseAdmin";
 import { AdminReviewModerationClient, type AdminReviewItem } from "@/components/AdminReviewModerationClient";
 
 export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "評價審核",
+  robots: NOINDEX_FOLLOW,
+};
 
 export default async function AdminReviewsPage() {
   const member = await getCurrentMember();

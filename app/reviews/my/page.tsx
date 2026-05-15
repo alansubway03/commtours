@@ -5,10 +5,12 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { getCurrentMember } from "@/lib/memberAuth";
 import { getMemberReviews, reviewOverallAverage } from "@/lib/data/reviews";
+import { NOINDEX_FOLLOW } from "@/lib/seo/listingPage";
 
 export const metadata: Metadata = {
   title: "我的分享",
   description: "查看你提交過的旅程分享與批核狀態。",
+  robots: NOINDEX_FOLLOW,
 };
 
 function statusLabel(status: "pending" | "approved" | "rejected"): string {

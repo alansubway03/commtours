@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getTours } from "@/lib/data/tours";
 import { ReviewShareFormClient } from "@/components/ReviewShareFormClient";
+import { NOINDEX_FOLLOW } from "@/lib/seo/listingPage";
 
 export const metadata: Metadata = {
   title: "分享行程",
   description: "選擇旅行團並提交你的參團評分與分享。",
+  robots: NOINDEX_FOLLOW,
 };
 
 export default async function ReviewSharePage() {

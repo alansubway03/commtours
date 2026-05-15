@@ -1,4 +1,4 @@
-import { createServerSupabaseClient } from "@/lib/supabase";
+import { createServerSupabaseClient, createStaticSupabaseClient } from "@/lib/supabase";
 import type { Tour, TourType } from "@/types/tour";
 import { normalizeDepartureDateStatusesInput } from "@/lib/departureDateStatuses";
 import { hasFeaturedTag } from "@/lib/featuredTours";
@@ -55,8 +55,9 @@ function mapRowToTour(row: TourRow): Tour {
   };
 }
 
-export async function getTours(): Promise<Tour[]> {
-  const supabase = await createServerSupabaseClient();
+async function fetchToursFromSupabase(
+  supabase: Awaited<ReturnType<typeof createServerSupabaseClient>> | ReturnType<typeof createStaticSupabaseClient>,
+): Promise<Tour[]> {
   const { data, error } = await supabase
     .from("tour")
     .select("*")
@@ -71,6 +72,17 @@ export async function getTours(): Promise<Tour[]> {
       if (featuredDelta !== 0) return featuredDelta;
       return Number(b.id) - Number(a.id);
     });
+}
+
+export async function getTours(): Promise<Tour[]> {
+  const supabase = await createServerSupabaseClient();
+  return fetchToursFromSupabase(supabase);
+}
+
+/** 供 sitemap 等建置時路徑使用，避免觸發 `cookies()` 導致無法靜態產生。 */
+export async function getToursForSitemap(): Promise<Tour[]> {
+  const supabase = createStaticSupabaseClient();
+  return fetchToursFromSupabase(supabase);
 }
 
 export async function getTourById(id: string): Promise<Tour | null> {

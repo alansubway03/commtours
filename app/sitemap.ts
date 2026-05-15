@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { getTours } from "@/lib/data/tours";
+import { getToursForSitemap } from "@/lib/data/tours";
 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
@@ -11,9 +11,9 @@ function toValidDateOrUndefined(value: string | undefined): Date | undefined {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  let tours: Awaited<ReturnType<typeof getTours>> = [];
+  let tours: Awaited<ReturnType<typeof getToursForSitemap>> = [];
   try {
-    tours = await getTours();
+    tours = await getToursForSitemap();
   } catch (error) {
     console.error("[sitemap] Failed to load tours:", error);
   }

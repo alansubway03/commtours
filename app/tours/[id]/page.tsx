@@ -28,6 +28,8 @@ const TYPE_ICONS: Record<string, React.ComponentType<{ className?: string }>> = 
 const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://commtours.com";
 
+export const revalidate = 600;
+
 /** 符合 Google 商家資訊／Offer 建議：運費與時效（香港；無實體運費以 0 表示） */
 const DEFAULT_HK_OFFER_SHIPPING_DETAILS = {
   "@type": "OfferShippingDetails",

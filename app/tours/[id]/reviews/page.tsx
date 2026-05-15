@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { NOINDEX_FOLLOW } from "@/lib/seo/listingPage";
 import { getTourById } from "@/lib/data/tours";
 import { getAgencyReviewSummary, getAgencyReviews } from "@/lib/data/reviews";
 import { TourReviewBrowseClient } from "@/components/TourReviewBrowseClient";
@@ -14,9 +15,14 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
   const { id } = await params;
   const tour = await getTourById(id);
   if (!tour) return { title: "會員評價" };
+  const agencyQuery = encodeURIComponent(tour.agency);
   return {
     title: `${tour.agency} — 會員評價`,
     description: `查看此旅行社的會員評分與評語（已審核公開）`,
+    robots: NOINDEX_FOLLOW,
+    alternates: {
+      canonical: `/reviews?agency=${agencyQuery}`,
+    },
   };
 }
 

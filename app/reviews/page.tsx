@@ -4,11 +4,24 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { getRecentApprovedReviews } from "@/lib/data/reviews";
 import { ReviewFeedClient } from "@/components/ReviewFeedClient";
+import { NOINDEX_FOLLOW } from "@/lib/seo/listingPage";
 
-export const metadata: Metadata = {
-  title: "旅程分享",
-  description: "查看 100% 參團者提交並通過審核的旅行團評論與評分。",
-};
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ agency?: string }>;
+}): Promise<Metadata> {
+  const { agency } = await searchParams;
+  const hasAgencyFilter = Boolean(agency?.trim());
+  return {
+    title: "旅程分享",
+    description: "查看 100% 參團者提交並通過審核的旅行團評論與評分。",
+    alternates: {
+      canonical: "/reviews",
+    },
+    ...(hasAgencyFilter ? { robots: NOINDEX_FOLLOW } : {}),
+  };
+}
 
 export default async function ReviewsPage({
   searchParams,

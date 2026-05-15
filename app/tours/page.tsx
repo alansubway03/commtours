@@ -10,6 +10,12 @@ import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import { canonicalTourRegion } from "@/lib/canonicalTourRegion";
 import { hasFeaturedTag } from "@/lib/featuredTours";
 import {
+  getSearchParam,
+  hasActiveSearchParams,
+  NOINDEX_FOLLOW,
+  toPositiveInt,
+} from "@/lib/seo/listingPage";
+import {
   departureRangeContainsMonth,
   isDepartureRangeNote,
   parseDepartureDay,
@@ -45,10 +51,13 @@ export async function generateMetadata({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }): Promise<Metadata> {
   const resolved = await searchParams;
-  const page = toPositiveInt(getParam(resolved.page), 1);
-  const canonical = buildPageHref(resolved, page);
-  const title =
-    page > 1
+  const page = toPositiveInt(getSearchParam(resolved.page), 1);
+  const featuredOnly = getSearchParam(resolved.featured) === "1";
+  const shouldNoIndex = hasActiveSearchParams(resolved) || page > 1;
+  const canonical = "/tours";
+  const title = featuredOnly
+    ? "熱門精選行程 - 香港出發長線及特色團"
+    : page > 1
       ? `長線特色團比價（第 ${page} 頁）- 香港出發歐洲/郵輪/潛水等`
       : "長線特色團比價 - 香港出發歐洲/郵輪/潛水等";
   const description =
@@ -60,6 +69,7 @@ export async function generateMetadata({
     alternates: {
       canonical,
     },
+    ...(shouldNoIndex ? { robots: NOINDEX_FOLLOW } : {}),
     openGraph: {
       title: `${title} | CommTours`,
       description,
@@ -141,12 +151,6 @@ function getParam(
   return typeof v === "string" ? v : v[0];
 }
 
-function toPositiveInt(value: string | undefined, fallback: number): number {
-  const parsed = Number(value);
-  if (!Number.isInteger(parsed) || parsed < 1) return fallback;
-  return parsed;
-}
-
 function buildPageHref(
   searchParams: Record<string, string | string[] | undefined>,
   page: number
@@ -210,6 +214,7 @@ export default async function ToursPage({
   const priceMax = Number(getParam(searchParams.priceMax) ?? getParam(searchParams.price_max));
   const monthParam = getParam(searchParams.month);
   const noShopping = getParam(searchParams.noShopping) === "1";
+  const featuredOnly = getParam(searchParams.featured) === "1";
   const page = toPositiveInt(getParam(searchParams.page), 1);
   const agenciesParam =
     getParam(searchParams.agencies) ?? getParam(searchParams.agency);
@@ -240,7 +245,8 @@ export default async function ToursPage({
     priceMinNum != null ||
     priceMaxNum != null ||
     (monthParam != null && monthParam !== "" && monthParam !== "不限") ||
-    noShopping;
+    noShopping ||
+    featuredOnly;
 
   const supabase = await createServerSupabaseClient();
   const from = (page - 1) * PAGE_SIZE;
@@ -336,6 +342,9 @@ export default async function ToursPage({
         (f) => f.includes("無購物") || f.includes("純玩") || f.includes("纯玩")
       )
     );
+  }
+  if (featuredOnly) {
+    list = list.filter((row) => hasFeaturedTag(row.features));
   }
 
   const totalCount = list.length;
