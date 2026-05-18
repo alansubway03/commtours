@@ -175,7 +175,7 @@ function InfoCardTile({ card, dense = false }: { card: InfoCard; dense?: boolean
         alt=""
         fill
         className="object-cover transition-transform duration-300 group-hover:scale-105"
-        sizes={dense ? "(max-width: 767px) 18vw, 16vw" : "(max-width: 767px) 25vw, 25vw"}
+        sizes={dense ? "16vw" : "(max-width: 767px) 46vw, 25vw"}
       />
       <div
         className={
@@ -215,7 +215,7 @@ function InfoCardTile({ card, dense = false }: { card: InfoCard; dense?: boolean
 
   const cardClassName = dense
     ? "group relative mx-auto block aspect-square min-h-0 w-[88%] overflow-hidden rounded-lg bg-muted shadow-sm ring-1 ring-black/10 transition-[transform,box-shadow] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:ring-white/10"
-    : "group relative mx-auto block aspect-square min-h-0 w-[88%] overflow-hidden rounded-xl bg-muted shadow-sm ring-1 ring-black/10 transition-[transform,box-shadow] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:ring-white/10";
+    : "group relative block aspect-square min-h-0 w-full overflow-hidden rounded-xl bg-muted shadow-sm ring-1 ring-black/10 transition-[transform,box-shadow] hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:ring-white/10";
 
   if (external) {
     return (
@@ -339,7 +339,7 @@ export function HomeMarketingSections({
       <div className="mt-7">
         <h2 className="mb-4 text-xl font-semibold md:text-2xl">旅遊資訊</h2>
         <div className="relative">
-          {/* 手機：每頁 6 欄橫滑；最後一頁唔加寬，每張仍占 1 欄（同第 1 頁卡寬） */}
+          {/* 手機：2 欄 × 3 列（每頁 6 張），橫向換頁；卡片約半屏寬 */}
           <div
             ref={infoScrollRef}
             onScroll={onInfoScroll}
@@ -351,19 +351,23 @@ export function HomeMarketingSections({
                 pageIdx * INFO_PAGE_SIZE + INFO_PAGE_SIZE,
               );
               const n = pageCards.length;
-              const spanClass =
-                n === 1 ? "col-span-1 justify-self-center [grid-column:3/4]"
-                  : n === 3 ? "col-span-2"
-                  : "";
+              const spanClass = n === 1 ? "col-span-2 flex justify-center" : "";
 
               return (
                 <div
                   key={`info-page-${pageIdx}`}
-                  className="grid w-full min-w-full shrink-0 grid-cols-6 gap-1.5 snap-start snap-always sm:gap-2"
+                  className="grid w-full min-w-full shrink-0 grid-cols-2 gap-2.5 snap-start snap-always"
                 >
                   {pageCards.map((card) => (
-                    <div key={card.id} className={cn("min-w-0", spanClass)}>
-                      <InfoCardTile card={card} dense />
+                    <div
+                      key={card.id}
+                      className={cn(
+                        "min-w-0",
+                        spanClass,
+                        n === 1 ? "[&_a]:max-w-[11.5rem] [&_a]:w-full" : "",
+                      )}
+                    >
+                      <InfoCardTile card={card} />
                     </div>
                   ))}
                 </div>

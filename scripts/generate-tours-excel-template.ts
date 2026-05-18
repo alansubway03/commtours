@@ -1,12 +1,16 @@
 /**
- * 產生給客人填寫的 CSV 範本：scripts/templates/旅行團資料範本.csv
- * 執行：npx tsx scripts/generate-tours-excel-template.ts
+ * 產生給旅行社填寫的 CSV / Excel 範本
+ * 執行：npm run csv:template
  */
 import { mkdirSync, existsSync, writeFileSync } from "fs";
 import { resolve } from "path";
+import * as XLSX from "xlsx";
 
 const OUT_DIR = resolve(process.cwd(), "scripts/templates");
+const EXPORTS_DIR = resolve(process.cwd(), "exports");
 const OUT_FILE = resolve(OUT_DIR, "旅行團資料範本.csv");
+const XLSX_FILE = resolve(OUT_DIR, "旅行團資料範本.xlsx");
+const XLSX_EXPORT = resolve(EXPORTS_DIR, "旅行團資料範本.xlsx");
 const HELP_FILE = resolve(OUT_DIR, "旅行團資料範本-填寫說明.txt");
 
 const HEADERS = [
@@ -82,14 +86,49 @@ function rowToCsv(row: readonly (string | number)[]): string {
   return row.map(csvEscape).join(",");
 }
 
+function writeXlsx(targetPath: string) {
+  const wb = XLSX.utils.book_new();
+  const dataSheet = XLSX.utils.aoa_to_sheet([Array.from(HEADERS), EXAMPLE_ROW]);
+  dataSheet["!cols"] = [
+    { wch: 14 },
+    { wch: 10 },
+    { wch: 28 },
+    { wch: 24 },
+    { wch: 10 },
+    { wch: 6 },
+    { wch: 16 },
+    { wch: 36 },
+    { wch: 18 },
+    { wch: 12 },
+    { wch: 36 },
+    { wch: 12 },
+    { wch: 36 },
+    { wch: 36 },
+  ];
+  XLSX.utils.book_append_sheet(wb, dataSheet, "旅行團資料");
+
+  const helpLines = HELP_TEXT.split("\n").map((line) => [line]);
+  const helpSheet = XLSX.utils.aoa_to_sheet(helpLines);
+  helpSheet["!cols"] = [{ wch: 88 }];
+  XLSX.utils.book_append_sheet(wb, helpSheet, "填寫說明");
+
+  XLSX.writeFile(wb, targetPath);
+}
+
 function main() {
   if (!existsSync(OUT_DIR)) mkdirSync(OUT_DIR, { recursive: true });
+  if (!existsSync(EXPORTS_DIR)) mkdirSync(EXPORTS_DIR, { recursive: true });
 
   const csv = `${rowToCsv(HEADERS)}\n${rowToCsv(EXAMPLE_ROW)}\n`;
   writeFileSync(OUT_FILE, `\uFEFF${csv}`, "utf-8");
   writeFileSync(HELP_FILE, HELP_TEXT, "utf-8");
+  writeXlsx(XLSX_FILE);
+  writeXlsx(XLSX_EXPORT);
+
   console.log("已產生:", OUT_FILE);
   console.log("已產生:", HELP_FILE);
+  console.log("已產生:", XLSX_FILE);
+  console.log("已產生:", XLSX_EXPORT);
 }
 
 main();
