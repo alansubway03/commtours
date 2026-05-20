@@ -4,6 +4,7 @@ export const AGENCY_FILTER_OPTIONS = [
   { slug: "egl", label: "EGL 東瀛遊", agency: "EGL 東瀛遊" },
   { slug: "jetour", label: "Jetour 捷旅", agency: "Jetour 捷旅" },
   { slug: "goldjoy", label: "金怡假期", agency: "金怡假期" },
+  { slug: "dewonder", label: "DeWonder", agency: "DeWonder" },
   { slug: "wwpkg", label: "縱橫遊 WWPKG", agency: "縱橫遊WWPKG" },
 ] as const;
 
@@ -25,6 +26,8 @@ export const AGENCY_INTRO_BY_SLUG: Partial<Record<AgencyFilterSlug, string>> = {
     "Jetour 捷旅提供日本、韓國、歐洲及郵輪等產品，主打多樣化行程選擇與不同節奏的出發方案。",
   goldjoy:
     "金怡假期涵蓋長線與特色深度遊路線，重視景點安排與行程內容的完整度，適合喜歡充實行程的旅客。",
+  dewonder:
+    "DeWonder 提供特色長線與深度主題行程，常見涵蓋較少見目的地與文化體驗路線，適合偏好新鮮題材的旅客。",
   wwpkg:
     "縱橫遊 WWPKG 聚焦主題路線及特色地區產品，常見包含深度體驗元素，適合偏好主題化旅遊的旅客。",
 };
