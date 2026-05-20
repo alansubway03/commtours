@@ -36,27 +36,27 @@ function isExternalHref(href: string) {
 const AD_SLIDES: AdSlide[] = [
   {
     id: "ad-commtours-launch",
-    title: "香港團隊主理，貼地為你整理",
+    title: "前外遊領隊為你整理",
     subtitle:
-      "午膳想快睇兩眼，定放工後同屋企人夾行程都得。日程、團費同重點集中喺同一畫面，查閱方便，亦唔使再靠一堆截圖同群組轉發慢慢對。",
+      "放飯睇兩眼或者放工後同屋企人夾行程都得。行程資料、團費同重點集中喺同一畫面，唔使再靠一堆截圖同群組轉發慢慢對。",
     image:
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1600&auto=format&fit=crop&q=80",
     href: "/about",
   },
   {
     id: "ad-commtours-vision",
-    title: "細節並排睇，邊個行程最啱心水",
+    title: "細節、行程一次過睇哂",
     subtitle:
-      "出發日期、住宿安排、有冇購物環節、團費包邊啲……各項資料左右對齊。邊份行程最配合大家需要，一望就知，唔使估估下。",
+      "出發日期、住宿、購物點、團費、服務費……各項資料左右對齊。邊份行程最配合大家需要，一次過比較。",
     image:
       "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&auto=format&fit=crop&q=80",
     href: "/about",
   },
   {
     id: "ad-commtours-compare",
-    title: "多間旅行社行程，一個畫面盡覽",
+    title: "一個畫面盡覽多間旅行社行程",
     subtitle:
-      "揀好目的地同出發日，各家路線同報價會排開畀你睇。唔使自己開十幾個分頁，亦唔使手抄價錢再慢慢對，慳返時間慢慢揀。",
+      "揀好目的地同出發日，各旅行社旅行團同報價一次過睇哂。唔使自己開十幾個分頁，亦唔使手抄價錢再慢慢對，慳返時間慢慢揀。",
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&auto=format&fit=crop&q=80",
     href: "/tours",
@@ -160,7 +160,7 @@ const INFO_CARDS: InfoCard[] = [
   },
 ];
 
-const ROTATE_MS = 4000;
+const ROTATE_MS = 6000;
 
 function InfoCardTile({ card, dense = false }: { card: InfoCard; dense?: boolean }) {
   const external = isExternalHref(card.href);
@@ -305,14 +305,14 @@ export function HomeMarketingSections({
             >
               {/* 背景圖為裝飾；alt 留空避免破圖時重複顯示主標文字 */}
               <Image src={slide.image} alt="" fill className="object-cover" sizes="100vw" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/48 via-black/18 to-transparent" />
-              <div className="absolute inset-y-0 left-0 flex max-w-[min(100%,34rem)] flex-col justify-center gap-2.5 px-6 py-5 text-white sm:max-w-[min(100%,38rem)] md:gap-3 md:px-10 md:py-6">
-                <p className="text-[11px] font-medium tracking-wide text-white/55">CommTours</p>
-                <p className="text-[1.05rem] font-semibold leading-snug tracking-tight drop-shadow-sm sm:text-lg md:text-2xl md:leading-tight">
+              <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/30 to-black/5" />
+              <div className="absolute inset-y-0 left-0 flex max-w-[min(100%,34rem)] flex-col justify-center gap-2 px-6 py-5 text-white sm:max-w-[min(100%,38rem)] md:gap-2.5 md:px-10 md:py-6">
+                <p className="text-xs font-normal text-white/70">CommTours</p>
+                <p className="text-lg font-bold leading-[1.4] tracking-normal sm:text-xl md:text-[1.65rem] md:leading-[1.35]">
                   {slide.title}
                 </p>
                 {slide.subtitle ? (
-                  <p className="line-clamp-3 text-[13px] font-normal leading-[1.55] text-white/78 drop-shadow-sm sm:text-sm md:line-clamp-none md:text-[0.95rem] md:leading-relaxed">
+                  <p className="line-clamp-3 text-[13px] font-normal leading-[1.65] text-white/92 sm:text-[14px] md:line-clamp-none md:text-[15px] md:leading-[1.7]">
                     {slide.subtitle}
                   </p>
                 ) : null}
