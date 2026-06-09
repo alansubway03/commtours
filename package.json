@@ -25,6 +25,7 @@
     "logo:transparent": "tsx scripts/remove-logo-background.ts",
     "logo:navbar-transparent": "tsx scripts/transparent-commtours-navbar-logo.ts",
     "logo:prepare": "tsx scripts/prepare-logo.ts",
+    "logo:sync-favicons": "tsx scripts/sync-favicons.ts",
     "smoke:e2e:member": "tsx scripts/smoke-e2e-member.ts",
     "migrate:020": "tsx scripts/run-migration-020.ts",
     "referral:export-clicks": "tsx scripts/export-referral-clicks.ts",
@@ -66,6 +67,7 @@
     "pptxgenjs": "^4.0.1",
     "sharp": "^0.34.5",
     "tailwindcss": "^4",
+    "to-ico": "^1.1.5",
     "tsx": "^4.19.2",
     "typescript": "^5",
     "xlsx": "^0.18.5"
