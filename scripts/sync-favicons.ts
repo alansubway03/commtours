@@ -28,20 +28,23 @@ async function main() {
     png(512),
   ]);
 
+  writeFileSync(resolve(PUBLIC, "favicon-commtours.ico"), await toIco([p16, p32, p48]));
+  writeFileSync(resolve(PUBLIC, "favicon-commtours.png"), p48);
+  // 保留根目錄 favicon.ico 作瀏覽器預設請求 fallback
   writeFileSync(resolve(PUBLIC, "favicon.ico"), await toIco([p16, p32, p48]));
-  writeFileSync(resolve(PUBLIC, "favicon.png"), p48);
-  writeFileSync(resolve(PUBLIC, "icon-512.png"), p512);
+  writeFileSync(resolve(PUBLIC, "icon-commtours-512.png"), p512);
 
   mkdirSync(APP, { recursive: true });
   writeFileSync(resolve(APP, "icon.png"), p32);
   writeFileSync(resolve(APP, "apple-icon.png"), p180);
-  writeFileSync(resolve(PUBLIC, "apple-icon.png"), p180);
+  writeFileSync(resolve(PUBLIC, "apple-icon-commtours.png"), p180);
 
   console.log("已同步 favicon：");
-  console.log("  public/favicon.ico (16/32/48)");
-  console.log("  public/favicon.png (48×48)");
-  console.log("  public/icon-512.png (512×512)");
-  console.log("  public/apple-icon.png (180×180)");
+  console.log("  public/favicon-commtours.ico (16/32/48)");
+  console.log("  public/favicon-commtours.png (48×48)");
+  console.log("  public/favicon.ico (fallback)");
+  console.log("  public/icon-commtours-512.png (512×512)");
+  console.log("  public/apple-icon-commtours.png (180×180)");
   console.log("  app/icon.png (32×32)");
   console.log("  app/apple-icon.png (180×180)");
 }
