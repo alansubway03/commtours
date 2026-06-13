@@ -23,7 +23,6 @@
     "scrape:goldjoy-cruise-article": "tsx scripts/scrape-goldjoy-cruise-article.ts",
     "tours:set-random-featured": "tsx scripts/set-random-featured-tours.ts",
     "logo:transparent": "tsx scripts/remove-logo-background.ts",
-    "logo:navbar-transparent": "tsx scripts/transparent-commtours-navbar-logo.ts",
     "logo:prepare": "tsx scripts/prepare-logo.ts",
     "logo:sync-favicons": "tsx scripts/sync-favicons.ts",
     "smoke:e2e:member": "tsx scripts/smoke-e2e-member.ts",

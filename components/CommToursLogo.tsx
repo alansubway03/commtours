@@ -1,9 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-/**
- * 導覽列品牌圖標（透明底 PNG，由 `npm run logo:navbar-transparent` 從白底稿產生）。
- */
+/** 導覽列品牌圖標（全站唯一 logo，透明底 PNG）。 */
 export function CommToursLogo({ className }: { className?: string }) {
   return (
     <Link
@@ -12,7 +10,7 @@ export function CommToursLogo({ className }: { className?: string }) {
       aria-label="CommTours 首頁"
     >
       <Image
-        src="/logo-commtours-mark.png?v=20260516a"
+        src="/logo.png?v=20260613"
         alt="CommTours"
         width={512}
         height={512}

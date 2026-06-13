@@ -1,5 +1,5 @@
 /**
- * 由 public/logo-commtours-mark.png 同步全站 favicon / PWA 圖示。
+ * 由 public/logo.png 同步全站 favicon / PWA 圖示。
  *
  *   npm run logo:sync-favicons
  */
@@ -8,7 +8,7 @@ import { dirname, resolve } from "node:path";
 import sharp from "sharp";
 import toIco from "to-ico";
 
-const SOURCE = resolve(process.cwd(), "public", "logo-commtours-mark.png");
+const SOURCE = resolve(process.cwd(), "public", "logo.png");
 const PUBLIC = resolve(process.cwd(), "public");
 const APP = resolve(process.cwd(), "app");
 

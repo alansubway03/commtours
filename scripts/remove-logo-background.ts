@@ -6,9 +6,10 @@
  */
 import sharp from "sharp";
 import { resolve, dirname } from "path";
-import { copyFileSync, mkdirSync } from "fs";
+import { copyFileSync, mkdirSync, renameSync, unlinkSync } from "fs";
 
 const ROOT = resolve(process.cwd(), "public", "logo.png");
+const TMP = resolve(process.cwd(), "public", "logo.tmp.png");
 const APP_ICON = resolve(process.cwd(), "app", "icon.png");
 const APP_APPLE = resolve(process.cwd(), "app", "apple-icon.png");
 
@@ -88,7 +89,10 @@ async function main() {
     raw: { width: w, height: h, channels: 4 },
   })
     .png({ compressionLevel: 9 })
-    .toFile(ROOT);
+    .toFile(TMP);
+
+  unlinkSync(ROOT);
+  renameSync(TMP, ROOT);
 
   mkdirSync(dirname(APP_ICON), { recursive: true });
   copyFileSync(ROOT, APP_ICON);
