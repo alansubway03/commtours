@@ -2,9 +2,34 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Noto_Serif_TC } from "next/font/google";
 import type { ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
+
+/** 行程推廣橫幅（旅行社付費廣告版位樣式） */
+type TourPromoContent = {
+  /** 主題大字，如「雪頓節」 */
+  heroTitle: string;
+  tagline: string;
+  /** 副標高亮字（黃色） */
+  taglineAccent: string;
+  /** 路線白條文案 */
+  route: string;
+  tourCode?: string;
+  airlines?: string;
+  price: string;
+  priceSuffix?: string;
+  departures?: string;
+  /** 右上角小圖（節慶／景點示意） */
+  insetImage?: string;
+};
+
+/** 主題大字：用繁中完整支援的襯線體，避免書法字體缺字（如「雪」）導致混用字型 */
+const tourPromoTitle = Noto_Serif_TC({
+  weight: "700",
+  display: "swap",
+});
 
 type AdSlide = {
   id: string;
@@ -13,6 +38,14 @@ type AdSlide = {
   subtitle?: string;
   image: string;
   href: string;
+  /** platform = CommTours 自有；partner = 旅行社付費廣告 demo */
+  kind?: "platform" | "partner";
+  /** 合作方品牌名（partner 付費上線時顯示；demo 可省略） */
+  brand?: string;
+  /** 行動呼籲按鈕文字（partner 可選） */
+  cta?: string;
+  /** 旅行社行程推廣版式（參考業界橫幅） */
+  tourPromo?: TourPromoContent;
 };
 
 /** 首頁「旅遊資訊」精選：正方形卡片，左下 headline / tagline */
@@ -60,6 +93,26 @@ const AD_SLIDES: AdSlide[] = [
     image:
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&auto=format&fit=crop&q=80",
     href: "/tours",
+  },
+  /** 首頁廣告版位 demo：示範旅行社可如何推廣行程路線（不顯示具體公司名） */
+  {
+    id: "ad-partner-demo",
+    kind: "partner",
+    title: "雪頓節西藏11天之旅",
+    subtitle: "一年一度盛大珍貴藏族節慶",
+    image:
+      "https://images.unsplash.com/photo-1548013146-72479768bada?w=1600&auto=format&fit=crop&q=80&sat=-20",
+    href: "/tours",
+    tourPromo: {
+      heroTitle: "雪頓節",
+      tagline: "一年一度盛大",
+      taglineAccent: "珍貴藏族節慶",
+      route: "西藏 前藏、林芝、後藏、定日、體驗青藏鐵路11天之旅",
+      tourCode: "DEMO11UT",
+      price: "28,999",
+      priceSuffix: "起",
+      departures: "限定出發 8月4, 8, 9日",
+    },
   },
 ];
 
@@ -161,6 +214,165 @@ const INFO_CARDS: InfoCard[] = [
 ];
 
 const ROTATE_MS = 6000;
+
+const TOUR_PROMO_BLUE = "#1a3d7c";
+
+function PartnerTourBanner({
+  slide,
+  promo,
+}: {
+  slide: AdSlide;
+  promo: TourPromoContent;
+}) {
+  return (
+    <>
+      <Image
+        src={slide.image}
+        alt=""
+        fill
+        className="object-cover object-center"
+        sizes="100vw"
+        priority={slide.id === "ad-partner-demo"}
+      />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
+
+      <span className="absolute right-3 top-2.5 z-10 rounded border border-white/40 bg-black/50 px-1.5 py-0.5 text-[10px] font-medium text-white sm:right-4 sm:top-3">
+        廣告
+      </span>
+
+      <div className="absolute inset-0 flex items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 md:px-8">
+        <div className="min-w-0 max-w-[58%] space-y-1 sm:max-w-[52%] sm:space-y-1.5">
+          <p className="text-[11px] font-semibold leading-snug text-white drop-shadow-md sm:text-xs md:text-sm">
+            {promo.tagline}
+            <span className="text-yellow-300">{promo.taglineAccent}</span>
+          </p>
+          <div className="rounded-sm bg-white px-2 py-1 shadow-sm sm:px-2.5 sm:py-1.5">
+            <p
+              className="line-clamp-2 text-[9px] font-semibold leading-snug sm:text-[10px] md:text-[11px]"
+              style={{ color: TOUR_PROMO_BLUE }}
+            >
+              {promo.route}
+            </p>
+          </div>
+          {promo.tourCode ? (
+            <p className="text-[9px] font-medium tracking-wide text-white/90 sm:text-[10px]">
+              {promo.tourCode}
+            </p>
+          ) : null}
+        </div>
+
+        <div className="flex shrink-0 flex-col items-end justify-center gap-1.5 sm:gap-2">
+          <div className="rounded border border-white/50 bg-black/25 px-2 py-0.5 backdrop-blur-sm sm:px-2.5 sm:py-1">
+            <p
+              className={cn(
+                tourPromoTitle.className,
+                "text-xl leading-none text-white drop-shadow-md sm:text-2xl md:text-[1.75rem]",
+              )}
+            >
+              {promo.heroTitle}
+            </p>
+          </div>
+          <div className="flex flex-wrap items-center justify-end gap-1.5 rounded-md bg-white/95 px-2 py-1 shadow-md sm:gap-2 sm:px-2.5 sm:py-1.5">
+            <div className="flex items-baseline gap-px whitespace-nowrap">
+              <span className="text-sm font-bold sm:text-base" style={{ color: TOUR_PROMO_BLUE }}>
+                $
+              </span>
+              <span
+                className="text-lg font-black leading-none sm:text-xl md:text-2xl"
+                style={{ color: TOUR_PROMO_BLUE }}
+              >
+                {promo.price}
+              </span>
+              {promo.priceSuffix ? (
+                <span className="text-[11px] font-bold sm:text-xs" style={{ color: TOUR_PROMO_BLUE }}>
+                  {promo.priceSuffix}
+                </span>
+              ) : null}
+            </div>
+            {promo.departures ? (
+              <div
+                className="rounded-full px-2 py-0.5 text-[8px] font-semibold leading-tight text-white sm:text-[9px] md:text-[10px]"
+                style={{ backgroundColor: TOUR_PROMO_BLUE }}
+              >
+                {promo.departures}
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
+function BannerSlide({ slide }: { slide: AdSlide }) {
+  const isPartner = slide.kind === "partner";
+  const isTourPromo = isPartner && slide.tourPromo;
+  const external = isExternalHref(slide.href);
+  const aria = slide.subtitle ? `${slide.title}。${slide.subtitle}` : slide.title;
+  const slideClassName = "relative block h-[148px] min-w-full bg-zinc-800 sm:h-[168px] md:h-[200px]";
+
+  const inner = isTourPromo ? (
+    <PartnerTourBanner slide={slide} promo={slide.tourPromo!} />
+  ) : (
+    <>
+      <Image src={slide.image} alt="" fill className="object-cover" sizes="100vw" />
+      <div
+        className={
+          isPartner
+            ? "absolute inset-0 bg-gradient-to-r from-[#1a2b50]/85 via-[#1a2b50]/45 to-black/10"
+            : "absolute inset-0 bg-gradient-to-r from-black/55 via-black/30 to-black/5"
+        }
+      />
+      {isPartner ? (
+        <span className="absolute right-4 top-4 rounded-md border border-white/25 bg-black/35 px-2 py-0.5 text-[10px] font-medium tracking-wide text-white/90 backdrop-blur-sm sm:right-5 sm:top-5 md:right-8 md:top-6 md:text-[11px]">
+          廣告
+        </span>
+      ) : null}
+      <div className="absolute inset-y-0 left-0 flex max-w-[min(100%,34rem)] flex-col justify-center gap-2 px-6 py-5 text-white sm:max-w-[min(100%,38rem)] md:gap-2.5 md:px-10 md:py-6">
+        {!isPartner || slide.brand ? (
+          <p className="text-xs font-normal text-white/70">{isPartner ? slide.brand : "CommTours"}</p>
+        ) : null}
+        <p className="text-lg font-bold leading-[1.4] tracking-normal sm:text-xl md:text-[1.65rem] md:leading-[1.35]">
+          {slide.title}
+        </p>
+        {slide.subtitle ? (
+          <p className="line-clamp-3 text-[13px] font-normal leading-[1.65] text-white/92 sm:text-[14px] md:line-clamp-none md:text-[15px] md:leading-[1.7]">
+            {slide.subtitle}
+          </p>
+        ) : null}
+        {isPartner && slide.cta ? (
+          <span className="mt-0.5 inline-flex w-fit items-center rounded-full bg-white/95 px-3 py-1 text-[12px] font-semibold text-[#1a2b50] shadow-sm sm:text-[13px] md:mt-1 md:px-3.5 md:py-1.5">
+            {slide.cta}
+            <span aria-hidden className="ml-1">
+              →
+            </span>
+          </span>
+        ) : null}
+      </div>
+    </>
+  );
+
+  if (external) {
+    return (
+      <a
+        href={slide.href}
+        target="_blank"
+        rel="noopener noreferrer sponsored"
+        className={slideClassName}
+        aria-label={`${aria}（廣告，外部網站，於新分頁開啟）`}
+      >
+        {inner}
+      </a>
+    );
+  }
+
+  return (
+    <Link href={slide.href} prefetch={false} className={slideClassName} aria-label={aria}>
+      {inner}
+    </Link>
+  );
+}
 
 function InfoCardTile({ card, dense = false }: { card: InfoCard; dense?: boolean }) {
   const external = isExternalHref(card.href);
@@ -294,30 +506,7 @@ export function HomeMarketingSections({
           aria-label="首頁廣告輪播"
         >
           {AD_SLIDES.map((slide) => (
-            <Link
-              key={slide.id}
-              href={slide.href}
-              className="relative block h-[148px] min-w-full bg-zinc-800 sm:h-[168px] md:h-[200px]"
-              prefetch={false}
-              aria-label={
-                slide.subtitle ? `${slide.title}。${slide.subtitle}` : slide.title
-              }
-            >
-              {/* 背景圖為裝飾；alt 留空避免破圖時重複顯示主標文字 */}
-              <Image src={slide.image} alt="" fill className="object-cover" sizes="100vw" />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/30 to-black/5" />
-              <div className="absolute inset-y-0 left-0 flex max-w-[min(100%,34rem)] flex-col justify-center gap-2 px-6 py-5 text-white sm:max-w-[min(100%,38rem)] md:gap-2.5 md:px-10 md:py-6">
-                <p className="text-xs font-normal text-white/70">CommTours</p>
-                <p className="text-lg font-bold leading-[1.4] tracking-normal sm:text-xl md:text-[1.65rem] md:leading-[1.35]">
-                  {slide.title}
-                </p>
-                {slide.subtitle ? (
-                  <p className="line-clamp-3 text-[13px] font-normal leading-[1.65] text-white/92 sm:text-[14px] md:line-clamp-none md:text-[15px] md:leading-[1.7]">
-                    {slide.subtitle}
-                  </p>
-                ) : null}
-              </div>
-            </Link>
+            <BannerSlide key={slide.id} slide={slide} />
           ))}
         </div>
       </div>
