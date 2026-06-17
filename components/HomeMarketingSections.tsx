@@ -218,7 +218,7 @@ const ROTATE_MS = 6000;
 /** 首頁廣告橫幅高度（約為舊版 2 倍，減少過於修長的比例） */
 const BANNER_HEIGHT_CLASS = "h-[296px] sm:h-[336px] md:h-[400px]";
 /** 桌面版輪播：中間橫幅闊度比例，左右露出相鄰橫幅（參考 HKTVmall） */
-const BANNER_PEEK_BASIS = 0.86;
+const BANNER_PEEK_BASIS = 0.94;
 const BANNER_PEEK_GAP_PX = 16;
 const BANNER_MD_MQ = "(min-width: 768px)";
 
@@ -227,9 +227,11 @@ const TOUR_PROMO_BLUE = "#1a3d7c";
 function PartnerTourBanner({
   slide,
   promo,
+  priority = false,
 }: {
   slide: AdSlide;
   promo: TourPromoContent;
+  priority?: boolean;
 }) {
   return (
     <>
@@ -239,7 +241,7 @@ function PartnerTourBanner({
         fill
         className="object-cover object-center"
         sizes="100vw"
-        priority={slide.id === "ad-partner-demo"}
+        {...(priority ? { priority: true } : { loading: "eager" })}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
@@ -312,7 +314,7 @@ function PartnerTourBanner({
   );
 }
 
-function BannerSlide({ slide }: { slide: AdSlide }) {
+function BannerSlide({ slide, priority = false }: { slide: AdSlide; priority?: boolean }) {
   const isPartner = slide.kind === "partner";
   const isTourPromo = isPartner && slide.tourPromo;
   const external = isExternalHref(slide.href);
@@ -320,10 +322,17 @@ function BannerSlide({ slide }: { slide: AdSlide }) {
   const slideClassName = cn("relative block w-full bg-zinc-800", BANNER_HEIGHT_CLASS);
 
   const inner = isTourPromo ? (
-    <PartnerTourBanner slide={slide} promo={slide.tourPromo!} />
+    <PartnerTourBanner slide={slide} promo={slide.tourPromo!} priority={priority} />
   ) : (
     <>
-      <Image src={slide.image} alt="" fill className="object-cover" sizes="100vw" />
+      <Image
+        src={slide.image}
+        alt=""
+        fill
+        className="object-cover"
+        sizes="100vw"
+        {...(priority ? { priority: true } : { loading: "eager" })}
+      />
       <div
         className={
           isPartner
@@ -548,12 +557,12 @@ export function HomeMarketingSections({
           style={{ transform: bannerTransform }}
           aria-label="首頁廣告輪播"
         >
-          {AD_SLIDES.map((slide) => (
+          {AD_SLIDES.map((slide, index) => (
             <div
               key={slide.id}
-              className="w-full shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-sm md:w-[86%]"
+              className="w-full shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-sm md:w-[94%]"
             >
-              <BannerSlide slide={slide} />
+              <BannerSlide slide={slide} priority={index === 0} />
             </div>
           ))}
         </div>

@@ -5,6 +5,13 @@
   margin-inline: auto;
 }
 
+/* 闊螢幕拉闊內容區（預設 2xl 僅 96rem），減少左右大片留白 */
+@media (min-width: 80rem) {
+  .container {
+    max-width: min(120rem, calc(100% - 3rem));
+  }
+}
+
 /* CommTours 名片：深藍 #1A2B50、淺灰底 #F2F2F2、炭灰字；印刷紅色為剪裁線，唔作品牌色 */
 :root {
   --brand-navy: #1a2b50;
