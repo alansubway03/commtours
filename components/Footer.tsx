@@ -56,7 +56,7 @@ export function Footer() {
             </div>
           ))}
 
-          <div className="rounded-lg border border-white/20 bg-[#243558] p-4 md:col-span-2">
+          <div className="rounded-lg border border-white/20 bg-[#243558] p-4 md:col-span-4">
             <h4 className="mb-2 text-sm font-semibold">合作與支援</h4>
             <p className="text-sm text-white/70">商務合作、行程更新或平台查詢：</p>
             <Link

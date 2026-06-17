@@ -310,7 +310,8 @@ function BannerSlide({ slide }: { slide: AdSlide }) {
   const isTourPromo = isPartner && slide.tourPromo;
   const external = isExternalHref(slide.href);
   const aria = slide.subtitle ? `${slide.title}。${slide.subtitle}` : slide.title;
-  const slideClassName = "relative block h-[148px] min-w-full bg-zinc-800 sm:h-[168px] md:h-[200px]";
+  const slideClassName =
+    "relative block h-[148px] w-full shrink-0 grow-0 basis-full bg-zinc-800 sm:h-[168px] md:h-[200px]";
 
   const inner = isTourPromo ? (
     <PartnerTourBanner slide={slide} promo={slide.tourPromo!} />
@@ -499,9 +500,9 @@ export function HomeMarketingSections({
 
   return (
     <section className="container px-4 pt-5 md:pt-7">
-      <div className="overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+      <div className="w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
         <div
-          className="flex transition-transform duration-700 ease-in-out"
+          className="flex w-full transition-transform duration-700 ease-in-out"
           style={{ transform: translate }}
           aria-label="首頁廣告輪播"
         >

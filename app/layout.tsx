@@ -68,7 +68,7 @@ export default function RootLayout({
     <html lang="zh-HK">
       <body className={`${sourceHanSans.variable} min-h-screen font-sans antialiased`}>
         <PWARegister />
-        <div className="relative flex min-h-screen flex-col">
+        <div className="relative flex min-h-screen flex-col overflow-x-clip">
           <Navbar />
           <main className="flex-1">{children}</main>
           <Footer />

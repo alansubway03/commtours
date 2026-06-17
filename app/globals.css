@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+/* Tailwind v4 預設 container 只有 max-width，唔會置中，闊螢幕會留大片右側空白 */
+.container {
+  margin-inline: auto;
+}
+
 /* CommTours 名片：深藍 #1A2B50、淺灰底 #F2F2F2、炭灰字；印刷紅色為剪裁線，唔作品牌色 */
 :root {
   --brand-navy: #1a2b50;
