@@ -215,6 +215,13 @@ const INFO_CARDS: InfoCard[] = [
 
 const ROTATE_MS = 6000;
 
+/** 首頁廣告橫幅高度（約為舊版 2 倍，減少過於修長的比例） */
+const BANNER_HEIGHT_CLASS = "h-[296px] sm:h-[336px] md:h-[400px]";
+/** 桌面版輪播：中間橫幅闊度比例，左右露出相鄰橫幅（參考 HKTVmall） */
+const BANNER_PEEK_BASIS = 0.86;
+const BANNER_PEEK_GAP_PX = 16;
+const BANNER_MD_MQ = "(min-width: 768px)";
+
 const TOUR_PROMO_BLUE = "#1a3d7c";
 
 function PartnerTourBanner({
@@ -237,62 +244,62 @@ function PartnerTourBanner({
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20" />
       <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
 
-      <span className="absolute right-3 top-2.5 z-10 rounded border border-white/40 bg-black/50 px-1.5 py-0.5 text-[10px] font-medium text-white sm:right-4 sm:top-3">
+      <span className="absolute right-4 top-4 z-10 rounded border border-white/40 bg-black/50 px-2 py-0.5 text-[11px] font-medium text-white sm:right-5 sm:top-5 sm:text-xs">
         廣告
       </span>
 
-      <div className="absolute inset-0 flex items-center justify-between gap-3 px-4 py-3 sm:gap-4 sm:px-6 md:px-8">
-        <div className="min-w-0 max-w-[58%] space-y-1 sm:max-w-[52%] sm:space-y-1.5">
-          <p className="text-[11px] font-semibold leading-snug text-white drop-shadow-md sm:text-xs md:text-sm">
+      <div className="absolute inset-0 flex items-center justify-between gap-4 px-5 py-4 sm:gap-5 sm:px-8 sm:py-5 md:px-10 md:py-6">
+        <div className="min-w-0 max-w-[58%] space-y-2 sm:max-w-[52%] sm:space-y-2.5">
+          <p className="text-xs font-semibold leading-snug text-white drop-shadow-md sm:text-sm md:text-base">
             {promo.tagline}
             <span className="text-yellow-300">{promo.taglineAccent}</span>
           </p>
-          <div className="rounded-sm bg-white px-2 py-1 shadow-sm sm:px-2.5 sm:py-1.5">
+          <div className="rounded-sm bg-white px-2.5 py-1.5 shadow-sm sm:px-3 sm:py-2">
             <p
-              className="line-clamp-2 text-[9px] font-semibold leading-snug sm:text-[10px] md:text-[11px]"
+              className="line-clamp-2 text-[10px] font-semibold leading-snug sm:text-[11px] md:text-xs"
               style={{ color: TOUR_PROMO_BLUE }}
             >
               {promo.route}
             </p>
           </div>
           {promo.tourCode ? (
-            <p className="text-[9px] font-medium tracking-wide text-white/90 sm:text-[10px]">
+            <p className="text-[10px] font-medium tracking-wide text-white/90 sm:text-xs">
               {promo.tourCode}
             </p>
           ) : null}
         </div>
 
-        <div className="flex shrink-0 flex-col items-end justify-center gap-1.5 sm:gap-2">
-          <div className="rounded border border-white/50 bg-black/25 px-2 py-0.5 backdrop-blur-sm sm:px-2.5 sm:py-1">
+        <div className="flex shrink-0 flex-col items-end justify-center gap-2 sm:gap-2.5">
+          <div className="rounded border border-white/50 bg-black/25 px-2.5 py-1 backdrop-blur-sm sm:px-3 sm:py-1.5">
             <p
               className={cn(
                 tourPromoTitle.className,
-                "text-xl leading-none text-white drop-shadow-md sm:text-2xl md:text-[1.75rem]",
+                "text-2xl leading-none text-white drop-shadow-md sm:text-3xl md:text-4xl",
               )}
             >
               {promo.heroTitle}
             </p>
           </div>
-          <div className="flex flex-wrap items-center justify-end gap-1.5 rounded-md bg-white/95 px-2 py-1 shadow-md sm:gap-2 sm:px-2.5 sm:py-1.5">
+          <div className="flex flex-wrap items-center justify-end gap-2 rounded-md bg-white/95 px-2.5 py-1.5 shadow-md sm:gap-2.5 sm:px-3 sm:py-2">
             <div className="flex items-baseline gap-px whitespace-nowrap">
-              <span className="text-sm font-bold sm:text-base" style={{ color: TOUR_PROMO_BLUE }}>
+              <span className="text-base font-bold sm:text-lg" style={{ color: TOUR_PROMO_BLUE }}>
                 $
               </span>
               <span
-                className="text-lg font-black leading-none sm:text-xl md:text-2xl"
+                className="text-xl font-black leading-none sm:text-2xl md:text-3xl"
                 style={{ color: TOUR_PROMO_BLUE }}
               >
                 {promo.price}
               </span>
               {promo.priceSuffix ? (
-                <span className="text-[11px] font-bold sm:text-xs" style={{ color: TOUR_PROMO_BLUE }}>
+                <span className="text-xs font-bold sm:text-sm" style={{ color: TOUR_PROMO_BLUE }}>
                   {promo.priceSuffix}
                 </span>
               ) : null}
             </div>
             {promo.departures ? (
               <div
-                className="rounded-full px-2 py-0.5 text-[8px] font-semibold leading-tight text-white sm:text-[9px] md:text-[10px]"
+                className="rounded-full px-2.5 py-0.5 text-[9px] font-semibold leading-tight text-white sm:text-[10px] md:text-xs"
                 style={{ backgroundColor: TOUR_PROMO_BLUE }}
               >
                 {promo.departures}
@@ -310,8 +317,7 @@ function BannerSlide({ slide }: { slide: AdSlide }) {
   const isTourPromo = isPartner && slide.tourPromo;
   const external = isExternalHref(slide.href);
   const aria = slide.subtitle ? `${slide.title}。${slide.subtitle}` : slide.title;
-  const slideClassName =
-    "relative block h-[148px] w-full shrink-0 grow-0 basis-full bg-zinc-800 sm:h-[168px] md:h-[200px]";
+  const slideClassName = cn("relative block w-full bg-zinc-800", BANNER_HEIGHT_CLASS);
 
   const inner = isTourPromo ? (
     <PartnerTourBanner slide={slide} promo={slide.tourPromo!} />
@@ -326,24 +332,24 @@ function BannerSlide({ slide }: { slide: AdSlide }) {
         }
       />
       {isPartner ? (
-        <span className="absolute right-4 top-4 rounded-md border border-white/25 bg-black/35 px-2 py-0.5 text-[10px] font-medium tracking-wide text-white/90 backdrop-blur-sm sm:right-5 sm:top-5 md:right-8 md:top-6 md:text-[11px]">
+        <span className="absolute right-4 top-4 rounded-md border border-white/25 bg-black/35 px-2 py-0.5 text-[11px] font-medium tracking-wide text-white/90 backdrop-blur-sm sm:right-5 sm:top-5 md:right-8 md:top-6 md:text-xs">
           廣告
         </span>
       ) : null}
-      <div className="absolute inset-y-0 left-0 flex max-w-[min(100%,34rem)] flex-col justify-center gap-2 px-6 py-5 text-white sm:max-w-[min(100%,38rem)] md:gap-2.5 md:px-10 md:py-6">
+      <div className="absolute inset-y-0 left-0 flex max-w-[min(100%,40rem)] flex-col justify-center gap-3 px-6 py-6 text-white sm:max-w-[min(100%,44rem)] md:gap-3.5 md:px-12 md:py-8">
         {!isPartner || slide.brand ? (
-          <p className="text-xs font-normal text-white/70">{isPartner ? slide.brand : "CommTours"}</p>
+          <p className="text-sm font-normal text-white/70">{isPartner ? slide.brand : "CommTours"}</p>
         ) : null}
-        <p className="text-lg font-bold leading-[1.4] tracking-normal sm:text-xl md:text-[1.65rem] md:leading-[1.35]">
+        <p className="text-xl font-bold leading-[1.35] tracking-normal sm:text-2xl md:text-3xl md:leading-[1.3]">
           {slide.title}
         </p>
         {slide.subtitle ? (
-          <p className="line-clamp-3 text-[13px] font-normal leading-[1.65] text-white/92 sm:text-[14px] md:line-clamp-none md:text-[15px] md:leading-[1.7]">
+          <p className="line-clamp-4 text-sm font-normal leading-[1.65] text-white/92 sm:text-base md:line-clamp-none md:text-lg md:leading-[1.7]">
             {slide.subtitle}
           </p>
         ) : null}
         {isPartner && slide.cta ? (
-          <span className="mt-0.5 inline-flex w-fit items-center rounded-full bg-white/95 px-3 py-1 text-[12px] font-semibold text-[#1a2b50] shadow-sm sm:text-[13px] md:mt-1 md:px-3.5 md:py-1.5">
+          <span className="mt-1 inline-flex w-fit items-center rounded-full bg-white/95 px-3.5 py-1.5 text-sm font-semibold text-[#1a2b50] shadow-sm sm:text-base md:mt-1.5 md:px-4 md:py-2">
             {slide.cta}
             <span aria-hidden className="ml-1">
               →
@@ -459,7 +465,26 @@ export function HomeMarketingSections({
   const [activeIndex, setActiveIndex] = useState(0);
   const [infoPage, setInfoPage] = useState(0);
   const infoScrollRef = useRef<HTMLDivElement>(null);
+  const bannerViewportRef = useRef<HTMLDivElement>(null);
+  const [bannerMetrics, setBannerMetrics] = useState({ offset: 0, step: 0 });
   const totalSlides = AD_SLIDES.length;
+
+  const updateBannerMetrics = useCallback(() => {
+    const vp = bannerViewportRef.current;
+    if (!vp || vp.clientWidth <= 0) return;
+    const w = vp.clientWidth;
+    const isMd =
+      typeof window !== "undefined" && window.matchMedia(BANNER_MD_MQ).matches;
+    if (!isMd) {
+      setBannerMetrics({ offset: 0, step: w });
+      return;
+    }
+    const slideW = w * BANNER_PEEK_BASIS;
+    setBannerMetrics({
+      offset: (w - slideW) / 2,
+      step: slideW + BANNER_PEEK_GAP_PX,
+    });
+  }, []);
 
   const infoTotalPages = Math.ceil(INFO_CARDS.length / INFO_PAGE_SIZE);
   const visibleInfoCards = useMemo(() => {
@@ -496,18 +521,40 @@ export function HomeMarketingSections({
     return () => window.clearInterval(timer);
   }, [totalSlides]);
 
-  const translate = useMemo(() => `translateX(-${activeIndex * 100}%)`, [activeIndex]);
+  useEffect(() => {
+    updateBannerMetrics();
+    const vp = bannerViewportRef.current;
+    if (!vp) return;
+    const ro =
+      typeof ResizeObserver !== "undefined" ? new ResizeObserver(updateBannerMetrics) : null;
+    ro?.observe(vp);
+    window.addEventListener("resize", updateBannerMetrics);
+    return () => {
+      ro?.disconnect();
+      window.removeEventListener("resize", updateBannerMetrics);
+    };
+  }, [updateBannerMetrics]);
+
+  const bannerTransform = useMemo(() => {
+    if (bannerMetrics.step <= 0) return "translateX(0)";
+    return `translateX(calc(${bannerMetrics.offset}px - ${activeIndex * bannerMetrics.step}px))`;
+  }, [activeIndex, bannerMetrics.offset, bannerMetrics.step]);
 
   return (
     <section className="container px-4 pt-5 md:pt-7">
-      <div className="w-full overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+      <div ref={bannerViewportRef} className="w-full overflow-hidden">
         <div
-          className="flex w-full transition-transform duration-700 ease-in-out"
-          style={{ transform: translate }}
+          className="flex gap-0 transition-transform duration-700 ease-in-out md:gap-4"
+          style={{ transform: bannerTransform }}
           aria-label="首頁廣告輪播"
         >
           {AD_SLIDES.map((slide) => (
-            <BannerSlide key={slide.id} slide={slide} />
+            <div
+              key={slide.id}
+              className="w-full shrink-0 overflow-hidden rounded-2xl border border-border bg-card shadow-sm md:w-[86%]"
+            >
+              <BannerSlide slide={slide} />
+            </div>
           ))}
         </div>
       </div>
