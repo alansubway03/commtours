@@ -8,6 +8,7 @@ import { pickPrimaryAffiliate } from "@/lib/affiliateLinks";
 import { buildTrackedRedirectUrl } from "@/lib/referralUrls";
 import { getSafeHttpUrl } from "@/lib/safeExternalUrl";
 import { canonicalTourRegion } from "@/lib/canonicalTourRegion";
+import { matchesDestinationKeyword } from "@/lib/matchesDestinationKeyword";
 import { hasFeaturedTag } from "@/lib/featuredTours";
 import {
   getSearchParam,
@@ -103,14 +104,6 @@ const MAX_QUERY_LIST_LENGTH = 40;
 const PAGE_SIZE = 24;
 const LIST_SELECT_COLUMNS =
   "id,created_at,agency,title,type,destination,region,days,price_range,departure_date_statuses,features,affiliate_links,image_url,updated_at";
-
-function matchesDestinationKeyword(row: TourRow, query: string): boolean {
-  const needle = query.trim().toLowerCase();
-  if (!needle) return true;
-  const region = String(canonicalTourRegion(row));
-  const hay = `${row.title} ${row.destination ?? ""} ${region}`.toLowerCase();
-  return hay.includes(needle);
-}
 
 function parsePriceRange(range: string): [number, number] {
   const nums = range.replace(/[$,]/g, "").match(/\d+/g);

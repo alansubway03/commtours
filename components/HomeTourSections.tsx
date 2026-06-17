@@ -8,6 +8,7 @@ import type { Tour, TourType } from "@/types/tour";
 import { TOUR_TYPE_LABELS } from "@/types/tour";
 import { AGENCY_FILTER_OPTIONS } from "@/lib/agencies";
 import { CANONICAL_REGIONS, canonicalTourRegion } from "@/lib/canonicalTourRegion";
+import { matchesDestinationKeyword } from "@/lib/matchesDestinationKeyword";
 import {
   departureRangeContainsMonth,
   isDepartureRangeNote,
@@ -89,9 +90,8 @@ export function HomeTourSections({ tours, agencyScoreMap }: HomeTourSectionsProp
 
   if (activeTab === "longhaul") {
     if (destination.trim()) {
-      const needle = destination.trim().toLowerCase();
       filteredTours = filteredTours.filter((t) =>
-        `${t.title} ${t.destination} ${canonicalTourRegion(t)}`.toLowerCase().includes(needle)
+        matchesDestinationKeyword(t, destination)
       );
     }
     if (agencies.length > 0) {
